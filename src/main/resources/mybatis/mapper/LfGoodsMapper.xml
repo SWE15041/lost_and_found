@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyn.lost_and_found.domain.LfGoodsMapper">
+
+    <sql id="ColumnList">
+      g.id,
+      g.name,
+      DATE_FORMAT(g.create_time,'%y-%m-%d %h:%m:%s') as create_time,
+      g.status,
+      g.money
+    </sql>
+
+    <sql id="WhereClause">
+        <where>
+            <if test="keyWord != null and keyWord != ''">
+                <bind name="pattern" value="'%'+keyWord+'%'"/>
+                and (g.name LIKE  #{pattern})
+            </if>
+            <if test="categoryName != null and categoryName != ''">
+                <bind name="pattern" value="'%'+categoryName+'%'"/>
+                and (c.name LIKE  #{pattern})
+            </if>
+            <if test="categoryId != null and categoryId != ''">
+                and (c.id LIKE  #{categoryId})
+            </if>
+        </where>
+    </sql>
+    <sql id="OrderClause">
+        <if test="orderBy != null and orderBy != ''">
+            order by ${orderBy}
+        </if>
+        <if test="orderBy == null or orderBy == ''">
+            order by g.create_time DESC
+        </if>
+    </sql>
+
+    <select id="selectList" resultType="map" parameterType="map">
+        select
+        <include refid="ColumnList"/>
+        from lf_goods g join category c on g.category_id=c.i
+        <include refid="WhereClause"/>
+        <include refid="OrderClause"/>
+    </select>
+
+    <select id="countList" resultType="java.lang.Long" parameterType="map">
+        select count(1) from lf_goods g join category c on g.category_id=c.id
+        <include refid="WhereClause"/>
+    </select>
+
+</mapper>

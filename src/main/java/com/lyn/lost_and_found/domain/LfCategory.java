@@ -10,9 +10,9 @@ import javax.persistence.Table;
  * 物品类别实体
  */
 @Entity
-@Table(name = "lf_class")
+@Table(name = "lf_category")
 @Data
-public class LfClass extends BaseEntity<Long> {
+public class LfCategory extends BaseEntity<Long> {
 
     /**
      * 类别名称

@@ -4,6 +4,6 @@ import com.jay.vito.storage.core.MyJpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LfClassRepository extends MyJpaRepository<LfClass, Long> {
+public interface LfCategoryRepository extends MyJpaRepository<LfCategory, Long> {
 
 }

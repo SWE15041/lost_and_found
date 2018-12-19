@@ -1,8 +1,7 @@
 package com.lyn.lost_and_found.domain;
 
 import com.jay.vito.storage.domain.BaseEntity;
-import com.lyn.lost_and_found.config.constant.IssueType;
-import com.lyn.lost_and_found.config.constant.YesNoNum;
+import com.lyn.lost_and_found.config.constant.ReleaseType;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -27,6 +26,6 @@ public class LfReleaseRecord extends BaseEntity<Long> {
     /**
      * 发布类型 :0-拾遗 1-遗失
      */
-    private IssueType issueType;
+    private ReleaseType releaseType;
 
 }

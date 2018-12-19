@@ -25,7 +25,7 @@ public class LfGoods extends BaseEntity<Long> {
     /**
      * 物品类别ID
      */
-    private Long classId;
+    private Long categoryId;
     /**
      * 预设悬赏金额
      */

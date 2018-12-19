@@ -1,7 +1,7 @@
 package com.lyn.lost_and_found.domain;
 
 import com.jay.vito.storage.domain.BaseEntity;
-import com.lyn.lost_and_found.config.constant.ReleaseStatus;
+import com.lyn.lost_and_found.config.constant.ClaimStatus;
 import com.lyn.lost_and_found.config.constant.YesNoNum;
 import lombok.Data;
 
@@ -12,7 +12,7 @@ import javax.persistence.Table;
  *认领记录实体
  */
 @Entity
-@Table(name = "lf_ claim_record")
+@Table(name = "lf_claim_record")
 @Data
 public class LfClaimRecord extends BaseEntity<Long> {
 
@@ -39,7 +39,7 @@ public class LfClaimRecord extends BaseEntity<Long> {
     /**
      * 认领状态：0-等待同意 1-认领失败 2-认领成功
      */
-    private ReleaseStatus status;
+    private ClaimStatus status;
     /**
      * 删除
      */
