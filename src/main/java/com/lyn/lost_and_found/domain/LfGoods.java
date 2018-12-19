@@ -1,10 +1,20 @@
 package com.lyn.lost_and_found.domain;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.jay.vito.storage.domain.BaseEntity;
 import com.lyn.lost_and_found.config.constant.GoodsStatus;
 import com.lyn.lost_and_found.config.constant.YesNoNum;
 import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.util.Date;
+
+/**
+ * 物品实体
+ */
+@Entity
+@Table(name = "lf_goods")
 @Data
 public class LfGoods extends BaseEntity<Long> {
 
@@ -48,5 +58,10 @@ public class LfGoods extends BaseEntity<Long> {
      * 删除
      */
     private YesNoNum delState = YesNoNum.no;
+    /**
+     * 遗失时间
+     */
+    @JSONField(format = "yyyy-MM-dd HH:mi:ss")
+    private Date lossTime;
 }
 

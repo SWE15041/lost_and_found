@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/lost_and_found/lfusers")
-public class LfReleaseRecordController extends BaseGridController<LfReleaseRecord, Long> {
+@RequestMapping(value = "/api/lost_and_found/lfReleaseRecords")
+public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRecord, Long> {
 
     @Autowired
     private LfReleaseRecordService lfReleaseRecordService;

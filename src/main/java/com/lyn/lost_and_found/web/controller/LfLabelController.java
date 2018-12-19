@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/api/lost_and_found/lfusers")
-public class LfLabelController extends BaseGridController<LfLabel, Long> {
+public class LfLabelController extends BaseLFGridController<LfLabel, Long> {
 
     @Autowired
     private LfLabelService lfLabelService;

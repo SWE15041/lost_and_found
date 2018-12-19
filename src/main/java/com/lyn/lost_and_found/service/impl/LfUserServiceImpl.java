@@ -13,10 +13,16 @@ import org.springframework.stereotype.Service;
 public class LfUserServiceImpl extends EntityCRUDServiceImpl<LfUser, Long> implements LfUserService {
 
     @Autowired
-    private LfUserRepository lfUserRepository;
+    private LfUserRepository userRepository;
 
     @Override
     protected JpaRepository<LfUser, Long> getRepository() {
         return super.getRepository();
+    }
+
+    @Override
+    public LfUser getByWechatOpenid(String openid) {
+        LfUser user = userRepository.findByWechatOpenid(openid);
+        return user;
     }
 }

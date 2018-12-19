@@ -4,6 +4,14 @@ import com.jay.vito.storage.domain.BaseEntity;
 import com.lyn.lost_and_found.config.constant.YesNoNum;
 import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+/**
+ * 标签实体
+ */
+@Entity
+@Table(name = "lf_label")
 @Data
 public class LfLabel extends BaseEntity<Long> {
 

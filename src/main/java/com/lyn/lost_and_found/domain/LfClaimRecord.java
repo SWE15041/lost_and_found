@@ -1,52 +1,45 @@
 package com.lyn.lost_and_found.domain;
 
 import com.jay.vito.storage.domain.BaseEntity;
-import com.lyn.lost_and_found.config.constant.GoodsStatus;
+import com.lyn.lost_and_found.config.constant.ReleaseStatus;
 import com.lyn.lost_and_found.config.constant.YesNoNum;
 import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
- *
+ *认领记录实体
  */
+@Entity
+@Table(name = "lf_ claim_record")
 @Data
 public class LfClaimRecord extends BaseEntity<Long> {
 
     /**
-     * 物品名称
+     * 发布者ID
      */
-    private String name;
+    private Long releaseUid;
     /**
-     * 物品类别ID
+     * 认领者ID
      */
-    private Long classId;
+    private Long fetcgId;
     /**
-     * 预设悬赏金额
+     * 物品ID
+     */
+    private Long goodsId;
+    /**
+     * 发布记录ID
+     */
+    private Long releaseId;
+    /**
+     * 实际悬赏金额
      */
     private Double money;
     /**
-     * 物品描述
+     * 认领状态：0-等待同意 1-认领失败 2-认领成功
      */
-    private String description;
-    /**
-     * 物品图片
-     */
-    private String picture;
-    /**
-     * 图片数量
-     */
-    private Integer picNum;
-    /**
-     * 经度
-     */
-    private Double longitude;
-    /**
-     * 纬度
-     */
-    private Double latitude;
-    /**
-     * 物品状态：0-未认领 1-已认领 2-认领中
-     */
-    private GoodsStatus status = GoodsStatus.UNCLAIM;
+    private ReleaseStatus status;
     /**
      * 删除
      */

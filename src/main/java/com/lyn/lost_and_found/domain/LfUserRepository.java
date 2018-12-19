@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LfUserRepository extends MyJpaRepository<LfUser, Long> {
 
+    LfUser findByWechatOpenid(String wechatOpenid);
 }

@@ -3,6 +3,14 @@ package com.lyn.lost_and_found.domain;
 import com.jay.vito.storage.domain.BaseEntity;
 import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+/**
+ * 用户实体
+ */
+@Entity
+@Table(name = "lf_user")
 @Data
 public class LfUser extends BaseEntity<Long> {
 
@@ -30,6 +38,9 @@ public class LfUser extends BaseEntity<Long> {
      * 钱包余额
      */
     private Double balance;
-
+    /**
+     * 微信用户openid
+     */
+    private String wechatOpenid;
 
 }
