@@ -11,11 +11,13 @@ import com.jay.vito.website.core.cache.SystemDataHolder;
 import com.jay.vito.website.web.controller.BaseController;
 import com.jay.vito.website.web.controller.BaseGridController;
 import com.lyn.lost_and_found.config.wechat.WxMaConfiguration;
+import com.lyn.lost_and_found.config.wechat.WxMaProperties;
 import com.lyn.lost_and_found.domain.LfUser;
 import com.lyn.lost_and_found.service.LfUserService;
 import me.chanjar.weixin.common.error.WxErrorException;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,7 +46,7 @@ public class LoginController  extends BaseLFGridController<LfUser, Long> {
             throw new HttpBadRequestException("登录失败", "FALID_LOGIN");
         }
         //wx.miniapp.configs.appid
-        String appid = String.valueOf(SystemDataHolder.getParam("appid"));
+        String appid =String.valueOf(SystemDataHolder.getParam("appid"));
         final WxMaService wxService = WxMaConfiguration.getMaService(appid);
         try {
             //小程序授权

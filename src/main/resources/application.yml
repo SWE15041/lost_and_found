@@ -8,7 +8,7 @@ spring:
   application:
     name: sdk-service
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://101.132.117.168:3306/lost_and_found?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
     username: lyn
     password: lyn@2018222
@@ -38,20 +38,22 @@ spring:
         slow-sql-millis: 2000
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
 
 mybatis:
   type-aliases-package: com.lyn.**.domain
-#  config-location: classpath:mybatis/mybatis-config.xml
-#  mapper-locations: classpath*:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath*:mybatis/mapper/*.xml
 
 
 wx:
   miniapp:
     configs:
-    - appid:
-      secret:
-      token:
-      aesKey:
-      msgDataFormat: JSON
+       - appid: wx14635c72c8cf5af2
+         secret: cea26a4f7fb59f833cb2423bb9808c44
+#       - appid: wxde91dff1d5907885
+#         secret: f6b1791caa185f875e897eb331ab4d79
+         token:
+         aesKey:
+         msgDataFormat: JSON

@@ -5,6 +5,7 @@
     <sql id="ColumnList">
       g.id,
       g.name,
+      u.name as release_name,
       DATE_FORMAT(g.create_time,'%y-%m-%d %h:%m:%s') as create_time,
       g.status,
       g.money
@@ -16,13 +17,12 @@
                 <bind name="pattern" value="'%'+keyWord+'%'"/>
                 and (g.name LIKE  #{pattern})
             </if>
-            <if test="categoryName != null and categoryName != ''">
-                <bind name="pattern" value="'%'+categoryName+'%'"/>
-                and (c.name LIKE  #{pattern})
+            <!--
+            <if test="releaseType != null and releaseType != ''">
+                <bind name="pattern" value="'%'+releaseType+'%'"/>
+                and (c.name =  #{pattern})
             </if>
-            <if test="categoryId != null and categoryId != ''">
-                and (c.id LIKE  #{categoryId})
-            </if>
+            -->
         </where>
     </sql>
     <sql id="OrderClause">
@@ -37,13 +37,18 @@
     <select id="selectList" resultType="map" parameterType="map">
         select
         <include refid="ColumnList"/>
-        from lf_goods g join category c on g.category_id=c.i
+        from lf_goods g
+        join category c on g.category_id=c.i
+        join lf_user u on g.user_id=u.id
         <include refid="WhereClause"/>
         <include refid="OrderClause"/>
     </select>
 
     <select id="countList" resultType="java.lang.Long" parameterType="map">
-        select count(1) from lf_goods g join category c on g.category_id=c.id
+        select count(1)
+        from lf_goods g
+        join category c on g.category_id=c.id
+        join lf_user u on g.user_id=u.id
         <include refid="WhereClause"/>
     </select>
 

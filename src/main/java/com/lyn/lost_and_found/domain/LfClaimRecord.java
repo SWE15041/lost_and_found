@@ -23,7 +23,7 @@ public class LfClaimRecord extends BaseEntity<Long> {
     /**
      * 认领者ID
      */
-    private Long fetcgId;
+    private Long fetchId;
     /**
      * 物品ID
      */
