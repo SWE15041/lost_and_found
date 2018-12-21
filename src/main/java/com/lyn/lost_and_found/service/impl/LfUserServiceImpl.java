@@ -1,6 +1,5 @@
 package com.lyn.lost_and_found.service.impl;
 
-import com.jay.vito.storage.service.EntityCRUDService;
 import com.jay.vito.storage.service.EntityCRUDServiceImpl;
 import com.lyn.lost_and_found.domain.LfUser;
 import com.lyn.lost_and_found.domain.LfUserRepository;
@@ -24,5 +23,11 @@ public class LfUserServiceImpl extends EntityCRUDServiceImpl<LfUser, Long> imple
     public LfUser getByWechatOpenid(String openid) {
         LfUser user = userRepository.findByWechatOpenid(openid);
         return user;
+    }
+
+    @Override
+    public LfUser getByMobile(String mobile) {
+        LfUser lfUser = userRepository.findByMobile(mobile);
+        return lfUser;
     }
 }
