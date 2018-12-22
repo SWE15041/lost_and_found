@@ -42,5 +42,14 @@ public class LfUser extends BaseEntity<Long> {
      * 微信用户openid
      */
     private String wechatOpenid;
+    /**
+     * 昵称
+     */
+    private String nickName;
+    /**
+     * 邮箱
+     */
+    private String eamil;
+
 
 }

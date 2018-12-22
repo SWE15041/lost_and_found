@@ -6,5 +6,5 @@ import com.lyn.lost_and_found.domain.LfGoods;
 
 public interface LfClaimRecordService extends EntityCRUDService<LfClaimRecord, Long> {
 
-//    LfUser  getByName(String name);
+
 }

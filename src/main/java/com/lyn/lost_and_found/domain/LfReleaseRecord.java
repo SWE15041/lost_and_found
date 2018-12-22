@@ -18,7 +18,7 @@ public class LfReleaseRecord extends BaseEntity<Long> {
     /**
      * 用户ID
      */
-    private Long userId;
+    private Long releaseUserId;
     /**
      * 物品ID
      */

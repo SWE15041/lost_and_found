@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/lost_and_found/lf_transaction_records")
+@RequestMapping(value = "/api/lost_and_found/lfTransactionRecords")
 public class LfTransactionRecordController extends BaseLFGridController<LfTransactionRecord, Long> {
 
     @Autowired

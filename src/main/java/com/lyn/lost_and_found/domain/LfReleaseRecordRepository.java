@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LfReleaseRecordRepository extends MyJpaRepository<LfReleaseRecord, Long> {
 
+    LfReleaseRecord findByGoodsId(Long goodsId);
 }

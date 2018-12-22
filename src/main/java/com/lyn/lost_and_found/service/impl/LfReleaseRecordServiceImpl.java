@@ -17,7 +17,7 @@ import javax.transaction.Transactional;
 public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseRecord, Long> implements LfReleaseRecordService {
 
     @Autowired
-    private LfReleaseRecordRepository lfReleaseRecordRepository;
+    private LfReleaseRecordRepository releaseRecordRepository;
     @Autowired
     private LfGoodsService goodsService;
 
@@ -38,9 +38,15 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
         releaseRecord.setGoodsId(goodsId);
         releaseRecord.setReleaseType(releaseType);
         Long currentUserId = UserContextHolder.getCurrentUserId();
-        releaseRecord.setUserId(currentUserId);
+        releaseRecord.setReleaseUserId(currentUserId);
         super.save(releaseRecord);
         return true;
+    }
+
+    @Override
+    public LfReleaseRecord getByGoodsId(Long goodsId) {
+        LfReleaseRecord releaseRecord = releaseRecordRepository.findByGoodsId(goodsId);
+        return releaseRecord;
     }
 }
 

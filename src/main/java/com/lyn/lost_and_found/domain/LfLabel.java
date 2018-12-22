@@ -26,7 +26,7 @@ public class LfLabel extends BaseEntity<Long> {
     /**
      * 发布者ID
      */
-    private Long userId;
+    private Long releaseUserId;
     /**
      * 发布记录ID
      */
