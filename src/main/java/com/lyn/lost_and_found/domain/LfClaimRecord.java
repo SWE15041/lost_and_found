@@ -3,6 +3,8 @@ package com.lyn.lost_and_found.domain;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.jay.vito.storage.domain.BaseEntity;
 import com.lyn.lost_and_found.config.constant.ClaimStatus;
+import com.lyn.lost_and_found.config.constant.RecordStatus;
+import com.lyn.lost_and_found.config.constant.ReleaseType;
 import com.lyn.lost_and_found.config.constant.YesNoNum;
 import lombok.Data;
 
@@ -23,6 +25,10 @@ public class LfClaimRecord extends BaseEntity<Long> {
      */
     private Long claimUserId;
     /**
+     * 发布方ID
+     */
+    private Long releaseUserId;
+    /**
      * 物品ID
      */
     private Long goodsId;
@@ -30,10 +36,6 @@ public class LfClaimRecord extends BaseEntity<Long> {
      * 实际悬赏金额
      */
     private Double money;
-    /**
-     * 认领状态：0-等待同意 1-认领失败 2-认领成功
-     */
-//    private ClaimStatus status;
     /**
      * 删除
      */
@@ -55,5 +57,13 @@ public class LfClaimRecord extends BaseEntity<Long> {
      * 认领者物品信息描述
      */
     private String goodsInfo;
+    /**
+     * 发布类型 0-拾遗 1-遗失
+     */
+    private ReleaseType releaseType;
+    /**
+     * 交易状态：0-等待同意 1-交易成功 2-交易失败 3-交易进行中
+     */
+    private RecordStatus recordStatus;
 }
 
