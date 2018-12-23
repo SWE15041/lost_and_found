@@ -79,6 +79,8 @@ public class LoginController extends BaseLFGridController<LfUser, Long> {
      * @param map 手机号+验证码
      * @return token
      */
+
+    @IgnoreUserAuth
     @RequestMapping(value = "/appLogin", method = RequestMethod.POST)
     public Map<String, Object> appLogin(@RequestBody Map<String, Object> map) {
         String mobile = String.valueOf(map.get("mobile"));
@@ -115,6 +117,7 @@ public class LoginController extends BaseLFGridController<LfUser, Long> {
      * @param map 手机号
      * @return
      */
+    @IgnoreUserAuth
     @RequestMapping(value = "/bulidMessageCode", method = RequestMethod.POST)
     public boolean bulidMessageCode(@RequestBody Map<String, Object> map) {
         String mobile = String.valueOf(map.get("mobile"));
@@ -127,6 +130,7 @@ public class LoginController extends BaseLFGridController<LfUser, Long> {
      * @param map
      * @return
      */
+    @IgnoreUserAuth
     @RequestMapping(value = "/verifyMobile", method = RequestMethod.POST)
     public boolean verifyMobile(@RequestBody Map<String, Object> map) {
         String mobile = String.valueOf(map.get("mobile"));
