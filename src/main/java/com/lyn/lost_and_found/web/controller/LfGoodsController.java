@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/api/lost_and_found/lfGoods")
+@RequestMapping(value = "/api/goods")
 public class LfGoodsController extends BaseLFGridController<LfGoods, Long> {
 
     @Autowired
@@ -60,7 +60,7 @@ public class LfGoodsController extends BaseLFGridController<LfGoods, Long> {
     }
 
     /**
-     * 分页查询
+     * 分页查询:查找物品
      * @return
      */
     @RequestMapping(method = RequestMethod.GET,params = "pageNo")

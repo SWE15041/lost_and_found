@@ -17,4 +17,7 @@ public interface LfReleaseRecordService extends EntityCRUDService<LfReleaseRecor
     boolean releaseGoods(LfGoods goods, ReleaseType releaseType);
 
     LfReleaseRecord getByGoodsId(Long goodsId);
+
+    LfReleaseRecord getByReleaseUserIdAndGoodsId(Long releaseUserId ,Long goodsId);
+
 }

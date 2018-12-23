@@ -59,9 +59,10 @@ public class LfGoods extends BaseEntity<Long> {
      */
     private YesNoNum delState = YesNoNum.no;
     /**
-     * 遗失时间
+     * 发布时间：遗失时间 拾遗时间
      */
     @JSONField(format = "yyyy-MM-dd HH:mi:ss")
-    private Date lossTime;
+    private Date releaseTime;
+
 }
 

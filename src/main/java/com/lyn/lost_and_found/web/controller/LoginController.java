@@ -23,9 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/api/lost_and_found/lfusers")
+@RequestMapping(value = "/api/users")
 public class LoginController extends BaseLFGridController<LfUser, Long> {
-
 
     @Autowired
     private LfUserService userService;
@@ -74,14 +73,13 @@ public class LoginController extends BaseLFGridController<LfUser, Long> {
             throw new HttpBadRequestException("code无效", "VALID_CODE");
         }
     }
-
     /**
      * app用户登陆
      *
      * @param map 手机号+验证码
      * @return token
      */
-    @RequestMapping(value = "/appLogin", method = RequestMethod.GET)
+    @RequestMapping(value = "/appLogin", method = RequestMethod.POST)
     public Map<String, Object> appLogin(@RequestBody Map<String, Object> map) {
         String mobile = String.valueOf(map.get("mobile"));
         String messageCode = String.valueOf(map.get("messageCode"));
@@ -124,11 +122,16 @@ public class LoginController extends BaseLFGridController<LfUser, Long> {
         return buildMessageCode;
     }
 
+    /**
+     * 验证手机号
+     * @param map
+     * @return
+     */
     @RequestMapping(value = "/verifyMobile", method = RequestMethod.POST)
     public boolean verifyMobile(@RequestBody Map<String, Object> map) {
         String mobile = String.valueOf(map.get("mobile"));
         LfUser user = userService.getByMobile(mobile);
-        if (Validator.isNull(user)) {
+        if (Validator.isNotNull(user)) {
             return false;
         }
         return true;

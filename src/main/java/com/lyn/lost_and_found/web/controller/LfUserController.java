@@ -12,12 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/lost_and_found/lfusers")
+@RequestMapping(value = "/api/users")
 public class LfUserController extends BaseLFGridController<LfUser, Long> {
 
     @Autowired
     private LfUserService userService;
-
     /**
      * 完善用户信息
      * @param user
@@ -33,5 +32,6 @@ public class LfUserController extends BaseLFGridController<LfUser, Long> {
         userService.updateNotNull(user);
         return true;
     }
+
 
 }

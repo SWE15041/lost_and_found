@@ -6,7 +6,7 @@
       g.id,
       g.name,
       u.name as release_name,
-      DATE_FORMAT(g.create_time,'%y-%m-%d %h:%m:%s') as create_time,
+      DATE_FORMAT(g.create_time,'%y-%m-%d %h:%m:%s') as release_time,
       g.status,
       g.money
     </sql>
@@ -15,14 +15,12 @@
         <where>
             <if test="keyWord != null and keyWord != ''">
                 <bind name="pattern" value="'%'+keyWord+'%'"/>
-                and (g.name LIKE  #{pattern})
+                and (g.name LIKE  #{pattern}) or (g.description like #{pattern})
             </if>
-            <!--
             <if test="releaseType != null and releaseType != ''">
                 <bind name="pattern" value="'%'+releaseType+'%'"/>
-                and (c.name =  #{pattern})
+                and (rr.release_type =  #{pattern})
             </if>
-            -->
         </where>
     </sql>
     <sql id="OrderClause">
@@ -40,6 +38,7 @@
         from lf_goods g
         join category c on g.category_id=c.i
         join lf_user u on g.user_id=u.id
+        join lf_release_record rr on g.id=rr.goodsId
         <include refid="WhereClause"/>
         <include refid="OrderClause"/>
     </select>
@@ -49,6 +48,7 @@
         from lf_goods g
         join category c on g.category_id=c.id
         join lf_user u on g.user_id=u.id
+        join lf_release_record rr on g.id=rr.goodsId
         <include refid="WhereClause"/>
     </select>
 

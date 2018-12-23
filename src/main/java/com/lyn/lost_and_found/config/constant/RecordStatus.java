@@ -7,5 +7,6 @@ public enum RecordStatus {
     WAITING_PERMISSION,
     SUCCESS,
     FAIL,
-    TRANSACTION
+    TRANSACTION ,
+    WAITING_CLAIM
 }

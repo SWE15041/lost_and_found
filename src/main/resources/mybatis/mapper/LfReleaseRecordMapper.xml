@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyn.lost_and_found.domain.LfReleaseRecordMapper">
+
+    <sql id="ColumnList">
+      rr.id,
+      g.id as goods_id,
+      g.name,
+      u.name as release_name,
+      DATE_FORMAT(rr.release_time,'%y-%m-%d %h:%m:%s') as release_time,
+      g.money,
+      rr.record_status
+    </sql>
+
+    <sql id="WhereClause">
+        <where>
+            <if test="currentUserId != null and currentUserId != ''">
+                and cr.claim_user_id=#{currentUserId}
+            </if>
+        </where>
+    </sql>
+    <sql id="OrderClause">
+        <if test="orderBy != null and orderBy != ''">
+            order by ${orderBy}
+        </if>
+        <if test="orderBy == null or orderBy == ''">
+            order by cr.create_time DESC
+        </if>
+    </sql>
+
+    <select id="selectList" resultType="map" parameterType="map">
+        select
+        <include refid="ColumnList"/>
+        from lf_release_record rr
+        join lf_goods g c on rr.goods_id=g.id
+        join lf_user u on rr.release_user_id=u.id
+        <include refid="WhereClause"/>
+        <include refid="OrderClause"/>
+    </select>
+
+    <select id="countList" resultType="java.lang.Long" parameterType="map">
+        select count(1)
+        from lf_release_record rr
+        join lf_goods g c on rr.goods_id=g.id
+        join lf_user u on rr.release_user_id=u.id
+        <include refid="WhereClause"/>
+    </select>
+
+</mapper>

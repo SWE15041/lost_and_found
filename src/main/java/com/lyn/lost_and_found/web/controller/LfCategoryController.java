@@ -7,16 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/lost_and_found/lfusers")
+@RequestMapping(value = "/api/categorys")
 public class LfCategoryController extends BaseLFGridController<LfCategory, Long> {
 
     @Autowired
     private LfCategoryService lfCategoryService;
-
-//    @RequestMapping(value = "/login",method = RequestMethod.POST)
-//    public Map<String,Object> login(@RequestBody LfUser lfUser){
-//
-//    }
 
 
 }

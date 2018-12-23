@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/lost_and_found/lfusers")
+@RequestMapping(value = "/api/labels")
 public class LfLabelController extends BaseLFGridController<LfLabel, Long> {
 
     @Autowired

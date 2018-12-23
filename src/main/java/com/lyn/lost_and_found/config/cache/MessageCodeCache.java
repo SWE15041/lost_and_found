@@ -22,6 +22,8 @@ public class MessageCodeCache {
     private Map<String, Object> messageCode;
 
     private MessageCodeCache() {
+
+        messageCode = new HashMap<>();
     }
 
     public static MessageCodeCache getInstance() {
@@ -61,14 +63,7 @@ public class MessageCodeCache {
         System.out.println("返回结果：" + data);
         client.close();
         //todo 保存验证码的值
-        if (messageCode == null) {
-            synchronized (MessageCodeCache.class) {
-                if (messageCode == null) {
-                    messageCode = new HashMap<>();
-                    messageCode.put(mobile, "1234");
-                }
-            }
-        }
+        messageCode.put(mobile, "1234");
         return true;
     }
 

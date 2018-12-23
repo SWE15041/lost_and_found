@@ -6,6 +6,7 @@ import com.lyn.lost_and_found.config.constant.ReleaseType;
 import com.lyn.lost_and_found.domain.LfGoods;
 import com.lyn.lost_and_found.domain.LfReleaseRecord;
 import com.lyn.lost_and_found.service.LfReleaseRecordService;
+import com.lyn.lost_and_found.web.vo.LocalPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/lost_and_found/lfReleaseRecords")
+@RequestMapping(value = "/api/releaseRecords")
 public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRecord, Long> {
 
     @Autowired
@@ -21,7 +22,7 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
 
 // todo 用户发布物品之后返回推荐标签算法
 
-
+    //todo 将发布类型加入到请求参数，将 发布遗失、发布拾遗 两个端口合并？
     /**
      * 发布遗失
      * @param goods
@@ -48,5 +49,14 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
         }
         boolean releaseGoods = releaseRecordService.releaseGoods(goods, ReleaseType.PICK_UP);
         return releaseGoods;
+    }
+
+    /**
+     * 我的发布记录
+     * @return
+     */
+    @Override
+    public LocalPage localQuery() {
+        return super.localQuery();
     }
 }
