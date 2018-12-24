@@ -4,10 +4,10 @@
 
     <sql id="ColumnList">
       cr.id,
-      g.id as goods_id,
+      cr.goods_id,
       g.name,
-      u.name as release_name,
-      DATE_FORMAT(g.loss_time,'%y-%m-%d %h:%m:%s') as loss_time,
+      u.nick_name as release_name,
+      DATE_FORMAT(g.release_time,'%y-%m-%d %h:%m:%s') as release_time,
       cr.record_status,
       g.money
     </sql>
@@ -31,18 +31,20 @@
     <select id="selectList" resultType="map" parameterType="map">
         select
         <include refid="ColumnList"/>
-        from lf_claim_record cr
-        join lf_goods g c on cr.goodsId=g.id
-        join lf_user u on cr.claim_user_id=u.id
+        FROM
+        lf_claim_record cr
+        JOIN lf_goods g ON cr.goods_id = g.id
+        JOIN lf_user u ON cr.release_user_id = u.id
         <include refid="WhereClause"/>
         <include refid="OrderClause"/>
     </select>
 
     <select id="countList" resultType="java.lang.Long" parameterType="map">
         select count(1)
-        from lf_claim_record cr
-        join lf_goods g c on cr.goodsId=g.id
-        join lf_user u on cr.release_user_id=u.id
+        FROM
+        lf_claim_record cr
+        JOIN lf_goods g ON cr.goods_id = g.id
+        JOIN lf_user u ON cr.release_user_id = u.id
         <include refid="WhereClause"/>
     </select>
 

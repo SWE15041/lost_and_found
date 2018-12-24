@@ -2,7 +2,9 @@ package com.lyn.lost_and_found.web.controller;
 
 import com.jay.vito.common.util.string.StringUtil;
 import com.jay.vito.storage.domain.BaseEntity;
+import com.jay.vito.storage.model.Condition;
 import com.jay.vito.storage.model.Page;
+import com.jay.vito.uic.client.core.UserContextHolder;
 import com.jay.vito.website.web.controller.BaseGridController;
 import com.lyn.lost_and_found.web.vo.LocalPage;
 
@@ -38,5 +40,12 @@ public abstract class  BaseLFGridController <T extends BaseEntity<ID>, ID extend
             }
         }
         return copyItems;
+    }
+
+    @Override
+    public void before() {
+        super.before();
+        Long currentUserId = UserContextHolder.getCurrentUserId();
+        this.addCondition(new Condition("currentUserId", currentUserId, currentUserId, Condition.SearchType.EQ));
     }
 }

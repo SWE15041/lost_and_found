@@ -14,7 +14,10 @@ import com.lyn.lost_and_found.web.vo.LfGoodsVO;
 import com.lyn.lost_and_found.web.vo.LocalPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import sun.applet.Main;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 @RestController
@@ -49,12 +52,12 @@ public class LfGoodsController extends BaseLFGridController<LfGoods, Long> {
         LfGoods lfGoods = super.get(id);
         Long categoryId = lfGoods.getCategoryId();
 
-        LfCategory category = categoryService.get(id);
+        LfCategory category = categoryService.get(categoryId);
         String categoryName = category.getName();
 
         LfGoodsVO lfGoodsVO=new LfGoodsVO();
         lfGoodsVO.setCategoryName(categoryName);
-        BeanUtil.copyNotNullProperties(lfGoodsVO,lfGoods);
+        BeanUtil.copyProperties(lfGoodsVO,lfGoods);
 
         return lfGoodsVO;
     }
@@ -69,4 +72,17 @@ public class LfGoodsController extends BaseLFGridController<LfGoods, Long> {
         return super.localQuery();
     }
 
+    public static void  main(String[] args){
+        LfGoods goods=new LfGoods();
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date=new Date();
+        simpleDateFormat.format(date);
+        System.out.println(date);
+        System.out.println(simpleDateFormat.getTimeZone());
+        goods.setReleaseTime(date);
+        LfGoodsVO goodsVO=new LfGoodsVO();
+        BeanUtil.copyProperties(goodsVO,goods);
+        System.out.println(goodsVO.getReleaseTime());
+
+    }
 }

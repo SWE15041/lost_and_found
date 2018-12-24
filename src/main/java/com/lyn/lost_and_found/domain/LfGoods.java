@@ -61,8 +61,15 @@ public class LfGoods extends BaseEntity<Long> {
     /**
      * 发布时间：遗失时间 拾遗时间
      */
-    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date releaseTime;
 
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss:SSS")
+    public Date getReleaseTime() {
+        return releaseTime;
+    }
+
+    public void setReleaseTime(Date releaseTime) {
+        this.releaseTime = releaseTime;
+    }
 }
 

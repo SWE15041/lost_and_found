@@ -42,7 +42,7 @@ public class LfClaimRecord extends BaseEntity<Long> {
     /**
      * 认领者昵称
      */
-    private  String nickName;
+    private String nickName;
     /**
      * 认领者填写的手机号
      */
@@ -54,7 +54,7 @@ public class LfClaimRecord extends BaseEntity<Long> {
     /**
      * 认领者物品丢失时间
      */
-    @JSONField(format = "yyyy-MM-dd hh:mi:ss")
+
     private Date lossTime;
     /**
      * 认领者物品信息描述
@@ -68,5 +68,14 @@ public class LfClaimRecord extends BaseEntity<Long> {
      * 交易状态：0-等待同意 1-同意认领 2-拒绝认领 3-交易进行中 4-未被认领
      */
     private RecordStatus recordStatus;
+
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss:SSS")
+    public Date getLossTime() {
+        return lossTime;
+    }
+
+    public void setLossTime(Date lossTime) {
+        this.lossTime = lossTime;
+    }
 }
 

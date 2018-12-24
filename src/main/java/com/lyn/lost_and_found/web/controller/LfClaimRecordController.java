@@ -76,7 +76,7 @@ public class LfClaimRecordController extends BaseLFGridController<LfClaimRecord,
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @Override
     public LfClaimRecord get(@PathVariable("id") Long id) {
-        LfClaimRecord claimRecord = get(id);
+        LfClaimRecord claimRecord = super.get(id);
         return claimRecord;
     }
 
