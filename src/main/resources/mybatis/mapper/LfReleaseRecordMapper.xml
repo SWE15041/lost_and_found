@@ -7,7 +7,7 @@
       g.id as goods_id,
       g.name,
       u.name as release_name,
-      DATE_FORMAT(rr.release_time,'%y-%m-%d %h:%m:%s') as release_time,
+      DATE_FORMAT(g.release_time,'%y-%m-%d %h:%m:%s') as release_time,
       g.money,
       rr.record_status
     </sql>
@@ -15,7 +15,7 @@
     <sql id="WhereClause">
         <where>
             <if test="currentUserId != null and currentUserId != ''">
-                and cr.claim_user_id=#{currentUserId}
+                and rr.release_user_id=#{currentUserId}
             </if>
         </where>
     </sql>
@@ -24,7 +24,7 @@
             order by ${orderBy}
         </if>
         <if test="orderBy == null or orderBy == ''">
-            order by cr.create_time DESC
+            order by rr.create_time DESC
         </if>
     </sql>
 
@@ -32,7 +32,7 @@
         select
         <include refid="ColumnList"/>
         from lf_release_record rr
-        join lf_goods g c on rr.goods_id=g.id
+        join lf_goods g  on rr.goods_id=g.id
         join lf_user u on rr.release_user_id=u.id
         <include refid="WhereClause"/>
         <include refid="OrderClause"/>
@@ -41,7 +41,7 @@
     <select id="countList" resultType="java.lang.Long" parameterType="map">
         select count(1)
         from lf_release_record rr
-        join lf_goods g c on rr.goods_id=g.id
+        join lf_goods g  on rr.goods_id=g.id
         join lf_user u on rr.release_user_id=u.id
         <include refid="WhereClause"/>
     </select>

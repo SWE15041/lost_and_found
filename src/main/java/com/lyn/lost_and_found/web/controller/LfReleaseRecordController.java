@@ -55,6 +55,7 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
      * 我的发布记录
      * @return
      */
+    @RequestMapping(method = RequestMethod.GET,params = "pageNo")
     @Override
     public LocalPage localQuery() {
         return super.localQuery();

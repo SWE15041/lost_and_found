@@ -13,14 +13,14 @@
 
     <sql id="WhereClause">
         <where>
-            g.status=1
+            g.status !=1
             <if test="keyWord != null and keyWord != ''">
-                <bind name="pattern" value="'%'+keyWord+'%'"/>
-                and (g.name LIKE  #{pattern}) or (g.description like #{pattern})
+                <bind name="pattern1" value="'%'+keyWord+'%'"/>
+                and (g.name LIKE  #{pattern1}) or (g.description like #{pattern1})
             </if>
             <if test="releaseType != null and releaseType != ''">
-                <bind name="pattern" value="'%'+releaseType+'%'"/>
-                and (rr.release_type =  #{pattern})
+                <bind name="pattern2" value="'%'+releaseType+'%'"/>
+                and (rr.release_type =  #{pattern2})
             </if>
         </where>
     </sql>

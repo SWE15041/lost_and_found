@@ -20,6 +20,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class LostAndFoundApplication {
 
     public static void main(String[] args) {
+        System.setProperty("app.env", "dev");
+
         SpringApplication.run(LostAndFoundApplication.class, args);
     }
 
