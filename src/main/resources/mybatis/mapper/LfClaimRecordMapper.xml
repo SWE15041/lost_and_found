@@ -15,7 +15,15 @@
     <sql id="WhereClause">
         <where>
             <if test="currentUserId != null and currentUserId != ''">
-                and cr.claim_user_id=#{currentUserId}
+                <if test="caimRecordType == null or caimRecordType == ''">
+                    <if test="caimRecordType == 1">
+                        and cr.claim_user_id=#{currentUserId}
+                    </if>
+                    <if test="caimRecordType == 0">
+                        and cr.release_user_id=#{currentUserId}
+                    </if>
+                </if>
+
             </if>
             <if test="recordType != null and recordType != ''">
                 and cr.record_type=#{recordType}
@@ -47,8 +55,58 @@
         FROM
         lf_claim_record cr
         JOIN lf_goods g ON cr.goods_id = g.id
-        JOIN lf_user u ON cr.release_user_id = u.id
+        <if test="caimRecordType == null or caimRecordType == ''">
+            <if test="caimRecordType == 1">
+               JOIN lf_user u ON cr.release_user_id = u.id
+            </if>
+            <if test="caimRecordType == 0">
+                JOIN lf_user u ON cr.claim_user_id = u.id
+            </if>
+        </if>
+
         <include refid="WhereClause"/>
+    </select>
+
+
+    <sql id="ColumnListClaimer">
+        cr.id,
+        u.nick_name,
+        u.mobile
+    </sql>
+
+    <sql id="WhereClauseClaimer">
+        <where>
+            <if test="goodsId != null and goodsId != ''">
+                and cr.goods_id=#{goodsId}
+            </if>
+        </where>
+    </sql>
+    <sql id="OrderClauseClaimer">
+        <if test="orderBy != null and orderBy != ''">
+            order by ${orderBy}
+        </if>
+        <if test="orderBy == null or orderBy == ''">
+            order by cr.create_time DESC
+        </if>
+    </sql>
+
+
+    <select id="selectListClaimer" resultType="map" parameterType="map">
+        select
+        <include refid="ColumnListClaimer"/>
+        FROM
+        lf_claim_record cr
+        JOIN lf_user u ON cr.claim_user_id = u.id
+        <include refid="WhereClauseClaimer"/>
+        <include refid="OrderClauseClaimer"/>
+    </select>
+
+    <select id="countListClaimer" resultType="java.lang.Long" parameterType="map">
+        select count(1)
+        FROM
+        lf_claim_record cr
+        JOIN lf_user u ON cr.claim_user_id = u.id
+        <include refid="WhereClauseClaimer"/>
     </select>
 
 </mapper>

@@ -63,7 +63,7 @@ public class LfClaimRecord extends BaseEntity<Long> {
     /**
      * 认领记录类型：0-我发出的 1-我收到的
      */
-    private ClaimRecordType recordType;
+    private ClaimRecordType claimRecordType;
 
     @JSONField(format = "yyyy-MM-dd HH:mm:ss:SSS")
     public Date getLossTime() {

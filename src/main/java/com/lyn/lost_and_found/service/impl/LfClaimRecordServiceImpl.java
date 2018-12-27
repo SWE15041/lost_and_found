@@ -3,6 +3,7 @@ package com.lyn.lost_and_found.service.impl;
 import com.jay.vito.common.util.validate.Validator;
 import com.jay.vito.storage.service.EntityCRUDServiceImpl;
 import com.jay.vito.uic.client.core.UserContextHolder;
+import com.lyn.lost_and_found.config.constant.ClaimRecordType;
 import com.lyn.lost_and_found.config.constant.ReleaseStatus;
 import com.lyn.lost_and_found.config.constant.ClaimStatus;
 import com.lyn.lost_and_found.domain.LfClaimRecord;
@@ -49,6 +50,8 @@ public class LfClaimRecordServiceImpl extends EntityCRUDServiceImpl<LfClaimRecor
         claimRecord.setReleaseUserId(releaseUserId);
         claimRecord.setClaimUserId(claimUserId);
         claimRecord.setClaimStatus(ClaimStatus.WAITING_PERMISSION);
+        //主动认领类型
+        claimRecord.setClaimRecordType(ClaimRecordType.ACTIVE);
         super.save(claimRecord);
 
         return claimRecord;
@@ -69,19 +72,26 @@ public class LfClaimRecordServiceImpl extends EntityCRUDServiceImpl<LfClaimRecor
         LfClaimRecord lfClaimRecord = claimRecordRepository.findByGoodsIdAndClaimUserId(goodsId, claimUserId);
         lfClaimRecord.setClaimStatus(ClaimStatus.AGREE);
         super.update(lfClaimRecord);
-
-        //发布记录状态 1-认领成功
+        //将该物品的其他认领记录置为：2-拒绝认领
+        List<LfClaimRecord> claimRecords = claimRecordRepository.findByGoodsIdAndClaimUserIdNot(goodsId,claimUserId);
+        if(Validator.isNotNull(claimRecords)){
+            for (LfClaimRecord record : claimRecords) {
+                record.setClaimStatus(ClaimStatus.REFUSE);
+                update(record);
+            }
+        }
+        //发布记录状态 1-已被认领
         Long releaseUserId = UserContextHolder.getCurrentUserId();
         LfReleaseRecord releaseRecord = releaseRecordService.getByReleaseUserIdAndGoodsId(releaseUserId, goodsId);
         if (Validator.isNull(releaseRecord)) {
             throw new RuntimeException("同意认领失败");
         }
-        releaseRecord.setClaimStatus(ClaimStatus.AGREE);
+        releaseRecord.setReleaseStatus(ReleaseStatus.CLAIMED);
         releaseRecordService.update(releaseRecord);
 
         //物品状态： 1-已被认领
         LfGoods goods = goodsService.get(goodsId);
-        goods.setStatus(ReleaseStatus.CLAIMED);
+        goods.setReleaseStatus(ReleaseStatus.CLAIMED);
         goodsService.update(goods);
         return true;
     }
@@ -94,32 +104,8 @@ public class LfClaimRecordServiceImpl extends EntityCRUDServiceImpl<LfClaimRecor
         Long claimUserId = claimRecord.getClaimUserId();
         LfClaimRecord lfClaimRecord = claimRecordRepository.findByGoodsIdAndClaimUserId(goodsId, claimUserId);
         lfClaimRecord.setClaimStatus(ClaimStatus.REFUSE);
-        super.updateNotNull(lfClaimRecord);
-        //发布记录状态 4-等待认领
-        Long releaseUserId = UserContextHolder.getCurrentUserId();
-        LfReleaseRecord releaseRecord = releaseRecordService.getByReleaseUserIdAndGoodsId(releaseUserId, goodsId);
-        if (Validator.isNull(releaseRecord)) {
-            throw new RuntimeException("拒绝认领失败");
-        }
-        releaseRecord.setClaimStatus(ClaimStatus.WAITING_CLAIM);
-        releaseRecordService.updateNotNull(releaseRecord);
-
-        //物品状态： 0-未认领
-        LfGoods goods = goodsService.get(goodsId);
-        goods.setStatus(ReleaseStatus.UNCLAIM);
-        goodsService.update(goods);
-
+        super.update(lfClaimRecord);
         return false;
     }
 
-    @Transactional(rollbackOn = Exception.class)
-    @Override
-    public void delete(Long id) {
-        LfClaimRecord claimRecord = super.get(id);
-        Long goodsId = claimRecord.getGoodsId();
-        LfReleaseRecord releaseRecord = releaseRecordService.getByGoodsId(goodsId);
-        releaseRecord.setClaimStatus(ClaimStatus.WAITING_CLAIM);
-        releaseRecordService.update(releaseRecord);
-        super.delete(id);
-    }
 }

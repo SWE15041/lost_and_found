@@ -23,17 +23,18 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
 
     /**
      * 发布遗失 或 拾遗
+     *
      * @param goods
      * @return
      */
-    @RequestMapping( method = RequestMethod.POST)
-    public boolean save(@RequestBody LfGoods goods){
-        if(Validator.isNull(goods)){
-            throw new HttpBadRequestException("物品信息为空，发布失败","RELEASE_FALI");
+    @RequestMapping(method = RequestMethod.POST)
+    public boolean save(@RequestBody LfGoods goods) {
+        if (Validator.isNull(goods)) {
+            throw new HttpBadRequestException("物品信息为空，发布失败", "RELEASE_FALI");
         }
         ReleaseType releaseType = goods.getReleaseType();
-        if(Validator.isNull(releaseType)){
-            throw new HttpBadRequestException("无指定发布类型，发布失败","RELEASE_FALI");
+        if (Validator.isNull(releaseType)) {
+            throw new HttpBadRequestException("无指定发布类型，发布失败", "RELEASE_FALI");
         }
         boolean releaseGoods = releaseRecordService.releaseGoods(goods);
         return releaseGoods;
@@ -41,17 +42,18 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
 
     /**
      * 修改发布遗失 或 拾遗
+     *
      * @param goods
      * @return
      */
-    @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
-    public boolean update(@RequestParam("id") Long id, @RequestBody LfGoods goods){
-        if(Validator.isNull(goods)){
-            throw new HttpBadRequestException("物品信息为空，发布失败","RELEASE_FALI");
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public boolean update(@RequestParam("id") Long id, @RequestBody LfGoods goods) {
+        if (Validator.isNull(goods)) {
+            throw new HttpBadRequestException("物品信息为空，发布失败", "RELEASE_FALI");
         }
         ReleaseType releaseType = goods.getReleaseType();
-        if(Validator.isNull(releaseType)){
-            throw new HttpBadRequestException("无指定发布类型，发布失败","RELEASE_FALI");
+        if (Validator.isNull(releaseType)) {
+            throw new HttpBadRequestException("无指定发布类型，发布失败", "RELEASE_FALI");
         }
         boolean releaseGoods = releaseRecordService.updateReleaseInfo(id, goods);
         return releaseGoods;
@@ -60,19 +62,19 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
 
     /**
      * 我的发布记录
+     *
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET,params = "pageNo")
+    @RequestMapping(method = RequestMethod.GET, params = "pageNo")
     @Override
     public LocalPage localQuery() {
         return super.localQuery();
     }
 
 
-
-    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @Override
-    public Boolean delete(@RequestParam("id") Long id){
+    public Boolean delete(@RequestParam("id") Long id) {
         releaseRecordService.delete(id);
         return true;
     }

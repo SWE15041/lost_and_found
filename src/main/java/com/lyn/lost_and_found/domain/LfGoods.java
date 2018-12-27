@@ -67,6 +67,7 @@ public class LfGoods extends BaseEntity<Long> {
      * 发布类型 :0-拾遗 1-遗失
      */
     private ReleaseType releaseType;
+
     @JSONField(format = "yyyy-MM-dd HH:mm:ss:SSS")
     public Date getReleaseTime() {
         return releaseTime;

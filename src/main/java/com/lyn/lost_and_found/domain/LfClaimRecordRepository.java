@@ -10,4 +10,6 @@ public interface LfClaimRecordRepository extends MyJpaRepository<LfClaimRecord, 
 
     List<LfClaimRecord>  findByGoodsId(Long goodsId);
     LfClaimRecord findByGoodsIdAndClaimUserId(Long goodsId,Long claimUserId);
+    List<LfClaimRecord> findByGoodsIdAndClaimUserIdNot(Long goodsId,Long claimUserId);
+
 }

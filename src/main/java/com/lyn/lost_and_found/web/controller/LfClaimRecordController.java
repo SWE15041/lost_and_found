@@ -2,6 +2,7 @@ package com.lyn.lost_and_found.web.controller;
 
 import com.jay.vito.common.exception.HttpBadRequestException;
 import com.jay.vito.common.util.validate.Validator;
+import com.jay.vito.storage.model.Page;
 import com.lyn.lost_and_found.domain.LfClaimRecord;
 import com.lyn.lost_and_found.service.LfClaimRecordService;
 import com.lyn.lost_and_found.service.LfReleaseRecordService;
@@ -21,6 +22,8 @@ public class LfClaimRecordController extends BaseLFGridController<LfClaimRecord,
     private LfReleaseRecordService releaseRecordService;
 
     /**
+     * 申请认领：认领的是拾遗类型的物品
+     * 认领类型：主动认领
      * 创建认领记录 交易记录
      *
      * @param claimRecord
@@ -42,14 +45,33 @@ public class LfClaimRecordController extends BaseLFGridController<LfClaimRecord,
     }
 
     /**
-     * 我的认领记录
-     *
+     * 我的认领记录:我发出的 和 我收到的
+     * 以下是我收到的
      * @return
      */
     @RequestMapping(method = RequestMethod.GET, params = "pageNo")
     @Override
     public LocalPage localQuery() {
         return super.localQuery();
+    }
+
+    /**
+     * 物品认领者记录
+     * @return
+     */
+    @RequestMapping(value = "/claimers",method = RequestMethod.GET, params = "pageNo")
+    public LocalPage getClaimers() {
+        String countStatement="com.lyn.lost_and_found.domain.LfClaimRecordMapper.countListClaimer";
+        String qryStatement="com.lyn.lost_and_found.domain.LfClaimRecordMapper.selectListClaimer";
+
+        Page page = super.pageQuery(countStatement, qryStatement);
+        LocalPage localPage = new LocalPage();
+        localPage.setPageNo(page.getPageNo());
+        localPage.setPageSize(page.getPageSize());
+        localPage.setTotal(page.getTotalCount());
+        localPage.setRows(convertFieldCase(page.getItems()));
+
+        return  localPage;
     }
 
 
@@ -67,7 +89,7 @@ public class LfClaimRecordController extends BaseLFGridController<LfClaimRecord,
     }
 
     /**
-     * 物品认领详情
+     * 认领详情
      *
      * @param id
      * @return
@@ -131,8 +153,9 @@ public class LfClaimRecordController extends BaseLFGridController<LfClaimRecord,
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     @Override
     public Boolean delete(@PathVariable("id") Long id) {
-        claimRecordService.delete(id);
+        super.delete(id);
         return true;
     }
+
 }
 

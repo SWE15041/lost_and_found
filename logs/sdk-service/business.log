@@ -2323,3 +2323,995 @@ Caused by: java.lang.NumberFormatException: For input string: "lookup"
 2018-12-27 10:06:34.415 [549] [Thread-13] INFO [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.destroy:597] - Closing JPA EntityManagerFactory for persistence unit 'default'
 2018-12-27 10:06:34.417 [549] [Thread-13] INFO [com.zaxxer.hikari.HikariDataSource.close:350] - HikariPool-1 - Shutdown initiated...
 2018-12-27 10:06:34.421 [549] [Thread-13] INFO [com.zaxxer.hikari.HikariDataSource.close:352] - HikariPool-1 - Shutdown completed.
+2018-12-27 17:31:31.425 [867] [main] INFO [org.springframework.boot.StartupInfoLogger.logStarting:50] - Starting LostAndFoundApplication on lanyangnengdeMacBook-Pro.local with PID 867 (/Applications/Java/project/lost_and_found/target/classes started by lyn in /Applications/Java/project/lost_and_found)
+2018-12-27 17:31:31.430 [867] [main] DEBUG [org.springframework.boot.StartupInfoLogger.logStarting:53] - Running with Spring Boot v2.1.1.RELEASE, Spring v5.1.3.RELEASE
+2018-12-27 17:31:31.431 [867] [main] INFO [org.springframework.boot.SpringApplication.logStartupProfileInfo:675] - No active profile set, falling back to default profiles: default
+2018-12-27 17:31:32.029 [867] [main] INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:126] - Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-27 17:31:32.194 [867] [main] INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:182] - Finished Spring Data repository scanning in 156ms. Found 6 repository interfaces.
+2018-12-27 17:31:32.378 [867] [main] WARN [org.mybatis.spring.mapper.ClassPathMapperScanner.doScan:166] - No MyBatis mapper was found in '[com.lyn.lost_and_found]' package. Please check your configuration.
+2018-12-27 17:31:32.755 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:32.856 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:32.877 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:32.884 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:32.890 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.jpa-org.springframework.boot.autoconfigure.orm.jpa.JpaProperties' of type [org.springframework.boot.autoconfigure.orm.jpa.JpaProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:32.893 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.jpa.hibernate-org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties' of type [org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:32.895 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration$$EnhancerBySpringCGLIB$$b74e35c2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:32.907 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:32.909 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:32.911 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$HikariPoolDataSourceMetadataProviderConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$HikariPoolDataSourceMetadataProviderConfiguration$$EnhancerBySpringCGLIB$$8331629c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:32.915 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'hikariPoolDataSourceMetadataProvider' of type [org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$HikariPoolDataSourceMetadataProviderConfiguration$$Lambda$315/1304939804] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:32.924 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration' of type [org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration$$EnhancerBySpringCGLIB$$41b0fd27] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:32.976 [867] [main] INFO [com.zaxxer.hikari.HikariDataSource.getConnection:110] - HikariPool-1 - Starting...
+2018-12-27 17:31:32.980 [867] [main] WARN [com.zaxxer.hikari.util.DriverDataSource.<init>:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2018-12-27 17:31:33.519 [867] [main] INFO [com.zaxxer.hikari.HikariDataSource.getConnection:123] - HikariPool-1 - Start completed.
+2018-12-27 17:31:33.527 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'jpaVendorAdapter' of type [org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:33.531 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'entityManagerFactoryBuilder' of type [org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:33.576 [867] [main] INFO [org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation:31] - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-12-27 17:31:33.661 [867] [main] INFO [org.hibernate.Version.logVersion:46] - HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-27 17:31:33.663 [867] [main] INFO [org.hibernate.cfg.Environment.<clinit>:213] - HHH000206: hibernate.properties not found
+2018-12-27 17:31:33.857 [867] [main] INFO [org.hibernate.annotations.common.reflection.java.JavaReflectionManager.<clinit>:49] - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-27 17:31:34.002 [867] [main] INFO [org.hibernate.dialect.Dialect.<init>:157] - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2018-12-27 17:31:34.723 [867] [main] INFO [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory:415] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-12-27 17:31:34.725 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'entityManagerFactory' of type [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:34.727 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'entityManagerFactory' of type [com.sun.proxy.$Proxy103] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:34.728 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'transactionManager' of type [org.springframework.orm.jpa.JpaTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:34.729 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'transactionAdvice' of type [com.jay.vito.storage.core.config.TransactionAdvice] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:34.734 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'txAdviceAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:34.742 [867] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$22da3ab8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:31:35.207 [867] [main] INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize:90] - Tomcat initialized with port(s): 9090 (http)
+2018-12-27 17:31:35.220 [867] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Initializing ProtocolHandler ["http-nio-9090"]
+2018-12-27 17:31:35.228 [867] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Starting service [Tomcat]
+2018-12-27 17:31:35.228 [867] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Starting Servlet Engine: Apache Tomcat/9.0.13
+2018-12-27 17:31:35.235 [867] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/lyn/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-12-27 17:31:35.331 [867] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Initializing Spring embedded WebApplicationContext
+2018-12-27 17:31:35.331 [867] [main] INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext:296] - Root WebApplicationContext: initialization completed in 3847 ms
+2018-12-27 17:31:35.378 [867] [main] INFO [com.jay.vito.website.web.listener.SystemInitListener.contextInitialized:26] - 系统自定义初始化开始...
+2018-12-27 17:31:35.379 [867] [main] INFO [com.jay.vito.website.web.listener.SystemInitListener.contextInitialized:29] - 系统自定义初始化[OK]
+2018-12-27 17:31:35.380 [867] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.init:59] - 系统数据持有类初始化...
+2018-12-27 17:31:35.381 [867] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.getSystemConfProps:93] - systemConf.properties系统配置读取开始...
+2018-12-27 17:31:35.381 [867] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.getSystemConfProps:114] - systemConf.properties系统配置读取[OK]
+2018-12-27 17:31:35.382 [867] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.init:63] - 系统数据持有类初始化[OK]
+2018-12-27 17:31:36.933 [867] [main] INFO [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-27 17:31:36.977 [867] [main] WARN [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration.openEntityManagerInViewInterceptor:234] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-12-27 17:31:37.271 [867] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Starting ProtocolHandler ["http-nio-9090"]
+2018-12-27 17:31:37.294 [867] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Using a shared selector for servlet write/read
+2018-12-27 17:31:37.305 [867] [main] INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start:204] - Tomcat started on port(s): 9090 (http) with context path ''
+2018-12-27 17:31:37.307 [867] [main] INFO [org.springframework.boot.StartupInfoLogger.logStarted:59] - Started LostAndFoundApplication in 6.348 seconds (JVM running for 8.043)
+2018-12-27 17:33:09.368 [867] [Thread-17] INFO [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown:208] - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-27 17:33:09.370 [867] [Thread-17] INFO [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.destroy:597] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-12-27 17:33:09.372 [867] [Thread-17] INFO [com.zaxxer.hikari.HikariDataSource.close:350] - HikariPool-1 - Shutdown initiated...
+2018-12-27 17:33:09.377 [867] [Thread-17] INFO [com.zaxxer.hikari.HikariDataSource.close:352] - HikariPool-1 - Shutdown completed.
+2018-12-27 17:33:12.867 [875] [main] INFO [org.springframework.boot.StartupInfoLogger.logStarting:50] - Starting LostAndFoundApplication on lanyangnengdeMacBook-Pro.local with PID 875 (/Applications/Java/project/lost_and_found/target/classes started by lyn in /Applications/Java/project/lost_and_found)
+2018-12-27 17:33:12.875 [875] [main] DEBUG [org.springframework.boot.StartupInfoLogger.logStarting:53] - Running with Spring Boot v2.1.1.RELEASE, Spring v5.1.3.RELEASE
+2018-12-27 17:33:12.876 [875] [main] INFO [org.springframework.boot.SpringApplication.logStartupProfileInfo:675] - No active profile set, falling back to default profiles: default
+2018-12-27 17:34:13.254 [882] [main] INFO [org.springframework.boot.StartupInfoLogger.logStarting:50] - Starting LostAndFoundApplication on lanyangnengdeMacBook-Pro.local with PID 882 (/Applications/Java/project/lost_and_found/target/classes started by lyn in /Applications/Java/project/lost_and_found)
+2018-12-27 17:34:13.259 [882] [main] DEBUG [org.springframework.boot.StartupInfoLogger.logStarting:53] - Running with Spring Boot v2.1.1.RELEASE, Spring v5.1.3.RELEASE
+2018-12-27 17:34:13.260 [882] [main] INFO [org.springframework.boot.SpringApplication.logStartupProfileInfo:675] - No active profile set, falling back to default profiles: default
+2018-12-27 17:34:13.789 [882] [main] INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:126] - Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-27 17:34:13.867 [882] [main] INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:182] - Finished Spring Data repository scanning in 72ms. Found 6 repository interfaces.
+2018-12-27 17:34:13.950 [882] [main] WARN [org.mybatis.spring.mapper.ClassPathMapperScanner.doScan:166] - No MyBatis mapper was found in '[com.lyn.lost_and_found]' package. Please check your configuration.
+2018-12-27 17:34:14.277 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:14.337 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:14.355 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:14.362 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:14.367 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.jpa-org.springframework.boot.autoconfigure.orm.jpa.JpaProperties' of type [org.springframework.boot.autoconfigure.orm.jpa.JpaProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:14.370 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.jpa.hibernate-org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties' of type [org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:14.373 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration$$EnhancerBySpringCGLIB$$eeaf13ac] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:14.384 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:14.386 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:14.388 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$HikariPoolDataSourceMetadataProviderConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$HikariPoolDataSourceMetadataProviderConfiguration$$EnhancerBySpringCGLIB$$ba924086] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:14.391 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'hikariPoolDataSourceMetadataProvider' of type [org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$HikariPoolDataSourceMetadataProviderConfiguration$$Lambda$315/831285461] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:14.400 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration' of type [org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration$$EnhancerBySpringCGLIB$$7911db11] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:14.432 [882] [main] INFO [com.zaxxer.hikari.HikariDataSource.getConnection:110] - HikariPool-1 - Starting...
+2018-12-27 17:34:14.434 [882] [main] WARN [com.zaxxer.hikari.util.DriverDataSource.<init>:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2018-12-27 17:34:14.688 [882] [main] INFO [com.zaxxer.hikari.HikariDataSource.getConnection:123] - HikariPool-1 - Start completed.
+2018-12-27 17:34:14.697 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'jpaVendorAdapter' of type [org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:14.700 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'entityManagerFactoryBuilder' of type [org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:14.728 [882] [main] INFO [org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation:31] - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-12-27 17:34:14.776 [882] [main] INFO [org.hibernate.Version.logVersion:46] - HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-27 17:34:14.777 [882] [main] INFO [org.hibernate.cfg.Environment.<clinit>:213] - HHH000206: hibernate.properties not found
+2018-12-27 17:34:14.868 [882] [main] INFO [org.hibernate.annotations.common.reflection.java.JavaReflectionManager.<clinit>:49] - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-27 17:34:15.021 [882] [main] INFO [org.hibernate.dialect.Dialect.<init>:157] - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2018-12-27 17:34:15.668 [882] [main] INFO [org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources:489] - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@86bf90b'
+2018-12-27 17:34:15.671 [882] [main] INFO [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory:415] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-12-27 17:34:15.674 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'entityManagerFactory' of type [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:15.676 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'entityManagerFactory' of type [com.sun.proxy.$Proxy103] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:15.677 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'transactionManager' of type [org.springframework.orm.jpa.JpaTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:15.678 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'transactionAdvice' of type [com.jay.vito.storage.core.config.TransactionAdvice] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:15.682 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'txAdviceAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:15.690 [882] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5a3b18a2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:34:16.009 [882] [main] INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize:90] - Tomcat initialized with port(s): 9090 (http)
+2018-12-27 17:34:16.019 [882] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Initializing ProtocolHandler ["http-nio-9090"]
+2018-12-27 17:34:16.027 [882] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Starting service [Tomcat]
+2018-12-27 17:34:16.027 [882] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Starting Servlet Engine: Apache Tomcat/9.0.13
+2018-12-27 17:34:16.038 [882] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/lyn/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-12-27 17:34:16.128 [882] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Initializing Spring embedded WebApplicationContext
+2018-12-27 17:34:16.128 [882] [main] INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext:296] - Root WebApplicationContext: initialization completed in 2821 ms
+2018-12-27 17:34:16.166 [882] [main] INFO [com.jay.vito.website.web.listener.SystemInitListener.contextInitialized:26] - 系统自定义初始化开始...
+2018-12-27 17:34:16.167 [882] [main] INFO [com.jay.vito.website.web.listener.SystemInitListener.contextInitialized:29] - 系统自定义初始化[OK]
+2018-12-27 17:34:16.168 [882] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.init:59] - 系统数据持有类初始化...
+2018-12-27 17:34:16.168 [882] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.getSystemConfProps:93] - systemConf.properties系统配置读取开始...
+2018-12-27 17:34:16.169 [882] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.getSystemConfProps:114] - systemConf.properties系统配置读取[OK]
+2018-12-27 17:34:16.169 [882] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.init:63] - 系统数据持有类初始化[OK]
+2018-12-27 17:34:17.429 [882] [main] INFO [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-27 17:34:17.466 [882] [main] WARN [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration.openEntityManagerInViewInterceptor:234] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-12-27 17:34:17.709 [882] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Starting ProtocolHandler ["http-nio-9090"]
+2018-12-27 17:34:17.730 [882] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Using a shared selector for servlet write/read
+2018-12-27 17:34:17.740 [882] [main] INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start:204] - Tomcat started on port(s): 9090 (http) with context path ''
+2018-12-27 17:34:17.743 [882] [main] INFO [org.springframework.boot.StartupInfoLogger.logStarted:59] - Started LostAndFoundApplication in 4.978 seconds (JVM running for 5.846)
+2018-12-27 17:36:02.737 [882] [http-nio-9090-exec-1] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-12-27 17:36:02.737 [882] [http-nio-9090-exec-1] INFO [org.springframework.web.servlet.FrameworkServlet.initServletBean:524] - Initializing Servlet 'dispatcherServlet'
+2018-12-27 17:36:02.746 [882] [http-nio-9090-exec-1] INFO [org.springframework.web.servlet.FrameworkServlet.initServletBean:546] - Completed initialization in 8 ms
+2018-12-27 17:36:02.856 [882] [http-nio-9090-exec-1] ERROR [com.jay.vito.uic.client.core.TokenUtil.parseToken:120] - appToken验证失败 com.auth0.jwt.exceptions.TokenExpiredException: The Token has expired on Mon Dec 24 15:08:08 CST 2018.
+	at com.auth0.jwt.JWTVerifier.assertDateIsFuture(JWTVerifier.java:441) ~[java-jwt-3.3.0.jar:?]
+	at com.auth0.jwt.JWTVerifier.assertValidDateClaim(JWTVerifier.java:432) ~[java-jwt-3.3.0.jar:?]
+	at com.auth0.jwt.JWTVerifier.verifyClaims(JWTVerifier.java:373) ~[java-jwt-3.3.0.jar:?]
+	at com.auth0.jwt.JWTVerifier.verify(JWTVerifier.java:355) ~[java-jwt-3.3.0.jar:?]
+	at com.jay.vito.uic.client.core.TokenUtil.parseToken(TokenUtil.java:99) [vito-uic-client-2.0.20181120-20181220.072905-17.jar:2.0.20181120-SNAPSHOT]
+	at com.jay.vito.uic.client.interceptor.UserAuthInterceptor.preHandle(UserAuthInterceptor.java:42) [vito-uic-client-2.0.20181120-20181220.072905-17.jar:2.0.20181120-SNAPSHOT]
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:136) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1033) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_191]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_191]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_191]
+
+2018-12-27 17:36:02.862 [882] [http-nio-9090-exec-1] ERROR [com.jay.vito.uic.client.interceptor.UserAuthInterceptor.preHandle:45] - token解析失败 java.lang.RuntimeException: appToken验证失败
+	at com.jay.vito.uic.client.core.TokenUtil.parseToken(TokenUtil.java:121) ~[vito-uic-client-2.0.20181120-20181220.072905-17.jar:2.0.20181120-SNAPSHOT]
+	at com.jay.vito.uic.client.interceptor.UserAuthInterceptor.preHandle(UserAuthInterceptor.java:42) [vito-uic-client-2.0.20181120-20181220.072905-17.jar:2.0.20181120-SNAPSHOT]
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:136) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1033) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_191]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_191]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_191]
+Caused by: com.auth0.jwt.exceptions.TokenExpiredException: The Token has expired on Mon Dec 24 15:08:08 CST 2018.
+	at com.auth0.jwt.JWTVerifier.assertDateIsFuture(JWTVerifier.java:441) ~[java-jwt-3.3.0.jar:?]
+	at com.auth0.jwt.JWTVerifier.assertValidDateClaim(JWTVerifier.java:432) ~[java-jwt-3.3.0.jar:?]
+	at com.auth0.jwt.JWTVerifier.verifyClaims(JWTVerifier.java:373) ~[java-jwt-3.3.0.jar:?]
+	at com.auth0.jwt.JWTVerifier.verify(JWTVerifier.java:355) ~[java-jwt-3.3.0.jar:?]
+	at com.jay.vito.uic.client.core.TokenUtil.parseToken(TokenUtil.java:99) ~[vito-uic-client-2.0.20181120-20181220.072905-17.jar:2.0.20181120-SNAPSHOT]
+	... 47 more
+
+2018-12-27 17:36:02.869 [882] [http-nio-9090-exec-1] ERROR [com.jay.vito.website.core.config.VitoRestControllerAdvice.httpException:73] - 认证未通过 com.jay.vito.common.exception.HttpUnauthorizedException: token解析失败
+	at com.jay.vito.uic.client.interceptor.UserAuthInterceptor.preHandle(UserAuthInterceptor.java:46) ~[vito-uic-client-2.0.20181120-20181220.072905-17.jar:2.0.20181120-SNAPSHOT]
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:136) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1033) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_191]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_191]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_191]
+
+2018-12-27 17:36:22.811 [882] [http-nio-9090-exec-2] DEBUG [com.jay.vito.uic.client.core.TokenUtil.parseToken:117] - 解析token花费时间：3
+2018-12-27 17:36:22.863 [882] [http-nio-9090-exec-2] ERROR [com.jay.vito.website.core.config.VitoRestControllerAdvice.unknownException:82] - 未知错误 org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: error parse new; nested exception is com.alibaba.fastjson.JSONException: error parse new
+	at com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter.readType(FastJsonHttpMessageConverter.java:205) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter.read(FastJsonHttpMessageConverter.java:177) ~[fastjson-1.2.47.jar:?]
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:204) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:157) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:130) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:126) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:166) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:134) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_191]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_191]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_191]
+Caused by: com.alibaba.fastjson.JSONException: error parse new
+	at com.alibaba.fastjson.parser.JSONLexerBase.scanNullOrNew(JSONLexerBase.java:4537) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.parser.JSONLexerBase.nextToken(JSONLexerBase.java:154) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.parser.DefaultJSONParser.<init>(DefaultJSONParser.java:162) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.parser.DefaultJSONParser.<init>(DefaultJSONParser.java:133) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.JSON.parseObject(JSON.java:349) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.JSON.parseObject(JSON.java:333) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.JSON.parseObject(JSON.java:296) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.JSON.parseObject(JSON.java:402) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.JSON.parseObject(JSON.java:484) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter.readType(FastJsonHttpMessageConverter.java:203) ~[fastjson-1.2.47.jar:?]
+	... 56 more
+
+2018-12-27 17:36:33.129 [882] [http-nio-9090-exec-3] DEBUG [com.jay.vito.uic.client.core.TokenUtil.parseToken:117] - 解析token花费时间：1
+2018-12-27 17:36:33.150 [882] [http-nio-9090-exec-3] DEBUG [com.jay.vito.website.core.config.GridControllerAdvice.before:22] - 执行BaseController.before()
+2018-12-27 17:36:33.159 [882] [http-nio-9090-exec-3] ERROR [com.jay.vito.website.core.config.VitoRestControllerAdvice.httpBadRequestException:53] - 参数错误 com.jay.vito.common.exception.HttpBadRequestException: 无指定发布类型，发布失败
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController.save(LfReleaseRecordController.java:36) ~[classes/:?]
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController$$FastClassBySpringCGLIB$$dc893c77.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:55) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController$$EnhancerBySpringCGLIB$$422cd39c.save(<generated>) ~[classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_191]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_191]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_191]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_191]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_191]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_191]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_191]
+
+2018-12-27 17:37:12.875 [882] [http-nio-9090-exec-4] DEBUG [com.jay.vito.uic.client.core.TokenUtil.parseToken:117] - 解析token花费时间：1
+2018-12-27 17:37:12.877 [882] [http-nio-9090-exec-4] DEBUG [com.jay.vito.website.core.config.GridControllerAdvice.before:22] - 执行BaseController.before()
+2018-12-27 17:37:27.602 [882] [http-nio-9090-exec-4] ERROR [com.jay.vito.website.core.config.VitoRestControllerAdvice.httpBadRequestException:53] - 参数错误 com.jay.vito.common.exception.HttpBadRequestException: 无指定发布类型，发布失败
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController.save(LfReleaseRecordController.java:36) ~[classes/:?]
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController$$FastClassBySpringCGLIB$$dc893c77.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:55) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController$$EnhancerBySpringCGLIB$$422cd39c.save(<generated>) ~[classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_191]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_191]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_191]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_191]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_191]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_191]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_191]
+
+2018-12-27 17:37:36.538 [882] [http-nio-9090-exec-5] DEBUG [com.jay.vito.uic.client.core.TokenUtil.parseToken:117] - 解析token花费时间：1
+2018-12-27 17:37:36.540 [882] [http-nio-9090-exec-5] DEBUG [com.jay.vito.website.core.config.GridControllerAdvice.before:22] - 执行BaseController.before()
+2018-12-27 17:38:22.315 [882] [http-nio-9090-exec-5] ERROR [com.jay.vito.website.core.config.VitoRestControllerAdvice.httpBadRequestException:53] - 参数错误 com.jay.vito.common.exception.HttpBadRequestException: 无指定发布类型，发布失败
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController.save(LfReleaseRecordController.java:36) ~[classes/:?]
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController$$FastClassBySpringCGLIB$$dc893c77.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:55) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController$$EnhancerBySpringCGLIB$$422cd39c.save(<generated>) ~[classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_191]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_191]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_191]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_191]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_191]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_191]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_191]
+
+2018-12-27 17:38:37.476 [882] [Thread-14] INFO [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown:208] - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-27 17:38:37.478 [882] [Thread-14] INFO [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.destroy:597] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-12-27 17:38:37.481 [882] [Thread-14] INFO [com.zaxxer.hikari.HikariDataSource.close:350] - HikariPool-1 - Shutdown initiated...
+2018-12-27 17:38:37.485 [882] [Thread-14] INFO [com.zaxxer.hikari.HikariDataSource.close:352] - HikariPool-1 - Shutdown completed.
+2018-12-27 17:38:43.197 [890] [main] INFO [org.springframework.boot.StartupInfoLogger.logStarting:50] - Starting LostAndFoundApplication on lanyangnengdeMacBook-Pro.local with PID 890 (/Applications/Java/project/lost_and_found/target/classes started by lyn in /Applications/Java/project/lost_and_found)
+2018-12-27 17:38:43.206 [890] [main] DEBUG [org.springframework.boot.StartupInfoLogger.logStarting:53] - Running with Spring Boot v2.1.1.RELEASE, Spring v5.1.3.RELEASE
+2018-12-27 17:38:43.207 [890] [main] INFO [org.springframework.boot.SpringApplication.logStartupProfileInfo:675] - No active profile set, falling back to default profiles: default
+2018-12-27 17:38:43.679 [890] [main] INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:126] - Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-27 17:38:43.770 [890] [main] INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:182] - Finished Spring Data repository scanning in 86ms. Found 6 repository interfaces.
+2018-12-27 17:38:43.855 [890] [main] WARN [org.mybatis.spring.mapper.ClassPathMapperScanner.doScan:166] - No MyBatis mapper was found in '[com.lyn.lost_and_found]' package. Please check your configuration.
+2018-12-27 17:38:44.123 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:44.171 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:44.186 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:44.191 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:44.196 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.jpa-org.springframework.boot.autoconfigure.orm.jpa.JpaProperties' of type [org.springframework.boot.autoconfigure.orm.jpa.JpaProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:44.199 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.jpa.hibernate-org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties' of type [org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:44.202 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration$$EnhancerBySpringCGLIB$$4da7cbc2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:44.215 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:44.217 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:44.220 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$HikariPoolDataSourceMetadataProviderConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$HikariPoolDataSourceMetadataProviderConfiguration$$EnhancerBySpringCGLIB$$198af89c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:44.223 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'hikariPoolDataSourceMetadataProvider' of type [org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$HikariPoolDataSourceMetadataProviderConfiguration$$Lambda$315/1353406178] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:44.232 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration' of type [org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration$$EnhancerBySpringCGLIB$$d80a9327] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:44.263 [890] [main] INFO [com.zaxxer.hikari.HikariDataSource.getConnection:110] - HikariPool-1 - Starting...
+2018-12-27 17:38:44.265 [890] [main] WARN [com.zaxxer.hikari.util.DriverDataSource.<init>:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2018-12-27 17:38:44.501 [890] [main] INFO [com.zaxxer.hikari.HikariDataSource.getConnection:123] - HikariPool-1 - Start completed.
+2018-12-27 17:38:44.510 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'jpaVendorAdapter' of type [org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:44.513 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'entityManagerFactoryBuilder' of type [org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:44.541 [890] [main] INFO [org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation:31] - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-12-27 17:38:44.585 [890] [main] INFO [org.hibernate.Version.logVersion:46] - HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-27 17:38:44.586 [890] [main] INFO [org.hibernate.cfg.Environment.<clinit>:213] - HHH000206: hibernate.properties not found
+2018-12-27 17:38:44.674 [890] [main] INFO [org.hibernate.annotations.common.reflection.java.JavaReflectionManager.<clinit>:49] - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-27 17:38:44.831 [890] [main] INFO [org.hibernate.dialect.Dialect.<init>:157] - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2018-12-27 17:38:45.443 [890] [main] INFO [org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources:489] - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@718ad3a6'
+2018-12-27 17:38:45.447 [890] [main] INFO [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory:415] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-12-27 17:38:45.449 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'entityManagerFactory' of type [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:45.450 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'entityManagerFactory' of type [com.sun.proxy.$Proxy103] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:45.452 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'transactionManager' of type [org.springframework.orm.jpa.JpaTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:45.453 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'transactionAdvice' of type [com.jay.vito.storage.core.config.TransactionAdvice] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:45.456 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'txAdviceAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:45.464 [890] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b933d0b8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:38:45.782 [890] [main] INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize:90] - Tomcat initialized with port(s): 9090 (http)
+2018-12-27 17:38:45.793 [890] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Initializing ProtocolHandler ["http-nio-9090"]
+2018-12-27 17:38:45.800 [890] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Starting service [Tomcat]
+2018-12-27 17:38:45.800 [890] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Starting Servlet Engine: Apache Tomcat/9.0.13
+2018-12-27 17:38:45.807 [890] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/lyn/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-12-27 17:38:45.882 [890] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Initializing Spring embedded WebApplicationContext
+2018-12-27 17:38:45.882 [890] [main] INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext:296] - Root WebApplicationContext: initialization completed in 2623 ms
+2018-12-27 17:38:45.919 [890] [main] INFO [com.jay.vito.website.web.listener.SystemInitListener.contextInitialized:26] - 系统自定义初始化开始...
+2018-12-27 17:38:45.920 [890] [main] INFO [com.jay.vito.website.web.listener.SystemInitListener.contextInitialized:29] - 系统自定义初始化[OK]
+2018-12-27 17:38:45.921 [890] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.init:59] - 系统数据持有类初始化...
+2018-12-27 17:38:45.921 [890] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.getSystemConfProps:93] - systemConf.properties系统配置读取开始...
+2018-12-27 17:38:45.922 [890] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.getSystemConfProps:114] - systemConf.properties系统配置读取[OK]
+2018-12-27 17:38:45.922 [890] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.init:63] - 系统数据持有类初始化[OK]
+2018-12-27 17:38:47.110 [890] [main] INFO [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-27 17:38:47.147 [890] [main] WARN [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration.openEntityManagerInViewInterceptor:234] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-12-27 17:38:47.388 [890] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Starting ProtocolHandler ["http-nio-9090"]
+2018-12-27 17:38:47.410 [890] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Using a shared selector for servlet write/read
+2018-12-27 17:38:47.421 [890] [main] INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start:204] - Tomcat started on port(s): 9090 (http) with context path ''
+2018-12-27 17:38:47.424 [890] [main] INFO [org.springframework.boot.StartupInfoLogger.logStarted:59] - Started LostAndFoundApplication in 4.692 seconds (JVM running for 5.775)
+2018-12-27 17:39:53.276 [890] [http-nio-9090-exec-1] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-12-27 17:39:53.277 [890] [http-nio-9090-exec-1] INFO [org.springframework.web.servlet.FrameworkServlet.initServletBean:524] - Initializing Servlet 'dispatcherServlet'
+2018-12-27 17:39:53.284 [890] [http-nio-9090-exec-1] INFO [org.springframework.web.servlet.FrameworkServlet.initServletBean:546] - Completed initialization in 7 ms
+2018-12-27 17:39:53.370 [890] [http-nio-9090-exec-1] DEBUG [com.jay.vito.uic.client.core.TokenUtil.parseToken:117] - 解析token花费时间：69
+2018-12-27 17:39:53.438 [890] [http-nio-9090-exec-1] DEBUG [com.jay.vito.website.core.config.GridControllerAdvice.before:22] - 执行BaseController.before()
+2018-12-27 17:39:53.448 [890] [http-nio-9090-exec-1] ERROR [com.jay.vito.website.core.config.VitoRestControllerAdvice.httpBadRequestException:53] - 参数错误 com.jay.vito.common.exception.HttpBadRequestException: 无指定发布类型，发布失败
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController.save(LfReleaseRecordController.java:36) ~[classes/:?]
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController$$FastClassBySpringCGLIB$$dc893c77.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:55) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController$$EnhancerBySpringCGLIB$$1fd76e57.save(<generated>) ~[classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_191]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_191]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_191]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_191]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_191]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_191]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_191]
+
+2018-12-27 17:40:06.219 [890] [http-nio-9090-exec-2] DEBUG [com.jay.vito.uic.client.core.TokenUtil.parseToken:117] - 解析token花费时间：2
+2018-12-27 17:40:06.223 [890] [http-nio-9090-exec-2] ERROR [com.jay.vito.website.core.config.VitoRestControllerAdvice.unknownException:82] - 未知错误 org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: error parse new; nested exception is com.alibaba.fastjson.JSONException: error parse new
+	at com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter.readType(FastJsonHttpMessageConverter.java:205) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter.read(FastJsonHttpMessageConverter.java:177) ~[fastjson-1.2.47.jar:?]
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:204) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:157) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:130) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:126) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:166) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:134) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_191]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_191]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_191]
+Caused by: com.alibaba.fastjson.JSONException: error parse new
+	at com.alibaba.fastjson.parser.JSONLexerBase.scanNullOrNew(JSONLexerBase.java:4537) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.parser.JSONLexerBase.nextToken(JSONLexerBase.java:154) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.parser.DefaultJSONParser.<init>(DefaultJSONParser.java:162) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.parser.DefaultJSONParser.<init>(DefaultJSONParser.java:133) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.JSON.parseObject(JSON.java:349) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.JSON.parseObject(JSON.java:333) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.JSON.parseObject(JSON.java:296) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.JSON.parseObject(JSON.java:402) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.JSON.parseObject(JSON.java:484) ~[fastjson-1.2.47.jar:?]
+	at com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter.readType(FastJsonHttpMessageConverter.java:203) ~[fastjson-1.2.47.jar:?]
+	... 56 more
+
+2018-12-27 17:40:13.889 [890] [http-nio-9090-exec-3] DEBUG [com.jay.vito.uic.client.core.TokenUtil.parseToken:117] - 解析token花费时间：1
+2018-12-27 17:40:13.891 [890] [http-nio-9090-exec-3] DEBUG [com.jay.vito.website.core.config.GridControllerAdvice.before:22] - 执行BaseController.before()
+2018-12-27 17:40:13.892 [890] [http-nio-9090-exec-3] ERROR [com.jay.vito.website.core.config.VitoRestControllerAdvice.httpBadRequestException:53] - 参数错误 com.jay.vito.common.exception.HttpBadRequestException: 无指定发布类型，发布失败
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController.save(LfReleaseRecordController.java:36) ~[classes/:?]
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController$$FastClassBySpringCGLIB$$dc893c77.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:55) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController$$EnhancerBySpringCGLIB$$1fd76e57.save(<generated>) ~[classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_191]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_191]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_191]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_191]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_191]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_191]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_191]
+
+2018-12-27 17:40:39.322 [890] [Thread-13] INFO [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown:208] - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-27 17:40:39.324 [890] [Thread-13] INFO [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.destroy:597] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-12-27 17:40:39.327 [890] [Thread-13] INFO [com.zaxxer.hikari.HikariDataSource.close:350] - HikariPool-1 - Shutdown initiated...
+2018-12-27 17:40:39.331 [890] [Thread-13] INFO [com.zaxxer.hikari.HikariDataSource.close:352] - HikariPool-1 - Shutdown completed.
+2018-12-27 17:40:44.054 [899] [main] INFO [org.springframework.boot.StartupInfoLogger.logStarting:50] - Starting LostAndFoundApplication on lanyangnengdeMacBook-Pro.local with PID 899 (/Applications/Java/project/lost_and_found/target/classes started by lyn in /Applications/Java/project/lost_and_found)
+2018-12-27 17:40:44.065 [899] [main] DEBUG [org.springframework.boot.StartupInfoLogger.logStarting:53] - Running with Spring Boot v2.1.1.RELEASE, Spring v5.1.3.RELEASE
+2018-12-27 17:40:44.067 [899] [main] INFO [org.springframework.boot.SpringApplication.logStartupProfileInfo:675] - No active profile set, falling back to default profiles: default
+2018-12-27 17:40:44.720 [899] [main] INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:126] - Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-27 17:40:44.817 [899] [main] INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:182] - Finished Spring Data repository scanning in 90ms. Found 6 repository interfaces.
+2018-12-27 17:40:44.926 [899] [main] WARN [org.mybatis.spring.mapper.ClassPathMapperScanner.doScan:166] - No MyBatis mapper was found in '[com.lyn.lost_and_found]' package. Please check your configuration.
+2018-12-27 17:40:45.455 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:45.583 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:45.634 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:45.649 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:45.659 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.jpa-org.springframework.boot.autoconfigure.orm.jpa.JpaProperties' of type [org.springframework.boot.autoconfigure.orm.jpa.JpaProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:45.668 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.jpa.hibernate-org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties' of type [org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:45.679 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration$$EnhancerBySpringCGLIB$$74b4ac63] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:45.765 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:45.777 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:45.788 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$HikariPoolDataSourceMetadataProviderConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$HikariPoolDataSourceMetadataProviderConfiguration$$EnhancerBySpringCGLIB$$4097d93d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:45.798 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'hikariPoolDataSourceMetadataProvider' of type [org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$HikariPoolDataSourceMetadataProviderConfiguration$$Lambda$314/1745331030] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:45.820 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration' of type [org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration$$EnhancerBySpringCGLIB$$ff1773c8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:45.911 [899] [main] INFO [com.zaxxer.hikari.HikariDataSource.getConnection:110] - HikariPool-1 - Starting...
+2018-12-27 17:40:45.918 [899] [main] WARN [com.zaxxer.hikari.util.DriverDataSource.<init>:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2018-12-27 17:40:46.238 [899] [main] INFO [com.zaxxer.hikari.HikariDataSource.getConnection:123] - HikariPool-1 - Start completed.
+2018-12-27 17:40:46.246 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'jpaVendorAdapter' of type [org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:46.251 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'entityManagerFactoryBuilder' of type [org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:46.284 [899] [main] INFO [org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation:31] - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-12-27 17:40:46.331 [899] [main] INFO [org.hibernate.Version.logVersion:46] - HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-27 17:40:46.332 [899] [main] INFO [org.hibernate.cfg.Environment.<clinit>:213] - HHH000206: hibernate.properties not found
+2018-12-27 17:40:46.419 [899] [main] INFO [org.hibernate.annotations.common.reflection.java.JavaReflectionManager.<clinit>:49] - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-27 17:40:46.572 [899] [main] INFO [org.hibernate.dialect.Dialect.<init>:157] - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2018-12-27 17:40:47.202 [899] [main] INFO [org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources:489] - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@7e1762e6'
+2018-12-27 17:40:47.205 [899] [main] INFO [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory:415] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-12-27 17:40:47.208 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'entityManagerFactory' of type [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:47.209 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'entityManagerFactory' of type [com.sun.proxy.$Proxy103] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:47.211 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'transactionManager' of type [org.springframework.orm.jpa.JpaTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:47.212 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'transactionAdvice' of type [com.jay.vito.storage.core.config.TransactionAdvice] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:47.215 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'txAdviceAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:47.225 [899] [main] INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:330] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e040b159] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-27 17:40:47.661 [899] [main] INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize:90] - Tomcat initialized with port(s): 9090 (http)
+2018-12-27 17:40:47.672 [899] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Initializing ProtocolHandler ["http-nio-9090"]
+2018-12-27 17:40:47.680 [899] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Starting service [Tomcat]
+2018-12-27 17:40:47.680 [899] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Starting Servlet Engine: Apache Tomcat/9.0.13
+2018-12-27 17:40:47.687 [899] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/lyn/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-12-27 17:40:47.983 [899] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Initializing Spring embedded WebApplicationContext
+2018-12-27 17:40:47.984 [899] [main] INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext:296] - Root WebApplicationContext: initialization completed in 3850 ms
+2018-12-27 17:40:48.040 [899] [main] INFO [com.jay.vito.website.web.listener.SystemInitListener.contextInitialized:26] - 系统自定义初始化开始...
+2018-12-27 17:40:48.042 [899] [main] INFO [com.jay.vito.website.web.listener.SystemInitListener.contextInitialized:29] - 系统自定义初始化[OK]
+2018-12-27 17:40:48.043 [899] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.init:59] - 系统数据持有类初始化...
+2018-12-27 17:40:48.043 [899] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.getSystemConfProps:93] - systemConf.properties系统配置读取开始...
+2018-12-27 17:40:48.043 [899] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.getSystemConfProps:114] - systemConf.properties系统配置读取[OK]
+2018-12-27 17:40:48.044 [899] [main] INFO [com.jay.vito.website.core.cache.SystemDataHolder.init:63] - 系统数据持有类初始化[OK]
+2018-12-27 17:40:49.528 [899] [main] INFO [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-27 17:40:49.564 [899] [main] WARN [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration.openEntityManagerInViewInterceptor:234] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-12-27 17:40:49.871 [899] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Starting ProtocolHandler ["http-nio-9090"]
+2018-12-27 17:40:49.899 [899] [main] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Using a shared selector for servlet write/read
+2018-12-27 17:40:49.914 [899] [main] INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start:204] - Tomcat started on port(s): 9090 (http) with context path ''
+2018-12-27 17:40:49.918 [899] [main] INFO [org.springframework.boot.StartupInfoLogger.logStarted:59] - Started LostAndFoundApplication in 6.387 seconds (JVM running for 7.311)
+2018-12-27 17:41:01.771 [899] [http-nio-9090-exec-1] INFO [org.apache.juli.logging.DirectJDKLog.log:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-12-27 17:41:01.771 [899] [http-nio-9090-exec-1] INFO [org.springframework.web.servlet.FrameworkServlet.initServletBean:524] - Initializing Servlet 'dispatcherServlet'
+2018-12-27 17:41:01.778 [899] [http-nio-9090-exec-1] INFO [org.springframework.web.servlet.FrameworkServlet.initServletBean:546] - Completed initialization in 7 ms
+2018-12-27 17:41:01.860 [899] [http-nio-9090-exec-1] DEBUG [com.jay.vito.uic.client.core.TokenUtil.parseToken:117] - 解析token花费时间：65
+2018-12-27 17:41:01.933 [899] [http-nio-9090-exec-1] DEBUG [com.jay.vito.website.core.config.GridControllerAdvice.before:22] - 执行BaseController.before()
+2018-12-27 17:41:41.766 [899] [HikariPool-1 housekeeper] WARN [com.zaxxer.hikari.pool.HikariPool$HouseKeeper.run:766] - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=55s423ms).
+2018-12-27 17:41:41.769 [899] [http-nio-9090-exec-1] ERROR [com.jay.vito.website.core.config.VitoRestControllerAdvice.httpBadRequestException:53] - 参数错误 com.jay.vito.common.exception.HttpBadRequestException: 无指定发布类型，发布失败
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController.save(LfReleaseRecordController.java:37) ~[classes/:?]
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController$$FastClassBySpringCGLIB$$dc893c77.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:55) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) ~[spring-aop-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at com.lyn.lost_and_found.web.controller.LfReleaseRecordController$$EnhancerBySpringCGLIB$$7335bc57.save(<generated>) ~[classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_191]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_191]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_191]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_191]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) [spring-webmvc-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_191]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_191]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.13.jar:9.0.13]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_191]
+
+2018-12-27 17:42:15.715 [899] [Thread-16] INFO [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown:208] - Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-27 17:42:15.718 [899] [Thread-16] INFO [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.destroy:597] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-12-27 17:42:15.722 [899] [Thread-16] INFO [com.zaxxer.hikari.HikariDataSource.close:350] - HikariPool-1 - Shutdown initiated...
+2018-12-27 17:42:15.732 [899] [Thread-16] INFO [com.zaxxer.hikari.HikariDataSource.close:352] - HikariPool-1 - Shutdown completed.
