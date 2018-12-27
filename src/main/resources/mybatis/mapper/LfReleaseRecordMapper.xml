@@ -17,8 +17,12 @@
             <if test="currentUserId != null and currentUserId != ''">
                 and rr.release_user_id=#{currentUserId}
             </if>
+            <if test="releaseType != null and releaseType != ''">
+                and rr.release_type=#{releaseType}
+            </if>
         </where>
     </sql>
+
     <sql id="OrderClause">
         <if test="orderBy != null and orderBy != ''">
             order by ${orderBy}

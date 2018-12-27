@@ -32,7 +32,6 @@ public class LfClaimRecordController extends BaseLFGridController<LfClaimRecord,
         if (Validator.isNull(claimRecord)) {
             throw new HttpBadRequestException("请填写认领者信息", "INVALID_CLAIM_INFO");
         }
-
         LfClaimRecord save = null;
         try {
             save = claimRecordService.save(claimRecord);

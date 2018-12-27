@@ -1,7 +1,7 @@
 package com.lyn.lost_and_found.domain;
 
 import com.jay.vito.storage.domain.BaseEntity;
-import com.lyn.lost_and_found.config.constant.RecordStatus;
+import com.lyn.lost_and_found.config.constant.ReleaseStatus;
 import com.lyn.lost_and_found.config.constant.ReleaseType;
 import lombok.Data;
 
@@ -29,7 +29,7 @@ public class LfReleaseRecord extends BaseEntity<Long> {
      */
     private ReleaseType releaseType;
     /**
-     * 记录状态：0-等待同意 1-同意认领 2-拒绝认领 3-交易进行中 4-未被认领
+     * 记录状态：0-等待同意 1-同意认领 2-拒绝认领  3-未被认领
      */
-    private RecordStatus recordStatus;
+    private ReleaseStatus releaseStatus;
 }

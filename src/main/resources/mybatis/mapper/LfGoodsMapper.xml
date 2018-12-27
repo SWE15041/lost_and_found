@@ -16,7 +16,7 @@
             g.status !=1
             <if test="keyWord != null and keyWord != ''">
                 <bind name="pattern1" value="'%'+keyWord+'%'"/>
-                and (g.name LIKE  #{pattern1}) or (g.description like #{pattern1})
+                and (g.name LIKE  #{pattern1} or g.description like #{pattern1})
             </if>
             <if test="releaseType != null and releaseType != ''">
                 <bind name="pattern2" value="'%'+releaseType+'%'"/>

@@ -8,10 +8,7 @@ import com.lyn.lost_and_found.domain.LfReleaseRecord;
 import com.lyn.lost_and_found.service.LfReleaseRecordService;
 import com.lyn.lost_and_found.web.vo.LocalPage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api/releaseRecords")
@@ -23,33 +20,43 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
 // todo 用户发布物品之后返回推荐标签算法
 
     //todo 将发布类型加入到请求参数，将 发布遗失、发布拾遗 两个端口合并？
+
     /**
-     * 发布遗失
+     * 发布遗失 或 拾遗
      * @param goods
      * @return
      */
-    @RequestMapping(value = "/releaseLoss",method = RequestMethod.POST)
-    public boolean releaseLoss(@RequestBody LfGoods goods){
+    @RequestMapping( method = RequestMethod.POST)
+    public boolean save(@RequestBody LfGoods goods){
         if(Validator.isNull(goods)){
             throw new HttpBadRequestException("物品信息为空，发布失败","RELEASE_FALI");
         }
-        boolean releaseGoods = releaseRecordService.releaseGoods(goods, ReleaseType.LOSS);
+        ReleaseType releaseType = goods.getReleaseType();
+        if(Validator.isNull(releaseType)){
+            throw new HttpBadRequestException("无指定发布类型，发布失败","RELEASE_FALI");
+        }
+        boolean releaseGoods = releaseRecordService.releaseGoods(goods);
         return releaseGoods;
     }
 
     /**
-     * 发布拾遗
+     * 修改发布遗失 或 拾遗
      * @param goods
      * @return
      */
-    @RequestMapping(value = "/releasePickup",method = RequestMethod.POST)
-    public boolean releasePickup(@RequestBody LfGoods goods){
+    @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
+    public boolean update(@RequestParam("id") Long id, @RequestBody LfGoods goods){
         if(Validator.isNull(goods)){
             throw new HttpBadRequestException("物品信息为空，发布失败","RELEASE_FALI");
         }
-        boolean releaseGoods = releaseRecordService.releaseGoods(goods, ReleaseType.PICK_UP);
+        ReleaseType releaseType = goods.getReleaseType();
+        if(Validator.isNull(releaseType)){
+            throw new HttpBadRequestException("无指定发布类型，发布失败","RELEASE_FALI");
+        }
+        boolean releaseGoods = releaseRecordService.updateReleaseInfo(id, goods);
         return releaseGoods;
     }
+
 
     /**
      * 我的发布记录
@@ -60,4 +67,14 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
     public LocalPage localQuery() {
         return super.localQuery();
     }
+
+
+
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    @Override
+    public Boolean delete(@RequestParam("id") Long id){
+        releaseRecordService.delete(id);
+        return true;
+    }
+
 }

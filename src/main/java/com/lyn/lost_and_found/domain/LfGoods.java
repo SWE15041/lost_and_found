@@ -2,7 +2,8 @@ package com.lyn.lost_and_found.domain;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.jay.vito.storage.domain.BaseEntity;
-import com.lyn.lost_and_found.config.constant.GoodsStatus;
+import com.lyn.lost_and_found.config.constant.ReleaseStatus;
+import com.lyn.lost_and_found.config.constant.ReleaseType;
 import com.lyn.lost_and_found.config.constant.YesNoNum;
 import lombok.Data;
 
@@ -53,7 +54,7 @@ public class LfGoods extends BaseEntity<Long> {
     /**
      * 物品状态：0-未认领 1-已认领 2-认领中
      */
-    private GoodsStatus status = GoodsStatus.UNCLAIM;
+    private ReleaseStatus releaseStatus = ReleaseStatus.UNCLAIM;
     /**
      * 删除
      */
@@ -62,7 +63,10 @@ public class LfGoods extends BaseEntity<Long> {
      * 发布时间：遗失时间 拾遗时间
      */
     private Date releaseTime;
-
+    /**
+     * 发布类型 :0-拾遗 1-遗失
+     */
+    private ReleaseType releaseType;
     @JSONField(format = "yyyy-MM-dd HH:mm:ss:SSS")
     public Date getReleaseTime() {
         return releaseTime;

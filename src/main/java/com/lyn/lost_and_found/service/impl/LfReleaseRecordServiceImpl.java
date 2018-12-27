@@ -1,9 +1,10 @@
 package com.lyn.lost_and_found.service.impl;
 
+import com.jay.vito.common.util.validate.Validator;
 import com.jay.vito.storage.service.EntityCRUDServiceImpl;
 import com.jay.vito.uic.client.core.UserContextHolder;
-import com.lyn.lost_and_found.config.constant.GoodsStatus;
-import com.lyn.lost_and_found.config.constant.RecordStatus;
+import com.lyn.lost_and_found.config.constant.ReleaseStatus;
+import com.lyn.lost_and_found.config.constant.ClaimStatus;
 import com.lyn.lost_and_found.config.constant.ReleaseType;
 import com.lyn.lost_and_found.domain.LfGoods;
 import com.lyn.lost_and_found.domain.LfReleaseRecord;
@@ -32,20 +33,43 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
 
     @Transactional(rollbackOn = Exception.class)
     @Override
-    public boolean releaseGoods(LfGoods goods, ReleaseType releaseType) {
+    public boolean releaseGoods(LfGoods goods) {
         //新增物品记录
-        goods.setStatus(GoodsStatus.UNCLAIM);
+        goods.setReleaseStatus(ReleaseStatus.UNCLAIM);
         goodsService.save(goods);
         //新增用户发布记录
         Long goodsId = goods.getId();
         LfReleaseRecord releaseRecord = new LfReleaseRecord();
         releaseRecord.setGoodsId(goodsId);
-        releaseRecord.setReleaseType(releaseType);
+        releaseRecord.setReleaseType(goods.getReleaseType());
         Long currentUserId = UserContextHolder.getCurrentUserId();
         releaseRecord.setReleaseUserId(currentUserId);
-        releaseRecord.setRecordStatus(RecordStatus.WAITING_CLAIM);
+        releaseRecord.setReleaseStatus(ReleaseStatus.UNCLAIM);
         super.save(releaseRecord);
         return true;
+    }
+
+    @Transactional(rollbackOn = Exception.class)
+    @Override
+    public boolean updateReleaseInfo(Long id, LfGoods goods) {
+
+        LfReleaseRecord releaseRecord = super.get(id);
+        //1.修改物品表信息
+        Long goodsId = releaseRecord.getGoodsId();
+        goods.setId(goodsId);
+        goods.setReleaseStatus(ReleaseStatus.UNCLAIM);
+        goodsService.update(goods);
+        return true;
+    }
+
+    @Transactional(rollbackOn = Exception.class)
+    @Override
+    public void delete(Long id) {
+        LfReleaseRecord releaseRecord = super.get(id);
+        Long goodsId = releaseRecord.getGoodsId();
+        LfGoods goods = goodsService.get(goodsId);
+        goodsService.delete(goodsId);
+        super.delete(id);
     }
 
     @Override

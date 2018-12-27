@@ -2,7 +2,8 @@ package com.lyn.lost_and_found.domain;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.jay.vito.storage.domain.BaseEntity;
-import com.lyn.lost_and_found.config.constant.RecordStatus;
+import com.lyn.lost_and_found.config.constant.ClaimRecordType;
+import com.lyn.lost_and_found.config.constant.ClaimStatus;
 import com.lyn.lost_and_found.config.constant.ReleaseType;
 import com.lyn.lost_and_found.config.constant.YesNoNum;
 import lombok.Data;
@@ -40,21 +41,12 @@ public class LfClaimRecord extends BaseEntity<Long> {
      */
     private YesNoNum delState = YesNoNum.no;
     /**
-     * 认领者昵称
-     */
-    private String nickName;
-    /**
      * 认领者填写的手机号
      */
     private String mobile;
     /**
-     * 认领者邮箱
-     */
-    private String email;
-    /**
      * 认领者物品丢失时间
      */
-
     private Date lossTime;
     /**
      * 认领者物品信息描述
@@ -65,9 +57,13 @@ public class LfClaimRecord extends BaseEntity<Long> {
      */
     private ReleaseType releaseType;
     /**
-     * 交易状态：0-等待同意 1-同意认领 2-拒绝认领 3-交易进行中 4-未被认领
+     * 认领记录状态： 0-等待同意 1-认领成功 2-认领失败
      */
-    private RecordStatus recordStatus;
+    private ClaimStatus claimStatus;
+    /**
+     * 认领记录类型：0-我发出的 1-我收到的
+     */
+    private ClaimRecordType recordType;
 
     @JSONField(format = "yyyy-MM-dd HH:mm:ss:SSS")
     public Date getLossTime() {

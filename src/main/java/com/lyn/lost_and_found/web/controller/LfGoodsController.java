@@ -1,6 +1,7 @@
 package com.lyn.lost_and_found.web.controller;
 
 import com.jay.vito.common.util.bean.BeanUtil;
+import com.jay.vito.common.util.validate.Validator;
 import com.jay.vito.uic.client.core.UserContextHolder;
 import com.jay.vito.uic.client.interceptor.IgnoreUserAuth;
 import com.lyn.lost_and_found.domain.LfCategory;
@@ -26,22 +27,9 @@ import java.util.Map;
 public class LfGoodsController extends BaseLFGridController<LfGoods, Long> {
 
     @Autowired
-    private LfGoodsService lfGoodsService;
+    private LfGoodsService goodsService;
     @Autowired
     private LfCategoryService categoryService;
-
-    /**
-     * 发布拾遗,将用户发布的物品信息新增到物品表
-     *
-     * @param goods
-     * @return true or false
-     */
-    @RequestMapping(value = "/releasePickup", method = RequestMethod.POST)
-    public Map<String, Object> releasePickup(@RequestBody LfGoods goods) {
-        Long currentUserId = UserContextHolder.getCurrentUserId();
-        //todo
-        return null;
-    }
 
     /**
      * 获取物品详细信息
@@ -53,6 +41,9 @@ public class LfGoodsController extends BaseLFGridController<LfGoods, Long> {
     @Override
     public LfGoodsVO get(@PathVariable("id") Long id) {
         LfGoods lfGoods = super.get(id);
+        if(Validator.isNull(lfGoods)){
+            return null;
+        }
         Long categoryId = lfGoods.getCategoryId();
 
         LfCategory category = categoryService.get(categoryId);

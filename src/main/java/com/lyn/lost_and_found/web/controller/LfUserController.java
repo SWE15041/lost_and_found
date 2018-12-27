@@ -31,12 +31,14 @@ public class LfUserController extends BaseLFGridController<LfUser, Long> {
         return true;
     }
 
-    @IgnoreUserAuth
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    @Override
-    public LfUser get(@PathVariable("id") Long id) {
-//        Long currentUserId = UserContextHolder.getCurrentUserId();
-        LfUser user = userService.get(id);
+    /**
+     * 获取用户信息
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET)
+    public LfUser get() {
+        Long currentUserId = UserContextHolder.getCurrentUserId();
+        LfUser user = userService.get(currentUserId);
         return user;
     }
 

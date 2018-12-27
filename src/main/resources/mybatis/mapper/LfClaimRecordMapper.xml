@@ -6,7 +6,7 @@
       cr.id,
       cr.goods_id,
       g.name,
-      u.nick_name as release_name,
+      u.nick_name as nick_name,
       DATE_FORMAT(g.release_time,'%y-%m-%d %h:%m:%s') as release_time,
       cr.record_status,
       g.money
@@ -16,6 +16,9 @@
         <where>
             <if test="currentUserId != null and currentUserId != ''">
                 and cr.claim_user_id=#{currentUserId}
+            </if>
+            <if test="recordType != null and recordType != ''">
+                and cr.record_type=#{recordType}
             </if>
         </where>
     </sql>

@@ -14,7 +14,14 @@ public interface LfReleaseRecordService extends EntityCRUDService<LfReleaseRecor
      * @param goods
      * @return
      */
-    boolean releaseGoods(LfGoods goods, ReleaseType releaseType);
+    boolean releaseGoods(LfGoods goods);
+
+    /**
+     * 修改发布信息
+     * @param goods
+     * @return
+     */
+    boolean updateReleaseInfo(Long id,LfGoods goods);
 
     LfReleaseRecord getByGoodsId(Long goodsId);
 
