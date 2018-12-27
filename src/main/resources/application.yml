@@ -41,7 +41,7 @@ spring:
         slow-sql-millis: 2000
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     show-sql: true
 
 mybatis:

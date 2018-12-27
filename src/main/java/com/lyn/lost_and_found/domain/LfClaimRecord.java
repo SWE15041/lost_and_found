@@ -9,6 +9,7 @@ import com.lyn.lost_and_found.config.constant.YesNoNum;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -39,6 +40,7 @@ public class LfClaimRecord extends BaseEntity<Long> {
     /**
      * 删除
      */
+    @Enumerated
     private YesNoNum delState = YesNoNum.no;
     /**
      * 认领者填写的手机号
@@ -55,14 +57,17 @@ public class LfClaimRecord extends BaseEntity<Long> {
     /**
      * 发布类型 0-拾遗 1-遗失
      */
+    @Enumerated
     private ReleaseType releaseType;
     /**
      * 认领记录状态： 0-等待同意 1-认领成功 2-认领失败
      */
+    @Enumerated
     private ClaimStatus claimStatus;
     /**
      * 认领记录类型：0-我发出的 1-我收到的
      */
+    @Enumerated
     private ClaimRecordType claimRecordType;
 
     @JSONField(format = "yyyy-MM-dd HH:mm:ss:SSS")

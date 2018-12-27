@@ -6,10 +6,10 @@
       rr.id,
       g.id as goods_id,
       g.name,
-      u.name as release_name,
+      u.nick_name as release_name,
       DATE_FORMAT(g.release_time,'%y-%m-%d %h:%m:%s') as release_time,
       g.money,
-      rr.record_status
+      rr.release_status
     </sql>
 
     <sql id="WhereClause">

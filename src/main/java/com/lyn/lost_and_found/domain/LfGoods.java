@@ -8,6 +8,7 @@ import com.lyn.lost_and_found.config.constant.YesNoNum;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -54,6 +55,7 @@ public class LfGoods extends BaseEntity<Long> {
     /**
      * 物品状态：0-未认领 1-已认领 2-认领中
      */
+    @Enumerated
     private ReleaseStatus releaseStatus = ReleaseStatus.UNCLAIM;
     /**
      * 删除
@@ -66,6 +68,7 @@ public class LfGoods extends BaseEntity<Long> {
     /**
      * 发布类型 :0-拾遗 1-遗失
      */
+    @Enumerated
     private ReleaseType releaseType;
 
     @JSONField(format = "yyyy-MM-dd HH:mm:ss:SSS")

@@ -6,6 +6,7 @@ import com.lyn.lost_and_found.config.constant.ReleaseType;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 /**
@@ -27,9 +28,27 @@ public class LfReleaseRecord extends BaseEntity<Long> {
     /**
      * 发布类型 :0-拾遗 1-遗失
      */
+
     private ReleaseType releaseType;
     /**
      * 记录状态：0-等待同意 1-同意认领 2-拒绝认领  3-未被认领
      */
     private ReleaseStatus releaseStatus;
+
+    @Enumerated
+    public ReleaseType getReleaseType() {
+        return releaseType;
+    }
+
+    public void setReleaseType(ReleaseType releaseType) {
+        this.releaseType = releaseType;
+    }
+    @Enumerated
+    public ReleaseStatus getReleaseStatus() {
+        return releaseStatus;
+    }
+
+    public void setReleaseStatus(ReleaseStatus releaseStatus) {
+        this.releaseStatus = releaseStatus;
+    }
 }
