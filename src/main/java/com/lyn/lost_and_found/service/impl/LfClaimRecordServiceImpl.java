@@ -47,6 +47,11 @@ public class LfClaimRecordServiceImpl extends EntityCRUDServiceImpl<LfClaimRecor
         //生成认领记录 记录状态置为 0-等待同意
         Long releaseUserId = releaseRecord.getReleaseUserId();
         Long claimUserId = UserContextHolder.getCurrentUserId();
+        //判断是否被重复认领
+        LfClaimRecord isCliam = claimRecordRepository.findByGoodsIdAndClaimUserId(goodsId, claimUserId);
+        if(Validator.isNotNull(isCliam)){
+            throw new RuntimeException("已经认领，不能重复认领");
+        }
         claimRecord.setReleaseUserId(releaseUserId);
         claimRecord.setClaimUserId(claimUserId);
         claimRecord.setClaimStatus(ClaimStatus.WAITING_PERMISSION);

@@ -139,9 +139,9 @@ public class LfClaimRecordController extends BaseLFGridController<LfClaimRecord,
      * @param claimRecord
      * @return
      */
-    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @Override
-    public LfClaimRecord update(@PathVariable("id ") Long id, @RequestBody LfClaimRecord claimRecord) {
+    public LfClaimRecord update(@PathVariable("id") Long id, @RequestBody LfClaimRecord claimRecord) {
         claimRecord.setId(id);
         claimRecordService.updateNotNull(claimRecord);
         return claimRecord;

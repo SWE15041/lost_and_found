@@ -53,6 +53,10 @@ public class LfGoods extends BaseEntity<Long> {
      */
     private Double latitude;
     /**
+     * 遗失地址
+     */
+    private  String addr;
+    /**
      * 物品状态：0-未认领 1-已认领 2-认领中
      */
     @Enumerated

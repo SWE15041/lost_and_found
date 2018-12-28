@@ -84,7 +84,7 @@
     </select>
 
     <sql id="ColumnListClaimer">
-        cr.id,
+        u.id,
         u.nick_name,
         u.mobile
     </sql>
