@@ -11,6 +11,7 @@ import com.lyn.lost_and_found.domain.LfReleaseRecord;
 import com.lyn.lost_and_found.domain.LfReleaseRecordRepository;
 import com.lyn.lost_and_found.service.LfGoodsService;
 import com.lyn.lost_and_found.service.LfReleaseRecordService;
+import com.lyn.lost_and_found.utils.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -54,11 +55,17 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
     public boolean updateReleaseInfo(Long id, LfGoods goods) {
 
         LfReleaseRecord releaseRecord = super.get(id);
-        //1.修改物品表信息
         Long goodsId = releaseRecord.getGoodsId();
+        //todo 1.删除原来存储在服务端磁盘的图片
+        LfGoods oldGoods = goodsService.get(goodsId);
+        if(Validator.isNotNull(oldGoods)){
+            String picture = oldGoods.getPicture();
+            boolean delete = FileUtil.delete(picture);
+        }
+        //2.修改物品表信息
         goods.setId(goodsId);
         goods.setReleaseStatus(ReleaseStatus.UNCLAIM);
-        goodsService.update(goods);
+        goodsService.updateNotNull(goods);
         return true;
     }
 
@@ -68,6 +75,11 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
         LfReleaseRecord releaseRecord = super.get(id);
         Long goodsId = releaseRecord.getGoodsId();
         LfGoods goods = goodsService.get(goodsId);
+        //todo 删除服务端磁盘的图片文件
+        String picture = goods.getPicture();
+        if(Validator.isNotNull(picture)){
+            boolean delete = FileUtil.delete(picture);
+        }
         goodsService.delete(goodsId);
         super.delete(id);
     }

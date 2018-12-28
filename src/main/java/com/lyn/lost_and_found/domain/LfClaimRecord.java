@@ -55,11 +55,6 @@ public class LfClaimRecord extends BaseEntity<Long> {
      */
     private String description;
     /**
-     * 发布类型 0-拾遗 1-遗失
-     */
-    @Enumerated
-    private ReleaseType releaseType;
-    /**
      * 认领记录状态： 0-等待同意 1-认领成功 2-认领失败
      */
     @Enumerated

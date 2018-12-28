@@ -6,21 +6,20 @@
       g.id,
       g.name,
       u.nick_name as release_name,
-      DATE_FORMAT(g.create_time,'%y-%m-%d %h:%m:%s') as release_time,
-      g.status,
+      DATE_FORMAT(g.release_time,'%y-%m-%d %h:%m:%s') as release_time,
+      g.release_status,
       g.money
     </sql>
 
     <sql id="WhereClause">
         <where>
-            g.status !=1
+            g.release_status !=1
             <if test="keyWord != null and keyWord != ''">
                 <bind name="pattern1" value="'%'+keyWord+'%'"/>
                 and (g.name LIKE  #{pattern1} or g.description like #{pattern1})
             </if>
             <if test="releaseType != null and releaseType != ''">
-                <bind name="pattern2" value="'%'+releaseType+'%'"/>
-                and (rr.release_type =  #{pattern2})
+                and (rr.release_type =  #{releaseType})
             </if>
         </where>
     </sql>

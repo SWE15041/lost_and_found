@@ -47,7 +47,7 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public boolean update(@RequestParam("id") Long id, @RequestBody LfGoods goods) {
+    public boolean update(@PathVariable("id") Long id, @RequestBody LfGoods goods) {
         if (Validator.isNull(goods)) {
             throw new HttpBadRequestException("物品信息为空，发布失败", "RELEASE_FALI");
         }
@@ -72,9 +72,14 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
     }
 
 
+    /**
+     * 删除发布记录
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @Override
-    public Boolean delete(@RequestParam("id") Long id) {
+    public Boolean delete(@PathVariable("id") Long id) {
         releaseRecordService.delete(id);
         return true;
     }

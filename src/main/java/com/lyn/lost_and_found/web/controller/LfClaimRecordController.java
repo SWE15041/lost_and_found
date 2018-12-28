@@ -107,7 +107,7 @@ public class LfClaimRecordController extends BaseLFGridController<LfClaimRecord,
      * @param claimRecord
      * @return
      */
-    @RequestMapping(value = "agreeClaim/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/agreeClaim", method = RequestMethod.POST)
     public boolean agreeClaim(@RequestBody LfClaimRecord claimRecord) {
         Long claimUserId = claimRecord.getClaimUserId();
         Long goodsId = claimRecord.getGoodsId();
@@ -121,10 +121,13 @@ public class LfClaimRecordController extends BaseLFGridController<LfClaimRecord,
      * @param claimRecord
      * @return
      */
-    @RequestMapping(value = "/refuseClaim/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/refuseClaim", method = RequestMethod.POST)
     public boolean refuseClaim(@RequestBody LfClaimRecord claimRecord) {
         Long claimUserId = claimRecord.getClaimUserId();
         Long goodsId = claimRecord.getGoodsId();
+        if(Validator.isNull(claimUserId)||Validator.isNull(goodsId)){
+            throw  new HttpBadRequestException("无法拒绝认领","FAIL_TO_REFUSE_CLAIM");
+        }
         boolean agreeClaim = claimRecordService.refuseClaim(claimRecord);
         return agreeClaim;
     }

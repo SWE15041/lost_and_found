@@ -105,7 +105,7 @@ public class LfClaimRecordServiceImpl extends EntityCRUDServiceImpl<LfClaimRecor
         LfClaimRecord lfClaimRecord = claimRecordRepository.findByGoodsIdAndClaimUserId(goodsId, claimUserId);
         lfClaimRecord.setClaimStatus(ClaimStatus.REFUSE);
         super.update(lfClaimRecord);
-        return false;
+        return true;
     }
 
 }

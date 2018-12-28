@@ -20,7 +20,7 @@ public class LfUserController extends BaseLFGridController<LfUser, Long> {
      * @param user
      * @return
      */
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.PUT)
     public boolean update(@RequestBody LfUser user) {
         Long currentUserId = UserContextHolder.getCurrentUserId();
         if (Validator.isNull(user)) {

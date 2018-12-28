@@ -8,23 +8,23 @@
       g.name,
       u.nick_name as nick_name,
       DATE_FORMAT(g.release_time,'%y-%m-%d %h:%m:%s') as release_time,
-      cr.record_status,
+      cr.claim_status,
       g.money
     </sql>
 
     <sql id="WhereClause">
         <where>
-            <if test="currentUserId != null and currentUserId != ''">
-                <if test="caimRecordType == null or caimRecordType == ''">
-                    <if test="caimRecordType == 1">
+            <if test="(claimRecordType != null or claimRecordType != '') and (currentUserId != null and currentUserId != '')">
+                <choose>
+                    <when test='claimRecordType == 0'>
                         and cr.claim_user_id=#{currentUserId}
-                    </if>
-                    <if test="caimRecordType == 0">
+                    </when>
+                    <when test='claimRecordType == 1'>
                         and cr.release_user_id=#{currentUserId}
-                    </if>
-                </if>
-
+                    </when>
+                </choose>
             </if>
+
             <if test="recordType != null and recordType != ''">
                 and cr.record_type=#{recordType}
             </if>
@@ -46,6 +46,18 @@
         lf_claim_record cr
         JOIN lf_goods g ON cr.goods_id = g.id
         JOIN lf_user u ON cr.release_user_id = u.id
+        <!--
+        <if test="claimRecordType == null or claimRecordType == ''">
+            <choose>
+                <when test='claimRecordType == 1'>
+                    JOIN lf_user u ON cr.release_user_id = u.id
+                </when>
+                <when test='claimRecordType == 0'>
+                    JOIN lf_user u ON cr.claim_user_id = u.id
+                </when>
+            </choose>
+        </if>
+        -->
         <include refid="WhereClause"/>
         <include refid="OrderClause"/>
     </select>
@@ -55,18 +67,21 @@
         FROM
         lf_claim_record cr
         JOIN lf_goods g ON cr.goods_id = g.id
-        <if test="caimRecordType == null or caimRecordType == ''">
-            <if test="caimRecordType == 1">
-               JOIN lf_user u ON cr.release_user_id = u.id
-            </if>
-            <if test="caimRecordType == 0">
-                JOIN lf_user u ON cr.claim_user_id = u.id
-            </if>
+        JOIN lf_user u ON cr.release_user_id = u.id
+        <!--
+        <if test="claimRecordType != null or claimRecordType != ''">
+            <choose>
+                <when test='claimRecordType == 1'>
+                    JOIN lf_user u ON cr.release_user_id = u.id
+                </when>
+                <when test='claimRecordType == 0'>
+                    JOIN lf_user u ON cr.claim_user_id = u.id
+                </when>
+            </choose>
         </if>
-
+        -->
         <include refid="WhereClause"/>
     </select>
-
 
     <sql id="ColumnListClaimer">
         cr.id,
