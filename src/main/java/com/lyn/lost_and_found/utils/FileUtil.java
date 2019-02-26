@@ -18,8 +18,8 @@ public class FileUtil {
      * @return
      */
     public static String uploadFile(MultipartFile multipartFile) {
-//        String targetFilePath = "/home/lyn/picPath";
-            String targetFilePath = "/Users/lyn/picPath";
+        String targetFilePath = "/home/lyn/picPath";
+//            String targetFilePath = "/Users/lyn/picPath";
 
         String fileName = UUID.randomUUID().toString().replace("-", "");
         String fileSuffix = getFileSuffix(multipartFile);

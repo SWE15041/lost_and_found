@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class MessageCodeCache {
     private String apikey = "bc7a912879e2bb5dfba641017c9c664b";
-    private String textConstant = "【云片网】您的验证码是";
+    private String textConstant = "【失物招领】您的验证码是";
     private Random randomNum = new Random();
     private static MessageCodeCache messageCodeCache;
     /**
