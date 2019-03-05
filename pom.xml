@@ -86,7 +86,12 @@
         </dependency>
 
     </dependencies>
-
+    <repositories>
+        <repository>
+            <id>mvn-repo</id>
+            <url>http://maven.ansj.org/</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
