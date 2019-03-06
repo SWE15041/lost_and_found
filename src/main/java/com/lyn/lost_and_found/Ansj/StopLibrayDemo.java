@@ -5,7 +5,7 @@ import org.ansj.library.StopLibrary;
 import org.ansj.splitWord.analysis.NlpAnalysis;
 import org.ansj.splitWord.analysis.ToAnalysis;
 
-public class StopLibrayTest {
+public class StopLibrayDemo {
 
 
     public static void main(String[] args) {

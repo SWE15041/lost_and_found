@@ -18,7 +18,7 @@ import java.util.*;
 /**
  * 使用教程参考： https://blog.csdn.net/bitcarmanlee/article/details/53607776
  */
-public class AnsjTest {
+public class ParticipleDemo {
     public static void main(String[] args) {
 
         //1
@@ -67,7 +67,6 @@ public class AnsjTest {
         String str = "欢迎使用ansj_seg,(ansj中文分词)在这里如果你遇到什么问题都可以联系我.我一定尽我所能.帮助大家.ansj_seg更快,更准,更自由!";
         System.out.println(ToAnalysis.parse(str));
     }
-
     public static void test() {
         //只关注这些词性的词
         Set<String> expectedNature = new HashSet<String>() {{
