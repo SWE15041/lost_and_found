@@ -1,17 +1,16 @@
 package com.lyn.lost_and_found.Ansj;
 
-import com.sun.tools.jdeps.Analyzer;
+import javafx.scene.paint.Stop;
 import org.ansj.app.keyword.KeyWordComputer;
 import org.ansj.app.keyword.Keyword;
 import org.ansj.domain.Result;
 import org.ansj.domain.Term;
-import org.ansj.library.AmbiguityLibrary;
-import org.ansj.library.DicLibrary;
 import org.ansj.library.StopLibrary;
-import org.ansj.library.SynonymsLibrary;
 import org.ansj.recognition.impl.StopRecognition;
 import org.ansj.splitWord.analysis.NlpAnalysis;
 import org.ansj.splitWord.analysis.ToAnalysis;
+import org.ansj.util.MyStaticValue;
+import org.apache.ibatis.annotations.Param;
 
 import java.io.*;
 import java.util.*;
@@ -21,6 +20,7 @@ import java.util.*;
  */
 public class AnsjTest {
     public static void main(String[] args) {
+
         //1
 //        ToAnaliesTest();
 //        test();
@@ -31,15 +31,11 @@ public class AnsjTest {
 //                "长期使用安全健康的比同龄人显小五到十岁 28岁的妹子看看你们的鱼尾纹" ;
 //        System.out.println(ToAnalysis.parse(str));
         //3
-//        StringBuffer fileContent = filterStopWordsTest();
-//        Result result = NlpAnalysis.parse(fileContent.toString());
-//        System.out.println("--------中文分词-------");
-//        System.out.println(result);
-//        System.out.println("--------去停用词--------");
-//        StopRecognition stopFilter = new StopRecognition();
-       //4
-        getKeywords();
+
+        //4
+//        getKeywords();
 //
+        //5
 //        {
 //            Map<String, String> args = new HashMap<String, String>();
 //            args.put("type", AnsjAnalyzer.TYPE.nlp_ansj.name());
@@ -56,6 +52,8 @@ public class AnsjTest {
 //
 //        }
 //        FilterModifWord
+
+
     }
 
     public static void nlpAnaliesTest() {
@@ -110,23 +108,23 @@ public class AnsjTest {
     }
 
     /**
-     * 过滤停用词测试
+     * 去文件内容
      */
-    public static StringBuffer filterStopWordsTest() {
+    public static StringBuffer getFileContent(String pathname) {
         // 声明一个可变长的stringBuffer对象
         StringBuffer sb = new StringBuffer("");
         try {
             /*
              * 读取完整文件
              */
-            Reader reader = new FileReader("E:\\lyn\\毕设\\test001.txt");
+            Reader reader = new FileReader(pathname);
             // 这里我们用到了字符操作的BufferedReader类
             BufferedReader bufferedReader = new BufferedReader(reader);
             // 按行读取，结束的判断是是否为null，按字节或者字符读取时结束的标志是-1
             String str = null;
             while ((str = bufferedReader.readLine()) != null) {
                 // 这里我们用到了StringBuffer的append方法，这个比string的“+”要高效
-                sb.append(str + "/n");
+                sb.append(str.trim() + "\t");
                 System.out.println(str);
             }
             // 注意这两个关闭的顺序
@@ -139,26 +137,48 @@ public class AnsjTest {
         return sb;
     }
 
-    public static void writeIntoFile(String filePath, StringBuffer sb) {
-
+    public static  List<String> getFile(String pathname) {
+        // 声明一个可变长的stringBuffer对象
+        List<String> sb = new ArrayList<>();
         try {
             /*
-             * 完整写入文件
+             * 读取完整文件
              */
-            Writer writer = new FileWriter(filePath);
+            Reader reader = new FileReader(pathname);
+            // 这里我们用到了字符操作的BufferedReader类
+            BufferedReader bufferedReader = new BufferedReader(reader);
+            // 按行读取，结束的判断是是否为null，按字节或者字符读取时结束的标志是-1
+            String str = null;
+            while ((str = bufferedReader.readLine()) != null) {
+                // 这里我们用到了StringBuffer的append方法，这个比string的“+”要高效
+                sb.add(str.trim());
+//                System.out.println(str);
+            }
+            // 注意这两个关闭的顺序
+            bufferedReader.close();
+            reader.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sb;
+    }
+    public static void buildFile(StringBuffer stringBuffer, String pathname) {
+        try {
+            Writer writer = new FileWriter(pathname);
             BufferedWriter bw = new BufferedWriter(writer);
             // 注意这里调用了toString方法
-            bw.write(sb.toString());
+            bw.write(stringBuffer.toString());
             // 注意这两个关闭的顺序
             bw.close();
             writer.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-    public static void getKeywords(){
+    public static void getKeywords() {
         KeyWordComputer kwc = new KeyWordComputer(5);
         String title = "维基解密否认斯诺登接受委内瑞拉庇护";
         String content = "有俄罗斯国会议员，9号在社交网站推特表示，美国中情局前雇员斯诺登，已经接受委内瑞拉的庇护，不过推文在发布几分钟后随即删除。俄罗斯当局拒绝发表评论，而一直协助斯诺登的维基解密否认他将投靠委内瑞拉。　　俄罗斯国会国际事务委员会主席普什科夫，在个人推特率先披露斯诺登已接受委内瑞拉的庇护建议，令外界以为斯诺登的动向终于有新进展。　　不过推文在几分钟内旋即被删除，普什科夫澄清他是看到俄罗斯国营电视台的新闻才这样说，而电视台已经作出否认，称普什科夫是误解了新闻内容。　　委内瑞拉驻莫斯科大使馆、俄罗斯总统府发言人、以及外交部都拒绝发表评论。而维基解密就否认斯诺登已正式接受委内瑞拉的庇护，说会在适当时间公布有关决定。　　斯诺登相信目前还在莫斯科谢列梅捷沃机场，已滞留两个多星期。他早前向约20个国家提交庇护申请，委内瑞拉、尼加拉瓜和玻利维亚，先后表示答应，不过斯诺登还没作出决定。　　而另一场外交风波，玻利维亚总统莫拉莱斯的专机上星期被欧洲多国以怀疑斯诺登在机上为由拒绝过境事件，涉事国家之一的西班牙突然转口风，外长马加略]号表示愿意就任何误解致歉，但强调当时当局没有关闭领空或不许专机降落。";
