@@ -1,16 +1,11 @@
 package com.lyn.lost_and_found.Ansj;
 
-import javafx.scene.paint.Stop;
 import org.ansj.app.keyword.KeyWordComputer;
 import org.ansj.app.keyword.Keyword;
 import org.ansj.domain.Result;
 import org.ansj.domain.Term;
-import org.ansj.library.StopLibrary;
-import org.ansj.recognition.impl.StopRecognition;
 import org.ansj.splitWord.analysis.NlpAnalysis;
 import org.ansj.splitWord.analysis.ToAnalysis;
-import org.ansj.util.MyStaticValue;
-import org.apache.ibatis.annotations.Param;
 
 import java.io.*;
 import java.util.*;
@@ -67,6 +62,7 @@ public class ParticipleDemo {
         String str = "欢迎使用ansj_seg,(ansj中文分词)在这里如果你遇到什么问题都可以联系我.我一定尽我所能.帮助大家.ansj_seg更快,更准,更自由!";
         System.out.println(ToAnalysis.parse(str));
     }
+
     public static void test() {
         //只关注这些词性的词
         Set<String> expectedNature = new HashSet<String>() {{
@@ -107,7 +103,7 @@ public class ParticipleDemo {
     }
 
     /**
-     * 去文件内容
+     * 取文件内容1
      */
     public static StringBuffer getFileContent(String pathname) {
         // 声明一个可变长的stringBuffer对象
@@ -116,9 +112,10 @@ public class ParticipleDemo {
             /*
              * 读取完整文件
              */
-            Reader reader = new FileReader(pathname);
+//            Reader reader = new FileReader(pathname);
+            InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(new File(pathname)), "Utf-8");
             // 这里我们用到了字符操作的BufferedReader类
-            BufferedReader bufferedReader = new BufferedReader(reader);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             // 按行读取，结束的判断是是否为null，按字节或者字符读取时结束的标志是-1
             String str = null;
             while ((str = bufferedReader.readLine()) != null) {
@@ -128,7 +125,7 @@ public class ParticipleDemo {
             }
             // 注意这两个关闭的顺序
             bufferedReader.close();
-            reader.close();
+            inputStreamReader.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -136,7 +133,10 @@ public class ParticipleDemo {
         return sb;
     }
 
-    public static  List<String> getFile(String pathname) {
+    /**
+     * 取文件内容 2
+     */
+    public static List<String> getFile(String pathname) {
         // 声明一个可变长的stringBuffer对象
         List<String> sb = new ArrayList<>();
         try {
@@ -144,8 +144,11 @@ public class ParticipleDemo {
              * 读取完整文件
              */
             Reader reader = new FileReader(pathname);
+            String encoding = ((FileReader) reader).getEncoding();
+            System.out.println("编码："+encoding);
+            InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(new File(pathname)), "UTF-8");
             // 这里我们用到了字符操作的BufferedReader类
-            BufferedReader bufferedReader = new BufferedReader(reader);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             // 按行读取，结束的判断是是否为null，按字节或者字符读取时结束的标志是-1
             String str = null;
             while ((str = bufferedReader.readLine()) != null) {
@@ -155,13 +158,14 @@ public class ParticipleDemo {
             }
             // 注意这两个关闭的顺序
             bufferedReader.close();
-            reader.close();
+            inputStreamReader.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         return sb;
     }
+
     public static void buildFile(StringBuffer stringBuffer, String pathname) {
         try {
             Writer writer = new FileWriter(pathname);
@@ -176,6 +180,9 @@ public class ParticipleDemo {
         }
     }
 
+//    public static File partciple(String pathname){
+//
+//    }
 
     public static void getKeywords() {
         KeyWordComputer kwc = new KeyWordComputer(5);

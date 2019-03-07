@@ -64,3 +64,5 @@ wx:
 logging:
   config: classpath:log/log4j2-${app.env}.xml
 
+corpus:
+  path: E:\lyn\毕设\语料库
