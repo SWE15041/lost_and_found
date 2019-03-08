@@ -71,20 +71,6 @@ public class TFIDFCosDemo {
     public static Map<String, Double> calTF(Set<String> UnionWords, List<Term> wordALL, Map<String, Double> dict) {
         //存放（单词，单词词频）
         HashMap<String, Double> tf = new HashMap<>();
-//        for (String unionWord : UnionWords) {
-//            for (Term term : wordALL) {
-//                String word = term.getName();
-//                if (unionWord.equals(word)) {
-//                    if (dict.containsKey(unionWord)) {
-//                        dict.put(unionWord, dict.get(unionWord) + 1);
-//                    } else {
-//                        dict.put(unionWord, 1.0);
-//                    }
-//                } else {
-//                    dict.put(unionWord, 0.0);
-//                }
-//            }
-//        }
         for (String unionWord : UnionWords) {
             int cnt = 0;
             for (Term term : wordALL) {
