@@ -55,6 +55,7 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
                 cosSimilarityMaps.put(String.valueOf(pickUpGoodId), cosVector);
             }
         }
+        //3 取余弦相似度大于0.5的物品
         List<String> mapByValue = sortMapByValue(cosSimilarityMaps);
         mapByValue.forEach(System.out::println);
         int topNum = 5;
@@ -69,6 +70,7 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
             LfLabel label = new LfLabel();
             BeanUtils.copyProperties(record, label);
             label.setId(null);
+            label.setGoodsId(matchGoodId);
             label.setRelesedId(record.getId());
             label.setLabel(goodsService.get(matchGoodId).getName());
             super.save(label);

@@ -35,5 +35,8 @@ public class LfLabel extends BaseEntity<Long> {
      * 逻辑删：0-否 1-是
      */
     private YesNoNum delState = YesNoNum.no;
-
+    /**
+     * 物品id
+     */
+    private Long goodsId;
 }

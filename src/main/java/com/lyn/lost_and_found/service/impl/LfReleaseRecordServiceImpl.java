@@ -39,7 +39,7 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
 
     @Transactional(rollbackOn = Exception.class)
     @Override
-    public   List<LfLabel> releaseGoods(LfGoods goods) {
+    public List<LfLabel> releaseGoods(LfGoods goods) {
         //新增物品记录
         goods.setReleaseStatus(ReleaseStatus.UNCLAIM);
         goodsService.save(goods);
@@ -52,10 +52,10 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
         releaseRecord.setReleaseUserId(currentUserId);
         releaseRecord.setReleaseStatus(ReleaseStatus.UNCLAIM);
         super.save(releaseRecord);
-        //推荐
-        List<LfLabel> labelList=new ArrayList<>();
+        //推荐 给发布遗失的用户做推荐
+        List<LfLabel> labelList = new ArrayList<>();
         if (goods.getReleaseType().equals(ReleaseType.LOSS)) {
-             labelList= labelService.calTFIDF(releaseRecord);
+            labelList = labelService.calTFIDF(releaseRecord);
         }
         return labelList;
     }
