@@ -2,19 +2,12 @@ package com.lyn.lost_and_found.tfidf;
 
 import org.ansj.domain.Result;
 import org.ansj.domain.Term;
-import org.ansj.library.StopLibrary;
 import org.ansj.splitWord.analysis.NlpAnalysis;
 
 import java.text.DecimalFormat;
 import java.util.*;
 
 public class TFIDFCosDemo {
-
-    /**
-     * <单词，词频>
-     */
-    public static Map<String, Double> dictA = new HashMap<>();
-    public static Map<String, Double> dictB = new HashMap<>();
 
     /**
      * 第一步，分词。
@@ -26,10 +19,11 @@ public class TFIDFCosDemo {
      * @param passageB
      */
     public static Double calTFVector(String passageA, String passageB) {
-        Result parseA = NlpAnalysis.parse(passageA).recognition(StopLibrary.get());
-        Result parseB = NlpAnalysis.parse(passageB).recognition(StopLibrary.get());
-//        Result parseA = NlpAnalysis.parse(passageA);
-//        Result parseB = NlpAnalysis.parse(passageB);
+//        Result parseA = NlpAnalysis.parse(passageA).recognition(StopLibrary.get());
+//        Result parseB = NlpAnalysis.parse(passageB).recognition(StopLibrary.get());
+        Result parseA = NlpAnalysis.parse(passageA);
+        Result parseB = NlpAnalysis.parse(passageB);
+        //列出所有的单词 到集合unionWords
         Set<String> unionWords = new HashSet<>();
         for (Term term : parseA) {
             unionWords.add(term.getName());
@@ -38,16 +32,16 @@ public class TFIDFCosDemo {
             unionWords.add(term.getName());
         }
         System.out.println("common:\t" + unionWords);
-        dictA = calTF(unionWords, parseA.getTerms(), dictA);
-        dictB = calTF(unionWords, parseB.getTerms(), dictB);
-        int unionWordnum = unionWords.size();
-        System.out.println("unionWords:\t" + unionWordnum);
+        Map<String, Double> dictA = calTF(unionWords, parseA.getTerms());
+        Map<String, Double> dictB = calTF(unionWords, parseB.getTerms());
         System.out.println("DA\t" + dictA.size() + "\t" + dictA);
         System.out.println("DB\t" + dictB.size() + "\t" + dictB);
-        Double[] A = getKeyValue(dictA, unionWordnum);
-        Double[] B = getKeyValue(dictB, unionWordnum);
-        return cosineSimilarity(A, B);
-
+        int unionWordnum = unionWords.size();
+        System.out.println("unionWords:\t" + unionWordnum);
+        Double[] aVector = getKeyValue(dictA, unionWordnum);
+        Double[] bVector = getKeyValue(dictB, unionWordnum);
+        unionWords.clear();
+        return cosineSimilarity(aVector, bVector);
     }
 
     static Double[] getKeyValue(Map<String, Double> map, Integer arrarySize) {
@@ -64,14 +58,14 @@ public class TFIDFCosDemo {
     /**
      * 计算指定文本中，指定词频的数量
      *
-     * @param UnionWords
-     * @param dict
+     * @param unionWords
      * @return
      */
-    public static Map<String, Double> calTF(Set<String> UnionWords, List<Term> wordALL, Map<String, Double> dict) {
+    public static Map<String, Double> calTF(Set<String> unionWords, List<Term> wordALL) {
         //存放（单词，单词词频）
         HashMap<String, Double> tf = new HashMap<>();
-        for (String unionWord : UnionWords) {
+        Map<String, Double> dict = new HashMap<>();
+        for (String unionWord : unionWords) {
             int cnt = 0;
             for (Term term : wordALL) {
                 String word = term.getName();
@@ -85,30 +79,31 @@ public class TFIDFCosDemo {
             Double wordTf = (entry.getValue() * 1.0) / wordALL.size();
             tf.put(entry.getKey(), wordTf);
         }
-        return dict;
+        return tf;
     }
 
-    public static Double cosineSimilarity(Double[] A, Double[] B) {
+    private static Double cosineSimilarity(Double[] A, Double[] B) {
         if (A.length != B.length) {
             return 2.0000;
         }
         if (A == null || B == null) {
             return 2.0000;
         }
-        long fenzi = 0;
+        Double fenzi = 0.0;
         for (int i = 0; i < A.length; i++) {
+            System.out.println("a[i]=" + A[i] + "b[i]=" + B[i]);
             fenzi += A[i] * B[i];
         }
-        long left = 0;
-        long right = 0;
+        Double left = 0.0;
+        Double right = 0.0;
         for (int i = 0; i < A.length; i++) {
-            left += A[i] * A[i];
-            right += B[i] * B[i];
+            left += Math.pow(A[i], 2);
+            right += Math.pow(B[i], 2);
         }
         if (left * right == 0) {
             return 2.0000;
         }
-        double result = fenzi / Math.sqrt(left * right);
+        Double result = fenzi / Math.sqrt(left * right);
         DecimalFormat df = new DecimalFormat("#.####");
         return Double.parseDouble(df.format(result));
     }
@@ -120,5 +115,10 @@ public class TFIDFCosDemo {
 //        String passageB = "我不喜欢看电视，也不喜欢看电影。";
         Double cosValue = calTFVector(passageA, passageB);
         System.out.println("余弦值：\t" + cosValue);
+//
+        int x = 55;
+        int y = 34;
+        System.out.println(Math.sqrt(Math.pow(x, 2) * Math.pow(y, 2)));
+        System.out.println(Math.sqrt(Math.pow(x, 2)) * Math.sqrt(Math.pow(y, 2)));
     }
 }

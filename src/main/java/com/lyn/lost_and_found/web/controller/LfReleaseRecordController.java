@@ -4,11 +4,14 @@ import com.jay.vito.common.exception.HttpBadRequestException;
 import com.jay.vito.common.util.validate.Validator;
 import com.lyn.lost_and_found.config.constant.ReleaseType;
 import com.lyn.lost_and_found.domain.LfGoods;
+import com.lyn.lost_and_found.domain.LfLabel;
 import com.lyn.lost_and_found.domain.LfReleaseRecord;
 import com.lyn.lost_and_found.service.LfReleaseRecordService;
 import com.lyn.lost_and_found.web.vo.LocalPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/releaseRecords")
@@ -28,7 +31,7 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
      * @return
      */
     @RequestMapping(method = RequestMethod.POST)
-    public boolean save(@RequestBody LfGoods goods) {
+    public List<LfLabel> save(@RequestBody LfGoods goods) {
         if (Validator.isNull(goods)) {
             throw new HttpBadRequestException("物品信息为空，发布失败", "RELEASE_FALI");
         }
@@ -36,8 +39,7 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
         if (Validator.isNull(releaseType)) {
             throw new HttpBadRequestException("无指定发布类型，发布失败", "RELEASE_FALI");
         }
-        boolean releaseGoods = releaseRecordService.releaseGoods(goods);
-        return releaseGoods;
+        return releaseRecordService.releaseGoods(goods);
     }
 
     /**
@@ -55,8 +57,7 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
         if (Validator.isNull(releaseType)) {
             throw new HttpBadRequestException("无指定发布类型，发布失败", "RELEASE_FALI");
         }
-        boolean releaseGoods = releaseRecordService.updateReleaseInfo(id, goods);
-        return releaseGoods;
+        return releaseRecordService.updateReleaseInfo(id, goods);
     }
 
 
@@ -74,6 +75,7 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
 
     /**
      * 删除发布记录
+     *
      * @param id
      * @return
      */
