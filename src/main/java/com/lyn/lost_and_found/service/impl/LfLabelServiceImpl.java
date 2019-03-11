@@ -68,6 +68,7 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
             LfReleaseRecord record = releaseRecordService.getByGoodsId(matchGoodId);
             LfLabel label = new LfLabel();
             BeanUtils.copyProperties(record, label);
+            label.setId(null);
             label.setRelesedId(record.getId());
             label.setLabel(goodsService.get(matchGoodId).getName());
             super.save(label);
