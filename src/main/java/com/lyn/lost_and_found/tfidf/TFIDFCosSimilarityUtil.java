@@ -7,18 +7,20 @@ import org.ansj.splitWord.analysis.NlpAnalysis;
 import java.text.DecimalFormat;
 import java.util.*;
 
-public class TFIDFCosDemo {
+public class TFIDFCosSimilarityUtil {
 
     /**
      * 第一步，分词。
-     * 第二步，列出所有的词。
-     * 第三步，计算词频。
-     * 第四步，写出词频向量。
+     * 第二步，计算每个文本的关键词。
+     * 第三步，列出所有的关键词。
+     * 第四步，计算词频。
+     * 第五步，写出词频向量。
+     * 第六步，计算余弦相似度
      *
      * @param passageA
      * @param passageB
      */
-    public static Double calTFVector(String passageA, String passageB) {
+    public static Double calCosineSimilarity(String passageA, String passageB) {
 //        Result parseA = NlpAnalysis.parse(passageA).recognition(StopLibrary.get());
 //        Result parseB = NlpAnalysis.parse(passageB).recognition(StopLibrary.get());
         Result parseA = NlpAnalysis.parse(passageA);
@@ -41,9 +43,16 @@ public class TFIDFCosDemo {
         Double[] aVector = getKeyValue(dictA, unionWordnum);
         Double[] bVector = getKeyValue(dictB, unionWordnum);
         unionWords.clear();
-        return cosineSimilarity(aVector, bVector);
+        return calCosVectorValue(aVector, bVector);
     }
 
+    /**
+     * 取map的所有值
+     *
+     * @param map
+     * @param arrarySize
+     * @return
+     */
     static Double[] getKeyValue(Map<String, Double> map, Integer arrarySize) {
         Iterator<Map.Entry<String, Double>> iteratorA = map.entrySet().iterator();
         Double[] A = new Double[arrarySize];
@@ -82,17 +91,26 @@ public class TFIDFCosDemo {
         return tf;
     }
 
-    private static Double cosineSimilarity(Double[] A, Double[] B) {
+    /**
+     * 计算余弦相似度的值
+     * 公式：cos(θ)=∑(xi+yi)/((√∑(xi*xi) * √∑(yi*yi)))
+     * 分子molecular
+     *
+     * @param A
+     * @param B
+     * @return
+     */
+    private static Double calCosVectorValue(Double[] A, Double[] B) {
         if (A.length != B.length) {
             return 2.0000;
         }
         if (A == null || B == null) {
             return 2.0000;
         }
-        Double fenzi = 0.0;
+        Double molecular = 0.0;
         for (int i = 0; i < A.length; i++) {
             System.out.println("a[i]=" + A[i] + "b[i]=" + B[i]);
-            fenzi += A[i] * B[i];
+            molecular += A[i] * B[i];
         }
         Double left = 0.0;
         Double right = 0.0;
@@ -103,7 +121,7 @@ public class TFIDFCosDemo {
         if (left * right == 0) {
             return 2.0000;
         }
-        Double result = fenzi / Math.sqrt(left * right);
+        Double result = molecular / Math.sqrt(left * right);
         DecimalFormat df = new DecimalFormat("#.####");
         return Double.parseDouble(df.format(result));
     }
@@ -113,7 +131,7 @@ public class TFIDFCosDemo {
         String passageB = "本人于2019年2月27号晚上9点左右在长水机场不慎丢失身份证， 姓名 李奎 汉族 ，户籍 河南 ，签发机关 项城市公安局，身份证号 4127021992042... 请捡到的朋友联系我 必酬谢 ！\n";
 //        String passageA = "我喜欢看电视，不喜欢看电影。";
 //        String passageB = "我不喜欢看电视，也不喜欢看电影。";
-        Double cosValue = calTFVector(passageA, passageB);
+        Double cosValue = calCosineSimilarity(passageA, passageB);
         System.out.println("余弦值：\t" + cosValue);
 //
         int x = 55;

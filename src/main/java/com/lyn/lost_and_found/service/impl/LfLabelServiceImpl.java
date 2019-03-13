@@ -10,7 +10,7 @@ import com.lyn.lost_and_found.domain.LfReleaseRecord;
 import com.lyn.lost_and_found.service.LfGoodsService;
 import com.lyn.lost_and_found.service.LfLabelService;
 import com.lyn.lost_and_found.service.LfReleaseRecordService;
-import com.lyn.lost_and_found.tfidf.TFIDFCosDemo;
+import com.lyn.lost_and_found.tfidf.TFIDFCosSimilarityUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -50,7 +50,7 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
             Long pickUpGoodId = pickUpGood.getId();
             System.out.println(pickUpGoodId);
             String matchDescripInfo = pickUpGood.getDescription();
-            Double cosVector = TFIDFCosDemo.calTFVector(description, matchDescripInfo);
+            Double cosVector = TFIDFCosSimilarityUtil.calCosineSimilarity(description, matchDescripInfo);
             if (cosVector >= 0.5 && cosVector <= 1) {
                 cosSimilarityMaps.put(String.valueOf(pickUpGoodId), cosVector);
             }
