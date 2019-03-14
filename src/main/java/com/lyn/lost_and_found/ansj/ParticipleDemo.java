@@ -1,4 +1,4 @@
-package com.lyn.lost_and_found.Ansj;
+package com.lyn.lost_and_found.ansj;
 
 import org.ansj.app.keyword.KeyWordComputer;
 import org.ansj.app.keyword.Keyword;
@@ -184,8 +184,8 @@ public class ParticipleDemo {
 //            args.put("isNumRecognition", "是否开启数字识别, 默认true");
 //            args.put("isQuantifierRecognition", "是否开启量词识别, 默认true");
 //            args.put("isRealName", "是否保留原字符, 默认false");
-//            Analyzer analyzer = new AnsjAnalyzer(args);
-//            IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
+//            Analyzer ikTokenStreamAnalyzer = new AnsjAnalyzer(args);
+//            IndexWriterConfig iwc = new IndexWriterConfig(ikTokenStreamAnalyzer);
 //
 //        }
 //        FilterModifWord

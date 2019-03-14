@@ -1,7 +1,7 @@
 package com.lyn.lost_and_found.tfidf;
 
 import com.jay.vito.common.util.validate.Validator;
-import com.lyn.lost_and_found.Ansj.ParticipleDemo;
+import com.lyn.lost_and_found.ansj.ParticipleDemo;
 import org.ansj.domain.Result;
 import org.ansj.domain.Term;
 import org.ansj.library.StopLibrary;

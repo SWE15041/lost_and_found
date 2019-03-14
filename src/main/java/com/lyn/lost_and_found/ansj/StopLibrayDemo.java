@@ -1,4 +1,4 @@
-package com.lyn.lost_and_found.Ansj;
+package com.lyn.lost_and_found.ansj;
 
 import org.ansj.domain.Result;
 import org.ansj.library.StopLibrary;
