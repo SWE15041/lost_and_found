@@ -4,6 +4,7 @@ import org.ansj.app.keyword.KeyWordComputer;
 import org.ansj.app.keyword.Keyword;
 import org.ansj.domain.Result;
 import org.ansj.domain.Term;
+import org.ansj.recognition.impl.NatureRecognition;
 import org.ansj.splitWord.analysis.NlpAnalysis;
 import org.ansj.splitWord.analysis.ToAnalysis;
 
@@ -13,7 +14,7 @@ import java.util.*;
 /**
  * 使用教程参考： https://blog.csdn.net/bitcarmanlee/article/details/53607776
  */
-public class ParticipleDemo {
+public class AnsjSegUtil {
 
 
     public static void nlpAnaliesTest() {
@@ -156,6 +157,17 @@ public class ParticipleDemo {
         System.out.println(result);
     }
 
+    /**
+     * 给新词标注词性
+     */
+    static void natureRecognitionTest() {
+        String[] strs = {"对", "非", "ansj", "的", "分词", "结果", "进行", "词性", "标注"};
+        List<String> lists = Arrays.asList(strs);
+        NatureRecognition natureRecognition = new NatureRecognition();
+        List<Term> recognition = natureRecognition.recognition(lists, 0);
+        System.out.println(recognition);
+    }
+
     public static void main(String[] args) {
 
         //1
@@ -190,6 +202,15 @@ public class ParticipleDemo {
 //        }
 //        FilterModifWord
 
+        Result parse = ToAnalysis.parse("Ansj中文分词是一个真正的ict的实现.并且加入了自己的一些数据结构和算法的分词.实现了高效率和高准确率的完美结合!");
+        Iterator<Term> iterator = parse.getTerms().iterator();
+        List<String> list = new ArrayList<>();
+        while (iterator.hasNext()) {
+            list.add(iterator.next().getName());
+        }
+        NatureRecognition natureRecognition = new NatureRecognition();
+        List<Term> recognition = natureRecognition.recognition(list, 0);
+        System.out.println(recognition);
 
     }
 }

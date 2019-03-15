@@ -40,28 +40,87 @@ public class TFIDFCosSimilarityUtil {
         System.out.println("DB\t" + dictB.size() + "\t" + dictB);
         int unionWordnum = unionWords.size();
         System.out.println("unionWords:\t" + unionWordnum);
-        Double[] aVector = getKeyValue(dictA, unionWordnum);
-        Double[] bVector = getKeyValue(dictB, unionWordnum);
+        Double[] aVector = getMapValues(dictA);
+        Double[] bVector = getMapValues(dictB);
         unionWords.clear();
         return calCosVectorValue(aVector, bVector);
     }
 
     /**
-     * 取map的所有值
+     * 计算预先相似度
      *
-     * @param map
-     * @param arrarySize
+     * @param textA
+     * @param textB
      * @return
      */
-    static Double[] getKeyValue(Map<String, Double> map, Integer arrarySize) {
+    public static Double calCosSimilarity(String textA, String textB) {
+        //分词
+        Result parseA = NlpAnalysis.parse(textA);
+        Result parseB = NlpAnalysis.parse(textB);
+        //计算词频<单词，词频>
+        Map<String, Double> textATFs = TFIDFUtil.calTFs(parseA.getTerms());
+        Map<String, Double> textBTFs = TFIDFUtil.calTFs(parseB.getTerms());
+        //计算逆文档频率
+        String corpusDirPath = "e:\\corpus";
+        List<String> wordAList = getMapKeys(textATFs);
+        List<String> wordBList = getMapKeys(textBTFs);
+        Map<String, Double> textAIDFs = TFIDFUtil.calIDFs(wordAList, corpusDirPath);
+        Map<String, Double> textBIDFs = TFIDFUtil.calIDFs(wordBList, corpusDirPath);
+        //计算tfidf
+        Map<String, Double> textAIFTDFs = TFIDFUtil.calTFIDFs(textATFs, textAIDFs);
+        Map<String, Double> textBTFIDFs = TFIDFUtil.calTFIDFs(textBTFs, textBIDFs);
+        //取关键词 keyWordNum：关键词数量
+        Integer keyWordNum = 5;
+        List<String> textAkeyWords = TFIDFUtil.getKeyWords(textAIFTDFs, keyWordNum);
+        List<String> textBkeyWords = TFIDFUtil.getKeyWords(textBTFIDFs, keyWordNum);
+        //取关键词词频向量
+        Map<String, Double> textAkeyWordTFs = new HashMap<>();
+        for (String textAkeyWord : textAkeyWords) {
+            textAkeyWordTFs.put(textAkeyWord, textATFs.get(textAkeyWord));
+        }
+        Map<String, Double> textBkeyWordTFs = new HashMap<>();
+        for (String textBkeyWord : textBkeyWords) {
+            textBkeyWordTFs.put(textBkeyWord, textBTFs.get(textBkeyWord));
+        }
+        //计算余弦相似度
+        Double[] textATFValue = getMapValues(textAkeyWordTFs);
+        Double[] textBTFValue = getMapValues(textBkeyWordTFs);
+        Double cosSimilarity = calCosVectorValue(textATFValue, textBTFValue);
+        return cosSimilarity;
+
+    }
+
+    /**
+     * 取map的所有value
+     *
+     * @param map
+     * @return
+     */
+    static Double[] getMapValues(Map<String, Double> map) {
         Iterator<Map.Entry<String, Double>> iteratorA = map.entrySet().iterator();
-        Double[] A = new Double[arrarySize];
+        int arrarySize = map.size();
+        Double[] values = new Double[arrarySize];
         int i = 0;
         while (iteratorA.hasNext()) {
-            A[i] = iteratorA.next().getValue();
+            values[i] = iteratorA.next().getValue();
             i++;
         }
-        return A;
+        return values;
+    }
+
+    /**
+     * 取map的所有key
+     *
+     * @return
+     */
+    static List<String> getMapKeys(Map<String, Double> map) {
+        Iterator<Map.Entry<String, Double>> iterator = map.entrySet().iterator();
+        List<String> keys = new ArrayList<>();
+        while (iterator.hasNext()) {
+            Map.Entry<String, Double> next = iterator.next();
+            keys.add(next.getKey());
+        }
+        return keys;
     }
 
     /**

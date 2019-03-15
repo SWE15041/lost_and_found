@@ -1,7 +1,7 @@
 package com.lyn.lost_and_found.tfidf;
 
 import com.jay.vito.common.util.validate.Validator;
-import com.lyn.lost_and_found.ansj.ParticipleDemo;
+import com.lyn.lost_and_found.ansj.AnsjSegUtil;
 import org.ansj.domain.Result;
 import org.ansj.domain.Term;
 import org.ansj.library.StopLibrary;
@@ -9,10 +9,8 @@ import org.ansj.splitWord.analysis.NlpAnalysis;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class TFIDFUtil {
 
@@ -32,11 +30,11 @@ public class TFIDFUtil {
      * @param wordAll
      * @return
      */
-    public static HashMap<String, Double> calTFs(List<Term> wordAll) {
+    public static Map<String, Double> calTFs(List<Term> wordAll) {
         //存放<单词，单词数量>
         Map<String, Integer> dict = new HashMap<>();
         //存放（单词，单词词频）
-        HashMap<String, Double> tf = new HashMap<>();
+        Map<String, Double> tf = new HashMap<>();
         //单词数
         Integer wordCnt = 0;
         for (Term term : wordAll) {
@@ -65,18 +63,23 @@ public class TFIDFUtil {
      * @param corpusDirPath
      * @return
      */
-    public static Double calIDF(String word, String corpusDirPath) {
-        File corpus = new File(corpusDirPath);
-        Long cntFileNum = cntFileNum(corpus);
-        File[] dir = new File(corpusDirPath).listFiles();
-        if (Validator.isNull(dir)) {
+    private static Double calIDF(String word, String corpusDirPath) {
+        File[] corpus = new File(corpusDirPath).listFiles();
+        if (Validator.isNull(corpus)) {
             return null;
         }
+        //语料库文档总数；
+        Long cntFileNum = cntFileNum(new File(corpusDirPath));
+        //包含指定词的文档数；
         Long includeWordFileNum = 0L;
-        for (File file : dir) {
+        if (Validator.isNull(corpus)) {
+            return null;
+        }
+
+        for (File file : corpus) {
             if (file.isFile()) {
                 //文件的分词读取；
-                List<String> words = ParticipleDemo.getFileCont(file.getAbsolutePath());
+                List<String> words = AnsjSegUtil.getFileCont(file.getAbsolutePath());
 //                System.out.println(words.toString());
                 Result parse = NlpAnalysis.parse(words.toString()).recognition(StopLibrary.get());
 //                String s = NlpAnalysis.parse(words.toString()).recognition(StopLibrary.get()).toStringWithOutNature();
@@ -94,9 +97,75 @@ public class TFIDFUtil {
         return IDF;
     }
 
-//    public static Double calTFIDF(){
-//
-//    }
+    /**
+     * 计算每个单词的逆文档频率
+     * IDF=log(语料库文档总数/包含该词的文档数+1)；
+     *
+     * @param words
+     * @param corpusDirPath
+     * @return
+     */
+    public static Map<String, Double> calIDFs(List<String> words, String corpusDirPath) {
+        Map<String, Double> idfs = new HashMap<>();
+        for (String word : words) {
+            Double idf = calIDF(word, corpusDirPath);
+            if (Validator.isNotNull(idf)) {
+                idfs.put(word, idf);
+            }
+        }
+        return idfs;
+    }
+
+    /**
+     * 计算每个单词的tf-idf值
+     *
+     * @param TFs
+     * @param IDFs
+     * @return
+     */
+    public static Map<String, Double> calTFIDFs(Map<String, Double> TFs, Map<String, Double> IDFs) {
+        int tfSize = TFs.size();
+        int idfSize = IDFs.size();
+        if (tfSize != idfSize) {
+            return null;
+        }
+        Map<String, Double> tfidf = new HashMap<>();
+        for (Map.Entry<String, Double> tf : TFs.entrySet()) {
+            String word = tf.getKey();
+            Double tfValue = tf.getValue();
+            Double idfValue = IDFs.get(word);
+            tfidf.put(word, tfValue * idfValue);
+        }
+        return tfidf;
+    }
+
+    /**
+     * 取出指定关键词
+     *
+     * @param iftdf
+     * @param keyWordNum
+     * @return
+     */
+    public static List<String> getKeyWords(Map<String, Double> iftdf, Integer keyWordNum) {
+        //倒序
+        List<Map.Entry<String, Double>> entryList = iftdf.entrySet().stream().sorted((o1, o2) -> o2.getValue().compareTo(o1.getValue())).collect(Collectors.toList());
+        Iterator<Map.Entry<String, Double>> iterator = entryList.iterator();
+        List<String> words = new ArrayList<>();
+        int size = iftdf.size();
+        if (size < keyWordNum) {
+            keyWordNum = size;
+        }
+        while (iterator.hasNext()) {
+            if (keyWordNum < 0) {
+                break;
+            }
+            keyWordNum--;
+            Map.Entry<String, Double> next = iterator.next();
+            String word = next.getKey();
+            words.add(word);
+        }
+        return words;
+    }
 
     /**
      * 计算指定目录下文件的数量
@@ -123,15 +192,15 @@ public class TFIDFUtil {
 
 //        Long cntFileNum = cntFileNum(file);
 //        System.out.println("文件数量：" + cntFileNum);
-//        Double idfV = calIDF("工作证", path);
+//        Double idfV = calIDFs("工作证", path);
 //        System.out.println("idf =\t" + idfV);
 
         Result parse = NlpAnalysis.parse("本人于3月6日在官渡区塘子巷地铁站附近丢失一本铁路工作证，内有身份证一张和昆明市公交卡。工作证，身份证名字均为陶俊宇。工作证是本红色外壳的。");
 
-        HashMap<String, Double> tFs = calTFs(parse.getTerms());
+        Map<String, Double> tfs = calTFs(parse.getTerms());
 
 
-        Iterator<Map.Entry<String, Double>> iterator = tFs.entrySet().iterator();
+        Iterator<Map.Entry<String, Double>> iterator = tfs.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<String, Double> next = iterator.next();
             String word = next.getKey();
