@@ -55,7 +55,7 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
         //推荐 给发布遗失的用户做推荐
         List<LfLabel> labelList = new ArrayList<>();
         if (goods.getReleaseType().equals(ReleaseType.LOSS)) {
-            labelList = labelService.calTFIDF(releaseRecord);
+//            labelList = labelService.calTFIDF(releaseRecord);
         }
         return labelList;
     }

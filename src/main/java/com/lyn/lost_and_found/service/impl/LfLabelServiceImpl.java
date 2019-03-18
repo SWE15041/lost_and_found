@@ -30,7 +30,6 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
     @Autowired
     private LfReleaseRecordService releaseRecordService;
 
-    private Map<String, Double> cosSimilarityMaps = new HashMap<>();
 
     @Override
     protected JpaRepository<LfLabel, Long> getRepository() {
@@ -46,6 +45,7 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
         String description = goods.getDescription();
         //2 获取需要匹配的所有物品
         List<LfGoods> pickUpGoods = goodsService.findGoods(ReleaseType.PICK_UP, ReleaseStatus.UNCLAIM);
+        Map<String, Double> cosSimilarityMaps = new HashMap<>();
         for (LfGoods pickUpGood : pickUpGoods) {
             Long pickUpGoodId = pickUpGood.getId();
             System.out.println(pickUpGoodId);
@@ -90,16 +90,22 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
      * @param map
      * @return
      */
-    static List<String> sortMapByValue(Map<String, Double> map) {
+    private static List<String> sortMapByValue(Map<String, Double> map) {
         int size = map.size();
         //通过map.entrySet()将map转换为"1.B.1.e=78"形式的list集合
-        List<Map.Entry<String, Double>> list = new ArrayList<Map.Entry<String, Double>>(size);
+        List<Map.Entry<String, Double>> list = new ArrayList<>(size);
         list.addAll(map.entrySet());
         List<String> keys = list.stream()
                 .sorted(Comparator.comparing(Map.Entry<String, Double>::getValue).reversed())
                 .map(Map.Entry<String, Double>::getKey)
                 .collect(Collectors.toList());
         return keys;
+    }
+
+    @Override
+    public List<LfLabel> calCosSimilarity(LfReleaseRecord releaseRecord) {
+
+        return null;
     }
 
     public static void main(String[] args) {

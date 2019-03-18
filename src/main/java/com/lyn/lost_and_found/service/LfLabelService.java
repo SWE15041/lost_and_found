@@ -14,4 +14,7 @@ public interface LfLabelService extends EntityCRUDService<LfLabel, Long> {
      * @return
      */
     List<LfLabel> calTFIDF(LfReleaseRecord releaseRecord);
+
+    List<LfLabel> calCosSimilarity(LfReleaseRecord releaseRecord);
+
 }

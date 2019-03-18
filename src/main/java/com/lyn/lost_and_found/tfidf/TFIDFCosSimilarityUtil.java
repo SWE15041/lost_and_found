@@ -47,7 +47,7 @@ public class TFIDFCosSimilarityUtil {
     }
 
     /**
-     * 计算预先相似度
+     * 计算余弦相似度
      *
      * @param textA
      * @param textB
