@@ -1,11 +1,13 @@
 package com.lyn.lost_and_found.tfidf;
 
 import com.jay.vito.common.util.validate.Validator;
-import com.lyn.lost_and_found.ansj.AnsjSegUtil;
+import com.lyn.lost_and_found.service.LfCorpusService;
+import com.lyn.lost_and_found.utils.FileUtil;
 import org.ansj.domain.Result;
 import org.ansj.domain.Term;
 import org.ansj.library.StopLibrary;
 import org.ansj.splitWord.analysis.NlpAnalysis;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.File;
@@ -15,11 +17,13 @@ import java.util.stream.Collectors;
 public class TFIDFUtil {
 
     //    private static Double TF;
-//    private static Double IDF;
+        private static Double IDF;
 //    private static Double TFIDF;
     private static Long fileNum = 0L;
     @Value("${corpus.path}")
     private static String corpusDir;
+    @Autowired
+    private LfCorpusService corpusService;
 
     /**
      * 计算文本中每个分词的词频TF;
@@ -69,17 +73,13 @@ public class TFIDFUtil {
             return null;
         }
         //语料库文档总数；
-        Long cntFileNum = cntFileNum(new File(corpusDirPath));
+        Long cntFileNum = FileUtil.cntFileNum(new File(corpusDirPath));
         //包含指定词的文档数；
         Long includeWordFileNum = 0L;
-        if (Validator.isNull(corpus)) {
-            return null;
-        }
-
         for (File file : corpus) {
             if (file.isFile()) {
                 //文件的分词读取；
-                List<String> words = AnsjSegUtil.getFileCont(file.getAbsolutePath());
+                List<String> words = FileUtil.getFileContent(file.getAbsolutePath());
 //                System.out.println(words.toString());
                 Result parse = NlpAnalysis.parse(words.toString()).recognition(StopLibrary.get());
 //                String s = NlpAnalysis.parse(words.toString()).recognition(StopLibrary.get()).toStringWithOutNature();
@@ -98,6 +98,20 @@ public class TFIDFUtil {
     }
 
     /**
+     * 从数据库中获取熟语料库数据进行IDF值计算
+     * idf=log(语料库总词数/（该词出现的次数+1）)
+     *
+     * @param word
+     * @return
+     */
+    private Double calIDFByDB(String word) {
+        Long wordSum = corpusService.getWordSum();
+        Long wordQuantities = corpusService.getWordQuantities(word);
+        IDF = Math.log(wordSum * 1.0 / (wordQuantities + 1));
+        return IDF;
+    }
+
+    /**
      * 计算每个单词的逆文档频率
      * IDF=log(语料库文档总数/包含该词的文档数+1)；
      *
@@ -109,6 +123,7 @@ public class TFIDFUtil {
         Map<String, Double> idfs = new HashMap<>();
         for (String word : words) {
             Double idf = calIDF(word, corpusDirPath);
+//            Double idf = calIDFByDB(word);
             if (Validator.isNotNull(idf)) {
                 idfs.put(word, idf);
             }
@@ -167,24 +182,24 @@ public class TFIDFUtil {
         return words;
     }
 
-    /**
-     * 计算指定目录下文件的数量
-     *
-     * @param dir
-     * @return
-     */
-    public static Long cntFileNum(File dir) {
-        File[] files = dir.listFiles();
-        for (File file : files) {
-            if (file.isDirectory()) {
-                cntFileNum(file);
-            } else {
-                fileNum++;
-            }
-        }
-        return fileNum;
-    }
-
+//    /**
+//     * 计算指定目录下文件的数量
+//     *
+//     * @param dir
+//     * @return
+//     */
+//    public static Long cntFileNum(File dir) {
+//        File[] files = dir.listFiles();
+//        for (File file : files) {
+//            if (file.isDirectory()) {
+//                cntFileNum(file);
+//            } else {
+//                fileNum++;
+//            }
+//        }
+//        return fileNum;
+//    }
+//
 
     public static void main(String[] args) {
         String path = "E:\\corpus";

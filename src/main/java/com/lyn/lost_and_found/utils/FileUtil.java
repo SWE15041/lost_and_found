@@ -3,13 +3,17 @@ package com.lyn.lost_and_found.utils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class FileUtil {
+
+    /**
+     * 文档数
+     */
+    private static Long fileNum = 0L;
 
     /**
      * 将文件上传到服务端指定地址
@@ -96,11 +100,60 @@ public class FileUtil {
         return false;
     }
 
-    public static void main(String[] args){
-        String pathname="/users/lyn/picPath/5a56ff5210c140369cf607436e57955c.jpg";
-        delete(pathname);
+    /**
+     * 计算指定目录下文件的数量
+     *
+     * @param dir
+     * @return
+     */
+    public static Long cntFileNum(File dir) {
+        File[] files = dir.listFiles();
+        for (File file : files) {
+            if (file.isDirectory()) {
+                cntFileNum(file);
+            } else {
+                fileNum++;
+            }
+        }
+        return fileNum;
     }
 
+    /**
+     * 获取文件内容
+     * @param pathname
+     * @return
+     */
+    public static List<String> getFileContent(String pathname) {
+        // 声明一个可变长的stringBuffer对象
+        List<String> sb = new ArrayList<>();
+        try {
+            /*
+             * 读取完整文件
+             */
+            Reader reader = new FileReader(pathname);
+            String encoding = ((FileReader) reader).getEncoding();
+//            System.out.println("编码：" + encoding);
+            InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(new File(pathname)), "UTF-8");
+            // 这里我们用到了字符操作的BufferedReader类
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            // 按行读取，结束的判断是是否为null，按字节或者字符读取时结束的标志是-1
+            String str = null;
+            while ((str = bufferedReader.readLine()) != null) {
+                // 这里我们用到了StringBuffer的append方法，这个比string的“+”要高效
+                sb.add(str.trim());
+//                System.out.println(str);
+            }
+            // 注意这两个关闭的顺序
+            bufferedReader.close();
+            inputStreamReader.close();
 
-
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sb;
+    }
+    public static void main(String[] args) {
+        String pathname = "/users/lyn/picPath/5a56ff5210c140369cf607436e57955c.jpg";
+        delete(pathname);
+    }
 }

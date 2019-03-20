@@ -24,7 +24,7 @@ public class CrawlDemo {
 //        List<String> webUrl = getHypeLink(swzlUrl);
         //3
         List<String> pageUrls = new ArrayList<>();
-        for (int i = 1; i <= 600; i++) {
+        for (int i = 1; i <= 628; i++) {
             String pageUrl = "http://www.cswzl.com/lostinfo.action?q.currentPageNum=" + String.valueOf(i)
                     + "&q.t=1&q.altercond=false";
             pageUrls.add(pageUrl);
@@ -32,13 +32,13 @@ public class CrawlDemo {
         try {
 //            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File("")), "gbk"));
             for (String pageUrl : pageUrls) {
-                System.out.println("-----------失物招领的页面: " + pageUrl + "-----------------------");
+                System.out.println("-----------失物招领的页面: " + pageUrl + " -----------------------");
                 List<String> hypeLink = getHypeLink(pageUrl);
                 for (String url : hypeLink) {
-                    System.out.println("--------------爬取数据的url:" + url + "---------------------");
+                    System.out.println("--------------爬取数据的url:" + url + " ---------------------");
                     String webInfo = getWebInfo(url);
                     String uuid = UUID.randomUUID().toString().replace("-", "");
-                    String path = "e:\\corpus\\" + uuid;
+                    String path = "E:\\lyn\\毕设\\语料库\\生语料库\\" + uuid;
                     File file = new File(path);
                     File parentFile = file.getParentFile();
                     if (!parentFile.exists()) {
@@ -49,11 +49,12 @@ public class CrawlDemo {
                     BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
                     //加入换行符
                     bufferedWriter.write(webInfo + "\n");
+
                     bufferedWriter.close();
                     outputStreamWriter.close();
                     fileOutputStream.close();
                 }
-
+                hypeLink.clear();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -88,17 +89,22 @@ public class CrawlDemo {
     public static List<String> getHypeLink(String url) {
         List<String> hrefUrl = new ArrayList<>();
         try {
-            String prefix = " http://www.cswzl.com";
+            String prefix = "http://www.cswzl.com";
             Connection connection = Jsoup.connect(url).timeout(10000);
             Document document = connection.get();
-            Element element = document.select(".info_title1").get(0);
+            Elements aTags = document.getElementsByTag("a");
+//            System.out.println(aTags);
+            Element element = document.select("form#lostinfo").get(0).select(".info_title1").get(0);
+//            System.out.println(element);i
             Elements aElement = element.select("a");
+
+            System.out.println(aElement);
             for (Element a : aElement) {
                 String href = prefix + a.attr("href");
                 hrefUrl.add(href);
                 System.out.println(href);
             }
-
+            aElement.clear();
         } catch (Exception e) {
             e.printStackTrace();
         }

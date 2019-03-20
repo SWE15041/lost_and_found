@@ -99,35 +99,35 @@ public class AnsjSegUtil {
     /**
      * 取文件内容 2
      */
-    public static List<String> getFileCont(String pathname) {
-        // 声明一个可变长的stringBuffer对象
-        List<String> sb = new ArrayList<>();
-        try {
-            /*
-             * 读取完整文件
-             */
-            Reader reader = new FileReader(pathname);
-            String encoding = ((FileReader) reader).getEncoding();
-//            System.out.println("编码：" + encoding);
-            InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(new File(pathname)), "UTF-8");
-            // 这里我们用到了字符操作的BufferedReader类
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            // 按行读取，结束的判断是是否为null，按字节或者字符读取时结束的标志是-1
-            String str = null;
-            while ((str = bufferedReader.readLine()) != null) {
-                // 这里我们用到了StringBuffer的append方法，这个比string的“+”要高效
-                sb.add(str.trim());
-//                System.out.println(str);
-            }
-            // 注意这两个关闭的顺序
-            bufferedReader.close();
-            inputStreamReader.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return sb;
-    }
+//    public static List<String> getFileContent(String pathname) {
+//        // 声明一个可变长的stringBuffer对象
+//        List<String> sb = new ArrayList<>();
+//        try {
+//            /*
+//             * 读取完整文件
+//             */
+//            Reader reader = new FileReader(pathname);
+//            String encoding = ((FileReader) reader).getEncoding();
+////            System.out.println("编码：" + encoding);
+//            InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(new File(pathname)), "UTF-8");
+//            // 这里我们用到了字符操作的BufferedReader类
+//            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+//            // 按行读取，结束的判断是是否为null，按字节或者字符读取时结束的标志是-1
+//            String str = null;
+//            while ((str = bufferedReader.readLine()) != null) {
+//                // 这里我们用到了StringBuffer的append方法，这个比string的“+”要高效
+//                sb.add(str.trim());
+////                System.out.println(str);
+//            }
+//            // 注意这两个关闭的顺序
+//            bufferedReader.close();
+//            inputStreamReader.close();
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return sb;
+//    }
 
     public static void buildFile(StringBuffer stringBuffer, String pathname) {
         try {
