@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
 public class TFIDFUtil {
 
     //    private static Double TF;
-        private static Double IDF;
-//    private static Double TFIDF;
+    private static Double IDF;
+    //    private static Double TFIDF;
     private static Long fileNum = 0L;
     @Value("${corpus.path}")
     private static String corpusDir;
@@ -31,7 +31,7 @@ public class TFIDFUtil {
      * = 某个词在文章中出现的次数 / 该文章的总词数；(当前使用这个)
      * = 某个词在文章中出现的次数 / 该文出现次数最多的词的出现次数；
      *
-     * @param wordAll
+     * @param wordAll ansj分词中的对象
      * @return
      */
     public static Map<String, Double> calTFs(List<Term> wordAll) {
@@ -98,8 +98,8 @@ public class TFIDFUtil {
     }
 
     /**
-     * 从数据库中获取熟语料库数据进行IDF值计算
-     * idf=log(语料库总词数/（该词出现的次数+1）)
+     * 从数据库中获取熟语料库数据 进行 指定词的逆文档频率IDF值计算
+     * idf=log(总词数/（该词出现的次数+1）)
      *
      * @param word
      * @return

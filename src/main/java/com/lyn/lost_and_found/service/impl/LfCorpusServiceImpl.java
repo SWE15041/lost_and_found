@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
-import java.util.List;
 
 @Service
 public class LfCorpusServiceImpl extends EntityCRUDServiceImpl<LfCorpus, Long> implements LfCorpusService {
@@ -34,13 +33,14 @@ public class LfCorpusServiceImpl extends EntityCRUDServiceImpl<LfCorpus, Long> i
 //        Expression<Long> quantities = criteriaBuilder.sum(root.get("quantities")).as(Long.class);
 //        List<Tuple> resultList = entityManager.createQuery(criteriaQuery).getResultList();
 //todo jpa 求和sum的用法
-        List<LfCorpus> all = getAll();
-        Long quantitiesSum = 0L;
-        for (LfCorpus corpus : all) {
-            Long quantities = corpus.getQuantities();
-            quantitiesSum += quantities;
-        }
-        return quantitiesSum;
+//        List<LfCorpus> all = getAll();
+//        Long quantitiesSum = 0L;
+//        for (LfCorpus corpus : all) {
+//            Long quantities = corpus.getQuantities();
+//            quantitiesSum += quantities;
+//        }
+//        return quantitiesSum;
+        return corpusRepository.findByQuantities();
     }
 
     @Override

@@ -11,11 +11,10 @@ public class TFIDFCosSimilarityUtil {
 
     /**
      * 第一步，分词。
-     * 第二步，计算每个文本的关键词。
-     * 第三步，列出所有的关键词。
-     * 第四步，计算词频。
-     * 第五步，写出词频向量。
-     * 第六步，计算余弦相似度
+     * 第二步，列出所有的词。
+     * 第三步，计算词频。
+     * 第四步，写出词频向量。
+     * 第五步，计算余弦相似度
      *
      * @param passageA
      * @param passageB
@@ -47,20 +46,26 @@ public class TFIDFCosSimilarityUtil {
     }
 
     /**
-     * 计算余弦相似度
+     * 第一步，分词。
+     * 第二步，计算每个文本的关键词。
+     * 第三步，列出所有的关键词。
+     * 第四步，计算词频。
+     * 第五步，写出词频向量。
+     * 第六步，计算余弦相似度
      *
      * @param textA
      * @param textB
      * @return
      */
     public static Double calCosSimilarity(String textA, String textB) {
-        //分词
+        //分
+        // 词
         Result parseA = NlpAnalysis.parse(textA);
         Result parseB = NlpAnalysis.parse(textB);
         //计算词频<单词，词频>
         Map<String, Double> textATFs = TFIDFUtil.calTFs(parseA.getTerms());
         Map<String, Double> textBTFs = TFIDFUtil.calTFs(parseB.getTerms());
-        //计算逆文档频率
+        //计算逆文档频率（方法一）
         String corpusDirPath = "e:\\corpus";
         List<String> wordAList = getMapKeys(textATFs);
         List<String> wordBList = getMapKeys(textBTFs);
@@ -96,14 +101,14 @@ public class TFIDFCosSimilarityUtil {
      * @param map
      * @return
      */
-    static Double[] getMapValues(Map<String, Double> map) {
-        Iterator<Map.Entry<String, Double>> iteratorA = map.entrySet().iterator();
+     static Double[] getMapValues(Map<String, Double> map) {
+        Iterator<Map.Entry<String, Double>> itA = map.entrySet().iterator();
         int arrarySize = map.size();
         Double[] values = new Double[arrarySize];
-        int i = 0;
-        while (iteratorA.hasNext()) {
-            values[i] = iteratorA.next().getValue();
-            i++;
+        int n = 0;
+        while (itA.hasNext()) {
+            values[n] = itA.next().getValue();
+            n++;
         }
         return values;
     }
