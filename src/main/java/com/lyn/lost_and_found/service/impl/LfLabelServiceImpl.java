@@ -7,10 +7,13 @@ import com.lyn.lost_and_found.domain.LfGoods;
 import com.lyn.lost_and_found.domain.LfLabel;
 import com.lyn.lost_and_found.domain.LfLabelRepository;
 import com.lyn.lost_and_found.domain.LfReleaseRecord;
+import com.lyn.lost_and_found.segmentation.fnlp.FNLPUtil;
 import com.lyn.lost_and_found.service.LfGoodsService;
 import com.lyn.lost_and_found.service.LfLabelService;
 import com.lyn.lost_and_found.service.LfReleaseRecordService;
+import com.lyn.lost_and_found.tfidf.TFIDFCalculation;
 import com.lyn.lost_and_found.tfidf.TFIDFCosSimilarityUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -70,8 +73,8 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
             LfLabel label = new LfLabel();
             BeanUtils.copyProperties(record, label);
             label.setId(null);
-            label.setGoodsId(matchGoodId);
-            label.setRelesedId(record.getId());
+            label.setPassiveGoodsId(matchGoodId);
+            label.setPassiveReleaseId(record.getId());
             label.setLabel(goodsService.get(matchGoodId).getName());
             super.save(label);
             labelList.add(label);
@@ -102,10 +105,43 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
         return keys;
     }
 
+    @Transactional(rollbackOn = Exception.class)
     @Override
-    public List<LfLabel> calCosSimilarity(LfReleaseRecord releaseRecord) {
-
-        return null;
+    public List<LfLabel> findLable(LfReleaseRecord releaseRecord) {
+        // 主动匹配的文本的 词频向量《关键词》=《keywords》
+        List<String> textAkeywords = Arrays.stream((releaseRecord.getKeywords()).split(",")).map(String::valueOf).collect(Collectors.toList());
+        // 主动匹配的文本的 所有分词
+        LfGoods goodsA = goodsService.get(releaseRecord.getGoodsId());
+        List<String> wordAllA = FNLPUtil.zhCNSeg(goodsA.getDescription());
+        // 与数据库中的记录作比较，计算、保存余弦相似度
+        List<LfReleaseRecord> releaseRecords = releaseRecordService.findByReleaseType(ReleaseType.PICK_UP);
+        Long activeReleaseRecordId = releaseRecord.getId();
+        List<LfLabel> labelList = new ArrayList<>();
+        for (LfReleaseRecord record : releaseRecords) {
+            // 被匹配的文本的 词频向量
+            List<String> textBkeywords = Arrays.stream((record.getKeywords()).split(",")).map(String::valueOf).collect(Collectors.toList());
+            Long passiveGoodsId = record.getGoodsId();
+            LfGoods goodsB = goodsService.get(passiveGoodsId);
+            // 被匹配的文本的 所有分词结果
+            List<String> wordAllB = FNLPUtil.zhCNSeg(goodsB.getDescription());
+            // 计算余弦相似度
+            Double cosSimilarity = TFIDFCalculation.calCosSimilarity(wordAllA, wordAllB, textAkeywords, textBkeywords);
+            LfLabel label = new LfLabel();
+            label.setLabel(StringUtils.join(wordAllB, ","));
+            label.setValue(cosSimilarity);
+            label.setPassiveGoodsId(passiveGoodsId);
+            Long passiveReleaseRecordId = record.getId();
+            label.setPassiveReleaseId(passiveReleaseRecordId);
+            label.setActiveReleaseId(activeReleaseRecordId);
+            labelList.add(label);
+            //            cosSimilarityMap.put(StringUtils.join(wordAllB, ","), cosSimilarity);
+        }
+        //根据余弦相似度给标签排序
+        List<LfLabel> labels = labelList.stream().sorted(Comparator.comparing(LfLabel::getValue).reversed()).collect(Collectors.toList()).subList(0, labelList.size() < 5 ? labelList.size() : 5);
+        for (LfLabel label : labels) {
+            super.save(label);
+        }
+        return labels;
     }
 
     public static void main(String[] args) {

@@ -56,41 +56,30 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
         releaseRecord.setReleaseStatus(ReleaseStatus.UNCLAIM);
 //        super.save(releaseRecord);
 
-        //分词、计算关键词：默认取5个
+        //给物品描述进行 分词、计算关键词：默认取5个
         String description = goods.getDescription();
-        List<String> wordAll = FNLPUtil.zhCNSeg(description);
-        Map<String, Double> tfidfs = TFIDFCalculation.calTFIDF(wordAll);
-        List<Map.Entry<String, Double>> entryList = tfidfs.entrySet().stream().
-                sorted(Comparator.comparing(Map.Entry<String, Double>::getValue).reversed()).
-                collect(Collectors.toList());
-        List<Map.Entry<String, Double>> topEntryList = entryList.subList(0, entryList.size() < 5 ? entryList.size() : 5);
-        Map<String, Double> topEntryListToMap = topEntryList.stream().collect(Collectors.toMap(m -> m.getKey(), m -> m.getValue()));
-        // 把数据以字符串的形式保存到数据库
-        String keywords = StringUtils.join(new ArrayList(topEntryListToMap.keySet()), ",");
-        releaseRecord.setKeywords(keywords);
-        String values = StringUtils.join(topEntryListToMap.values().toArray(), ",");
-        releaseRecord.setTfidfs(values);
+        if (Validator.isNotNull(description)) {
+            List<String> wordAll = FNLPUtil.zhCNSeg(description);
+            Map<String, Double> tfidfs = TFIDFCalculation.calTFIDF(wordAll);
+            List<Map.Entry<String, Double>> entryList = tfidfs.entrySet().stream().
+                    sorted(Comparator.comparing(Map.Entry<String, Double>::getValue).reversed()).
+                    collect(Collectors.toList());
+            List<Map.Entry<String, Double>> topEntryList = entryList.subList(0, entryList.size() < 5 ? entryList.size() : 5);
+            Map<String, Double> topEntryListToMap = topEntryList.stream().collect(Collectors.toMap(m -> m.getKey(), m -> m.getValue()));
+            // 把数据以字符串的形式保存到数据库
+            String keywords = StringUtils.join(new ArrayList(topEntryListToMap.keySet()), ",");
+            releaseRecord.setKeywords(keywords);
+            String values = StringUtils.join(topEntryListToMap.values().toArray(), ",");
+            releaseRecord.setTfidfs(values);
+        }
         super.save(releaseRecord);
 
         //推荐 给发布遗失的用户做推荐
         List<LfLabel> labelList = new ArrayList<>();
         if (goods.getReleaseType().equals(ReleaseType.LOSS)) {
-//            labelList = labelService.calTFIDF(releaseRecord);
+            labelList = labelService.findLable(releaseRecord);
         }
-        Long releaseRecordId = releaseRecord.getId();
-
         return labelList;
-    }
-
-    /**
-     * 计算此文本与其他文本的余弦相似度
-     * @param releaseRecord
-     * @return
-     */
-    private Map<String,Double> calCosSimilarity(LfReleaseRecord releaseRecord){
-        String keywords = releaseRecord.getKeywords();
-        String tfidfs = releaseRecord.getTfidfs();
-
     }
 
     @Transactional(rollbackOn = Exception.class)
@@ -144,6 +133,11 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
         return findByGoodsId(goodsId);
     }
 
+    @Override
+    public List<LfReleaseRecord> findByReleaseType(ReleaseType releaseType) {
+        return releaseRecordRepository.findByReleaseType(releaseType);
+    }
+
     public static void main(String[] args) {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
@@ -162,7 +156,7 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
         Map<Set<String>, Collection<Integer>> collect = list1.stream().collect(Collectors.toMap(m -> m.keySet(), m -> m.values()));
         System.out.println(collect);
 //        String[] ss=new String[collect.size()];
-        List<String> ss=new ArrayList<>();
+        List<String> ss = new ArrayList<>();
         String s = StringUtils.join(map.values().toArray(), "!");
         System.out.println(s);
     }

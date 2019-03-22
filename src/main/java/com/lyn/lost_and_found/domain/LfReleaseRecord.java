@@ -48,6 +48,10 @@ public class LfReleaseRecord extends BaseEntity<Long> {
      * 一组关键词对应的tfidf值
      */
     private String tfidfs;
+//    /***
+//     * 描述信息分词结果
+//     */
+//    private String segWordResult;
 
     @Enumerated(EnumType.ORDINAL)
     public ReleaseType getReleaseType() {

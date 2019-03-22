@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 public class LfKeywordTfidf extends BaseEntity<Long> {
 
-//   private Long goodsId;
+//   private Long passiveGoodsId;
 //
 //    private Long releaseRecordId;
 

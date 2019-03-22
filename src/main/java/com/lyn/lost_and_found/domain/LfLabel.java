@@ -20,23 +20,28 @@ public class LfLabel extends BaseEntity<Long> {
      */
     private String label;
     /**
-     * 值
+     * cos余弦相似度
      */
-    private String value;
+    private Double value;
     /**
-     * 发布者ID
+     * 被匹配的发布者ID
      */
-    private Long releaseUserId;
+    private Long passiveReleaseUserId;
     /**
-     * 发布记录ID
+     * 被匹配的发布记录ID
      */
-    private Long relesedId;
+    private Long passiveReleaseId;
     /**
      * 逻辑删：0-否 1-是
      */
     private YesNoNum delState = YesNoNum.no;
     /**
-     * 物品id
+     * 被匹配的物品id
      */
-    private Long goodsId;
+    private Long passiveGoodsId;
+
+    /**
+     * 主动匹配的 发布记录ID
+     */
+    private Long activeReleaseId;
 }

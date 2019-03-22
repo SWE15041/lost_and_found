@@ -107,7 +107,7 @@ public class TFIDFCalculation {
      * @param unionWords 并集集合的词
      * @return
      */
-    static Map<String, Double> calOppositeTF(List<String> wordAll, List<String> unionWords) {
+    private static Map<String, Double> calOppositeTF(List<String> wordAll, List<String> unionWords) {
         Map<String, Double> tfs = calTF(wordAll);
         Map<String, Double> oppositeTfs = new HashMap<>();
         for (String word : unionWords) {
