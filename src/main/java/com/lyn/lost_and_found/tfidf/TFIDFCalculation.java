@@ -53,11 +53,11 @@ public class TFIDFCalculation {
      */
     private static Map<String, Double> calIDFByDB(List<String> wordAll) {
         LfCorpusService corpusService = Application.getBeanContext().getBean(LfCorpusService.class);
-        Long wordSum = corpusService.getWordSum();
+        Long wordSum = Validator.isNotNull(corpusService.getWordSum()) ? corpusService.getWordSum() : 0;
         Map<String, Double> idfs = new HashMap<>();
         for (String word : wordAll) {
-            Long wordQuantities = corpusService.getWordQuantities(word);
-            Double idf = Math.log(wordSum * 1.0 / (wordQuantities + 1));
+            Long wordQuantities = Validator.isNotNull(corpusService.getWordQuantities(word)) ? corpusService.getWordQuantities(word) : 0L;
+            Double idf = Math.log((wordSum * 1.0) / (wordQuantities + 1));
             idfs.put(word, idf);
         }
         return idfs;
