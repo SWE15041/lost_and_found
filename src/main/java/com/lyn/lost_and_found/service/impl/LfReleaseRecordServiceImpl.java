@@ -9,17 +9,20 @@ import com.lyn.lost_and_found.domain.LfGoods;
 import com.lyn.lost_and_found.domain.LfLabel;
 import com.lyn.lost_and_found.domain.LfReleaseRecord;
 import com.lyn.lost_and_found.domain.LfReleaseRecordRepository;
+import com.lyn.lost_and_found.segmentation.fnlp.FNLPUtil;
 import com.lyn.lost_and_found.service.LfGoodsService;
 import com.lyn.lost_and_found.service.LfLabelService;
 import com.lyn.lost_and_found.service.LfReleaseRecordService;
+import com.lyn.lost_and_found.tfidf.TFIDFCalculation;
 import com.lyn.lost_and_found.utils.FileUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseRecord, Long> implements LfReleaseRecordService {
@@ -51,13 +54,43 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
         Long currentUserId = UserContextHolder.getCurrentUserId();
         releaseRecord.setReleaseUserId(currentUserId);
         releaseRecord.setReleaseStatus(ReleaseStatus.UNCLAIM);
+//        super.save(releaseRecord);
+
+        //分词、计算关键词：默认取5个
+        String description = goods.getDescription();
+        List<String> wordAll = FNLPUtil.zhCNSeg(description);
+        Map<String, Double> tfidfs = TFIDFCalculation.calTFIDF(wordAll);
+        List<Map.Entry<String, Double>> entryList = tfidfs.entrySet().stream().
+                sorted(Comparator.comparing(Map.Entry<String, Double>::getValue).reversed()).
+                collect(Collectors.toList());
+        List<Map.Entry<String, Double>> topEntryList = entryList.subList(0, entryList.size() < 5 ? entryList.size() : 5);
+        Map<String, Double> topEntryListToMap = topEntryList.stream().collect(Collectors.toMap(m -> m.getKey(), m -> m.getValue()));
+        // 把数据以字符串的形式保存到数据库
+        String keywords = StringUtils.join(new ArrayList(topEntryListToMap.keySet()), ",");
+        releaseRecord.setKeywords(keywords);
+        String values = StringUtils.join(topEntryListToMap.values().toArray(), ",");
+        releaseRecord.setTfidfs(values);
         super.save(releaseRecord);
+
         //推荐 给发布遗失的用户做推荐
         List<LfLabel> labelList = new ArrayList<>();
         if (goods.getReleaseType().equals(ReleaseType.LOSS)) {
 //            labelList = labelService.calTFIDF(releaseRecord);
         }
+        Long releaseRecordId = releaseRecord.getId();
+
         return labelList;
+    }
+
+    /**
+     * 计算此文本与其他文本的余弦相似度
+     * @param releaseRecord
+     * @return
+     */
+    private Map<String,Double> calCosSimilarity(LfReleaseRecord releaseRecord){
+        String keywords = releaseRecord.getKeywords();
+        String tfidfs = releaseRecord.getTfidfs();
+
     }
 
     @Transactional(rollbackOn = Exception.class)
@@ -109,6 +142,29 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
     @Override
     public LfReleaseRecord findByGoodsId(Long goodsId) {
         return findByGoodsId(goodsId);
+    }
+
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < 12; i++) {
+            list.add(i);
+        }
+        List<Integer> sub = list.subList(0, list.size() < 10 ? list.size() : 10);
+        System.out.println(sub);
+
+        Map<String, Integer> map = new HashMap<>();
+        map.put("a", 1);
+        map.put("b", 2);
+        map.put("c", 3);
+        map.put("d", 4);
+        List<Map<String, Integer>> list1 = new ArrayList<>();
+        list1.add(map);
+        Map<Set<String>, Collection<Integer>> collect = list1.stream().collect(Collectors.toMap(m -> m.keySet(), m -> m.values()));
+        System.out.println(collect);
+//        String[] ss=new String[collect.size()];
+        List<String> ss=new ArrayList<>();
+        String s = StringUtils.join(map.values().toArray(), "!");
+        System.out.println(s);
     }
 }
 

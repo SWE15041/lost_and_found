@@ -6,8 +6,10 @@ import com.lyn.lost_and_found.config.constant.ReleaseType;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
+import java.util.List;
 
 /**
  * 发布记录实体
@@ -37,7 +39,17 @@ public class LfReleaseRecord extends BaseEntity<Long> {
      */
     private ReleaseStatus releaseStatus;
 
-    @Enumerated
+    /**
+     * 一组关键词，默认10个
+     */
+    private String keywords;
+
+    /**
+     * 一组关键词对应的tfidf值
+     */
+    private String tfidfs;
+
+    @Enumerated(EnumType.ORDINAL)
     public ReleaseType getReleaseType() {
         return releaseType;
     }
@@ -45,7 +57,8 @@ public class LfReleaseRecord extends BaseEntity<Long> {
     public void setReleaseType(ReleaseType releaseType) {
         this.releaseType = releaseType;
     }
-    @Enumerated
+
+    @Enumerated(EnumType.ORDINAL)
     public ReleaseStatus getReleaseStatus() {
         return releaseStatus;
     }

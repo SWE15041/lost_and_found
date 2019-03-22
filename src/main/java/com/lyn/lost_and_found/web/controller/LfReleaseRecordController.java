@@ -20,7 +20,7 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
     @Autowired
     private LfReleaseRecordService releaseRecordService;
 
-// todo 用户发布物品之后返回推荐标签算法
+    // todo 用户发布物品之后返回推荐标签算法
 
     //todo 将发布类型加入到请求参数，将 发布遗失、发布拾遗 两个端口合并？
 

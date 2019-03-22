@@ -11,7 +11,7 @@ import com.lyn.lost_and_found.web.vo.LocalPage;
 import java.io.Serializable;
 import java.util.*;
 
-public abstract class  BaseLFGridController <T extends BaseEntity<ID>, ID extends Serializable> extends BaseGridController<T, ID> {
+public abstract class BaseLFGridController<T extends BaseEntity<ID>, ID extends Serializable> extends BaseGridController<T, ID> {
     public LocalPage localQuery() {
         Page<T> page = super.query();
         LocalPage localPage = new LocalPage();
