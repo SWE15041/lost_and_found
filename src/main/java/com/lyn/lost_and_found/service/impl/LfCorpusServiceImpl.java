@@ -1,6 +1,8 @@
 package com.lyn.lost_and_found.service.impl;
 
+import com.jay.vito.common.util.validate.Validator;
 import com.jay.vito.storage.service.EntityCRUDServiceImpl;
+import com.lyn.lost_and_found.corpus.CorpusTraining;
 import com.lyn.lost_and_found.domain.LfCorpus;
 import com.lyn.lost_and_found.domain.LfCorpusRepository;
 import com.lyn.lost_and_found.service.LfCorpusService;
@@ -9,6 +11,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+import java.util.Iterator;
+import java.util.Map;
 
 @Service
 public class LfCorpusServiceImpl extends EntityCRUDServiceImpl<LfCorpus, Long> implements LfCorpusService {
@@ -47,5 +52,25 @@ public class LfCorpusServiceImpl extends EntityCRUDServiceImpl<LfCorpus, Long> i
     public Long getWordQuantities(String name) {
         LfCorpus corpus = corpusRepository.findByName(name);
         return corpus.getQuantities();
+    }
+
+    @Transactional(rollbackOn = Exception.class)
+    @Override
+    public Boolean trainCorpus(String corpusDir) {
+        if (Validator.isNull(corpusDir)) {
+            return false;
+        }
+        Map<String, Long> corpusMap = CorpusTraining.trainCorpus(corpusDir);
+        Iterator<Map.Entry<String, Long>> iterator = corpusMap.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, Long> next = iterator.next();
+            String key = next.getKey();
+            Long value = next.getValue();
+            LfCorpus corpus = new LfCorpus();
+            corpus.setName(key);
+            corpus.setQuantities(value);
+            super.save(corpus);
+        }
+        return true;
     }
 }

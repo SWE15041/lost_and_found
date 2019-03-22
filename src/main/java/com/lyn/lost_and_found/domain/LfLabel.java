@@ -32,10 +32,6 @@ public class LfLabel extends BaseEntity<Long> {
      */
     private Long passiveReleaseId;
     /**
-     * 逻辑删：0-否 1-是
-     */
-    private YesNoNum delState = YesNoNum.no;
-    /**
      * 被匹配的物品id
      */
     private Long passiveGoodsId;
@@ -44,4 +40,8 @@ public class LfLabel extends BaseEntity<Long> {
      * 主动匹配的 发布记录ID
      */
     private Long activeReleaseId;
+    /**
+     * 逻辑删：0-否 1-是
+     */
+    private YesNoNum delState = YesNoNum.no;
 }

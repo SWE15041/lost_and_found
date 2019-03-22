@@ -20,7 +20,7 @@ public class CorpusTraining {
     /**
      * 语料库目录
      */
-    private static String corpusDir = "E:\\lyn\\毕设\\语料库\\生语料库\\";
+//    private static String corpusDir = "E:\\lyn\\毕设\\语料库\\生语料库\\";
 
 
     @Autowired
@@ -31,9 +31,9 @@ public class CorpusTraining {
      *
      * @return
      */
-    public static Map<String, Integer> trainCorpus() {
+    public static Map<String, Long> trainCorpus(String corpusDir) {
 
-        Map<String, Integer> corpusTF = new HashMap<>();
+        Map<String, Long> corpusTF = new HashMap<>();
         try {
             //创建中文处理工厂对象，并使用“models”目录下的模型文件初始化
             CNFactory cnFactory = CNFactory.getInstance("models", CNFactory.Models.SEG);
@@ -54,14 +54,14 @@ public class CorpusTraining {
                     if (corpusTF.containsKey(word)) {
                         corpusTF.put(word, corpusTF.get(word) + 1);
                     } else {
-                        corpusTF.put(word, 1);
+                        corpusTF.put(word, 1L);
                     }
                 }
             }
             //遍历分词
-            Iterator<Map.Entry<String, Integer>> iterator = corpusTF.entrySet().iterator();
+            Iterator<Map.Entry<String, Long>> iterator = corpusTF.entrySet().iterator();
             while (iterator.hasNext()) {
-                Map.Entry<String, Integer> next = iterator.next();
+                Map.Entry<String, Long> next = iterator.next();
                 System.out.println(next.getKey() + ":" + next.getValue());
             }
         } catch (LoadModelException e) {
@@ -71,6 +71,7 @@ public class CorpusTraining {
     }
 
     public static void main(String[] args) {
-        trainCorpus();
+        String corpusDir = "E:\\lyn\\毕设\\语料库\\生语料库\\";
+        trainCorpus(corpusDir);
     }
 }

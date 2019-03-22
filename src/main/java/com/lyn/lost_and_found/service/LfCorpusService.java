@@ -18,4 +18,10 @@ public interface LfCorpusService extends EntityCRUDService<LfCorpus, Long> {
      * @return
      */
     Long getWordQuantities(String name);
+
+    /**
+     * 语料库训练
+     * @return
+     */
+    Boolean trainCorpus(String corpusDir);
 }
