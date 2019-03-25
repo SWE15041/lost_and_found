@@ -24,11 +24,14 @@ public class CrawlDemo {
 //        List<String> webUrl = getHypeLink(swzlUrl);
         //3
         List<String> pageUrls = new ArrayList<>();
-        for (int i = 1; i <= 628; i++) {
+        /*for (int i = 1; i <= 10; i++) {
             String pageUrl = "http://www.cswzl.com/lostinfo.action?q.currentPageNum=" + String.valueOf(i)
                     + "&q.t=1&q.altercond=false";
             pageUrls.add(pageUrl);
-        }
+        }*/
+        String pageUrl2 = "http://www.cswzl.com/lostinfo.action?q.currentPageNum=" + String.valueOf(2)
+                + "&q.t=1&q.altercond=false";
+        pageUrls.add(pageUrl2);
         try {
 //            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File("")), "gbk"));
             for (String pageUrl : pageUrls) {
@@ -53,8 +56,10 @@ public class CrawlDemo {
                     bufferedWriter.close();
                     outputStreamWriter.close();
                     fileOutputStream.close();
+                    Thread.sleep(3000);
                 }
                 hypeLink.clear();
+                Thread.sleep(3000);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -92,6 +97,7 @@ public class CrawlDemo {
             String prefix = "http://www.cswzl.com";
             Connection connection = Jsoup.connect(url).timeout(10000);
             Document document = connection.get();
+            System.out.println(document.body());
             Elements aTags = document.getElementsByTag("a");
 //            System.out.println(aTags);
             Element element = document.select("form#lostinfo").get(0).select(".info_title1").get(0);

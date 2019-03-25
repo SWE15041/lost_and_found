@@ -1,5 +1,6 @@
 package com.lyn.lost_and_found.service.impl;
 
+import com.jay.vito.common.util.validate.Validator;
 import com.jay.vito.storage.service.EntityCRUDServiceImpl;
 import com.lyn.lost_and_found.config.constant.ReleaseStatus;
 import com.lyn.lost_and_found.config.constant.ReleaseType;
@@ -107,11 +108,11 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
 
     @Transactional(rollbackOn = Exception.class)
     @Override
-    public List<LfLabel> findLable(LfReleaseRecord releaseRecord) {
+    public List<LfLabel> findLable(LfReleaseRecord releaseRecord, LfGoods goodsA) {
         // 主动匹配的文本的 词频向量《关键词》=《keywords》
         List<String> textAkeywords = Arrays.stream((releaseRecord.getKeywords()).split(",")).map(String::valueOf).collect(Collectors.toList());
         // 主动匹配的文本的 所有分词
-        LfGoods goodsA = goodsService.get(releaseRecord.getGoodsId());
+//        LfGoods goodsA = goodsService.get(releaseRecord.getGoodsId());
         List<String> wordAllA = FNLPUtil.zhCNSeg(goodsA.getDescription());
         // 与数据库中的记录作比较，计算、保存余弦相似度
         List<LfReleaseRecord> releaseRecords = releaseRecordService.findByReleaseType(ReleaseType.PICK_UP);
@@ -119,7 +120,11 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
         List<LfLabel> labelList = new ArrayList<>();
         for (LfReleaseRecord record : releaseRecords) {
             // 被匹配的文本的 词频向量
-            List<String> textBkeywords = Arrays.stream((record.getKeywords()).split(",")).map(String::valueOf).collect(Collectors.toList());
+            String recordKeywords = record.getKeywords();
+            if (Validator.isNull(recordKeywords)) {
+                continue;
+            }
+            List<String> textBkeywords = Arrays.stream((recordKeywords).split(",")).map(String::valueOf).collect(Collectors.toList());
             Long passiveGoodsId = record.getGoodsId();
             LfGoods goodsB = goodsService.get(passiveGoodsId);
             // 被匹配的文本的 所有分词结果
@@ -127,7 +132,7 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
             // 计算余弦相似度
             Double cosSimilarity = TFIDFCalculation.calCosSimilarity(wordAllA, wordAllB, textAkeywords, textBkeywords);
             LfLabel label = new LfLabel();
-            label.setLabel(StringUtils.join(wordAllB, ","));
+            label.setLabel(StringUtils.join(textBkeywords, ","));
             label.setValue(cosSimilarity);
             label.setPassiveGoodsId(passiveGoodsId);
             Long passiveReleaseRecordId = record.getId();

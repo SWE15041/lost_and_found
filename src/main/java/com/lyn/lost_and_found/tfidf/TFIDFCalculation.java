@@ -1,9 +1,11 @@
 package com.lyn.lost_and_found.tfidf;
 
+import com.jay.vito.common.util.MathUtil;
 import com.jay.vito.common.util.validate.Validator;
 import com.jay.vito.website.core.Application;
 import com.lyn.lost_and_found.service.LfCorpusService;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.*;
 
@@ -38,7 +40,7 @@ public class TFIDFCalculation {
             }
         }
         for (Map.Entry<String, Integer> entry : dict.entrySet()) {
-            Double wordTf = (entry.getValue() * 1.0) / wordCnt;
+            Double wordTf = MathUtil.divideDouble(entry.getValue(), wordCnt, 6);
             tfs.put(entry.getKey(), wordTf);
         }
         return tfs;
@@ -57,7 +59,7 @@ public class TFIDFCalculation {
         Map<String, Double> idfs = new HashMap<>();
         for (String word : wordAll) {
             Long wordQuantities = Validator.isNotNull(corpusService.getWordQuantities(word)) ? corpusService.getWordQuantities(word) : 0L;
-            Double idf = Math.log((wordSum * 1.0) / (wordQuantities + 1));
+            Double idf = Math.log(MathUtil.divideDouble(wordSum * 1.0, (wordQuantities + 1), 6));
             idfs.put(word, idf);
         }
         return idfs;
@@ -79,8 +81,9 @@ public class TFIDFCalculation {
             String currentWord = tf.getKey();
             Double tfValue = tf.getValue();
             Double idfValue = idfs.get(currentWord);
-            tfidfs.put(currentWord, tfValue * idfValue);
+            tfidfs.put(currentWord, new BigDecimal(MathUtil.multiplyDouble(tfValue, idfValue)).setScale(6, BigDecimal.ROUND_HALF_UP).doubleValue());
         }
+
         return tfidfs;
     }
 
@@ -135,6 +138,7 @@ public class TFIDFCalculation {
      * 计算cos向量值
      * 公式：cos(θ)=∑(xi+yi)/((√∑(xi*xi) * √∑(yi*yi)))
      * 分子molecular
+     * 分母denominator
      *
      * @param vectorA
      * @param vectorB
@@ -161,7 +165,8 @@ public class TFIDFCalculation {
         if (left * right == 0) {
             return 2.0000;
         }
-        Double result = molecular / Math.sqrt(left * right);
+        Double denominator = Math.sqrt(MathUtil.multiplyDouble(left, right));
+        Double result = MathUtil.divideDouble(molecular, denominator, 6);
         DecimalFormat df = new DecimalFormat("#.####");
         return Double.parseDouble(df.format(result));
     }
@@ -184,4 +189,25 @@ public class TFIDFCalculation {
         return calCosSimilarity(oppositeTFsA, oppositeTFsB);
     }
 
+    public static void main(String[] args) {
+
+        double sqrt = Math.sqrt(0.005202913631633714 / 0.005202913631633714);
+        System.out.println(sqrt);
+        System.out.println(0.000333554 / 0.0000002);
+
+        Double a = 0.03225806451612903;
+        Double b = 0.01111;
+        Double c = 0.0;
+        c += a * b;
+        System.out.println(c + "=" + a * b);
+        BigDecimal a1 = new BigDecimal(Double.toString(a));
+        BigDecimal b1 = new BigDecimal(Double.toString(b));
+        System.out.println(a1.multiply(b1));
+
+        String words = "钱包,车,上掉,司机,说,手机,估计,2019年,3月,24日,哈尔滨,发往,宝清,长途,卧铺,客车,丢失,钱包,身份证,退伍,证,银行卡,退伍证,补办,求,好心人,电话,18345834683,标题,日期,发错";
+//        List<String> collect = Arrays.stream(words.split("|")).map(String::valueOf).collect(Collectors.toList());
+        List<String> asList = Arrays.asList(words.split(","));
+        Map<String, Double> map = calTF(asList);
+        System.out.println(map);
+    }
 }

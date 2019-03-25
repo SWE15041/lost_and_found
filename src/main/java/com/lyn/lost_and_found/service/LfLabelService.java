@@ -1,6 +1,7 @@
 package com.lyn.lost_and_found.service;
 
 import com.jay.vito.storage.service.EntityCRUDService;
+import com.lyn.lost_and_found.domain.LfGoods;
 import com.lyn.lost_and_found.domain.LfLabel;
 import com.lyn.lost_and_found.domain.LfReleaseRecord;
 
@@ -22,6 +23,6 @@ public interface LfLabelService extends EntityCRUDService<LfLabel, Long> {
      * @param releaseRecord
      * @return
      */
-    List<LfLabel> findLable(LfReleaseRecord releaseRecord);
+    List<LfLabel> findLable(LfReleaseRecord releaseRecord, LfGoods goodsA);
 
 }
