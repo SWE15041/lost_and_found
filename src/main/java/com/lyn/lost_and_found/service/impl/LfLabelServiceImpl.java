@@ -113,7 +113,7 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
         List<String> textAkeywords = Arrays.stream((releaseRecord.getKeywords()).split(",")).map(String::valueOf).collect(Collectors.toList());
         // 主动匹配的文本的 所有分词
 //        LfGoods goodsA = goodsService.get(releaseRecord.getGoodsId());
-        List<String> wordAllA = FNLPUtil.zhCNSeg(goodsA.getDescription());
+        List<String> wordAllA = FNLPUtil.zhCNSegGetNoun(goodsA.getDescription());
         // 与数据库中的记录作比较，计算、保存余弦相似度
         List<LfReleaseRecord> releaseRecords = releaseRecordService.findByReleaseType(ReleaseType.PICK_UP);
         Long activeReleaseRecordId = releaseRecord.getId();
@@ -128,7 +128,7 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
             Long passiveGoodsId = record.getGoodsId();
             LfGoods goodsB = goodsService.get(passiveGoodsId);
             // 被匹配的文本的 所有分词结果
-            List<String> wordAllB = FNLPUtil.zhCNSeg(goodsB.getDescription());
+            List<String> wordAllB = FNLPUtil.zhCNSegGetNoun(goodsB.getDescription());
             // 计算余弦相似度
             Double cosSimilarity = TFIDFCalculation.calCosSimilarity(wordAllA, wordAllB, textAkeywords, textBkeywords);
             LfLabel label = new LfLabel();

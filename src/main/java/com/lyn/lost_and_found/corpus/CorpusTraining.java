@@ -1,6 +1,7 @@
 package com.lyn.lost_and_found.corpus;
 
 import com.jay.vito.common.util.validate.Validator;
+import com.lyn.lost_and_found.segmentation.fnlp.FNLPUtil;
 import com.lyn.lost_and_found.utils.FileUtil;
 import org.fnlp.nlp.cn.CNFactory;
 import org.fnlp.nlp.corpus.StopWords;
@@ -33,7 +34,40 @@ public class CorpusTraining {
                 throw new RuntimeException("------------------生语料库为空---------------");
             }
             //创建中文处理工厂对象，并使用“models”目录下的模型文件初始化
-            CNFactory cnFactory = CNFactory.getInstance("models", CNFactory.Models.SEG);
+            CNFactory cnFactory = CNFactory.getInstance("models");
+            StopWords stopWords = new StopWords("./models/stopwords");
+            for (File file : files) {
+                //读取文件内容
+                List<String> fileContent = FileUtil.getFileContent(file.getAbsolutePath());
+                //分词、过滤停用词、获取名词
+                List<String> nounWord = FNLPUtil.zhCNSegGetNoun(fileContent.toString());
+                for (String word : nounWord) {
+                    if (corpusTF.containsKey(word)) {
+                        corpusTF.put(word, corpusTF.get(word) + 1);
+                    } else {
+                        corpusTF.put(word, 1L);
+                    }
+                }
+            }
+        } catch (LoadModelException e) {
+            e.printStackTrace();
+        }
+        return corpusTF;
+    }
+
+    public static Map<String, Long> oldTrainCorpus(String corpusDir) {
+        if (!corpusDir.toLowerCase().endsWith("\\")) {
+            corpusDir += "\\";
+        }
+        Map<String, Long> corpusTF = new HashMap<>();
+        try {
+            //读取生语料库目录
+            File[] files = new File(corpusDir).listFiles();
+            if (Validator.isNull(files)) {
+                throw new RuntimeException("------------------生语料库为空---------------");
+            }
+            //创建中文处理工厂对象，并使用“models”目录下的模型文件初始化
+            CNFactory cnFactory = CNFactory.getInstance("models");
             StopWords stopWords = new StopWords("./models/stopwords");
             for (File file : files) {
                 //读取文件内容
@@ -66,6 +100,6 @@ public class CorpusTraining {
 
     public static void main(String[] args) {
         String corpusDir = "E:\\lyn\\毕设\\语料库\\生语料库\\";
-        trainCorpus(corpusDir);
+        oldTrainCorpus(corpusDir);
     }
 }

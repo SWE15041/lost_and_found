@@ -120,6 +120,7 @@ public class FileUtil {
 
     /**
      * 获取文件内容
+     *
      * @param pathname
      * @return
      */
@@ -151,6 +152,33 @@ public class FileUtil {
             e.printStackTrace();
         }
         return sb;
+    }
+
+    /**
+     * 将文本内容写入指定文件
+     * @param path
+     * @param content
+     */
+    public static void writeFile(String path,String content){
+        File file = new File(path);
+        File parentFile = file.getParentFile();
+        if (!parentFile.exists()) {
+            parentFile.mkdirs();
+        }
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream, "UTF-8");
+            BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
+            //加入换行符
+            bufferedWriter.write(content + "\n");
+
+            bufferedWriter.close();
+            outputStreamWriter.close();
+            fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
     public static void main(String[] args) {
         String pathname = "/users/lyn/picPath/5a56ff5210c140369cf607436e57955c.jpg";

@@ -59,7 +59,7 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
         // 给物品描述进行 分词、计算关键词：默认取5个 (无论哪种发布类型都有进行关键词提取)
         String description = goods.getDescription();
         if (Validator.isNotNull(description)) {
-            List<String> wordAll = FNLPUtil.zhCNSeg(description);
+            List<String> wordAll = FNLPUtil.zhCNSegGetNoun(description);
             Map<String, Double> tfidfsMap = TFIDFCalculation.calTFIDF(wordAll);
             List<Map.Entry<String, Double>> entryList = tfidfsMap.entrySet().stream().
                     sorted(Comparator.comparing(Map.Entry<String, Double>::getValue).reversed()).

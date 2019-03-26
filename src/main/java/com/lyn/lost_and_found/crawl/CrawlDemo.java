@@ -1,5 +1,6 @@
 package com.lyn.lost_and_found.crawl;
 
+import com.lyn.lost_and_found.utils.FileUtil;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -16,47 +17,37 @@ import java.util.UUID;
 
 public class CrawlDemo {
     public static void main(String[] args) {
-        //1.获取描述信息
-//        String url = "http://www.cswzl.com/lostinfo!view.action?id=24194";
-//        getWebInfo(url);
-        //2.获取url
-//        String swzlUrl = "http://www.cswzl.com/lostinfo.action";
-//        List<String> webUrl = getHypeLink(swzlUrl);
-        //3
         List<String> pageUrls = new ArrayList<>();
-        /*for (int i = 1; i <= 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             String pageUrl = "http://www.cswzl.com/lostinfo.action?q.currentPageNum=" + String.valueOf(i)
                     + "&q.t=1&q.altercond=false";
             pageUrls.add(pageUrl);
-        }*/
-        String pageUrl2 = "http://www.cswzl.com/lostinfo.action?q.currentPageNum=" + String.valueOf(2)
-                + "&q.t=1&q.altercond=false";
-        pageUrls.add(pageUrl2);
+        }
         try {
-//            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File("")), "gbk"));
             for (String pageUrl : pageUrls) {
                 System.out.println("-----------失物招领的页面: " + pageUrl + " -----------------------");
                 List<String> hypeLink = getHypeLink(pageUrl);
                 for (String url : hypeLink) {
                     System.out.println("--------------爬取数据的url:" + url + " ---------------------");
                     String webInfo = getWebInfo(url);
-                    String uuid = UUID.randomUUID().toString().replace("-", "");
-                    String path = "E:\\lyn\\毕设\\语料库\\生语料库\\" + uuid;
-                    File file = new File(path);
-                    File parentFile = file.getParentFile();
-                    if (!parentFile.exists()) {
-                        parentFile.mkdirs();
-                    }
-                    FileOutputStream fileOutputStream = new FileOutputStream(file);
-                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream, "UTF-8");
-                    BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-                    //加入换行符
-                    bufferedWriter.write(webInfo + "\n");
-
-                    bufferedWriter.close();
-                    outputStreamWriter.close();
-                    fileOutputStream.close();
+                    String filename = UUID.randomUUID().toString().replace("-", "") + ".txt";
+                    String path = "E:\\lyn\\毕设\\语料库\\生语料库\\" + filename;
+                    FileUtil.writeFile(path, webInfo);
                     Thread.sleep(3000);
+//                    File file = new File(path);
+//                    File parentFile = file.getParentFile();
+//                    if (!parentFile.exists()) {
+//                        parentFile.mkdirs();
+//                    }
+//                    FileOutputStream fileOutputStream = new FileOutputStream(file);
+//                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream, "UTF-8");
+//                    BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
+//                    //加入换行符
+//                    bufferedWriter.write(webInfo + "\n");
+//
+//                    bufferedWriter.close();
+//                    outputStreamWriter.close();
+//                    fileOutputStream.close();
                 }
                 hypeLink.clear();
                 Thread.sleep(3000);
