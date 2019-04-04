@@ -8,7 +8,8 @@
       u.nick_name as release_name,
       DATE_FORMAT(g.release_time,'%y-%m-%d %h:%m:%s') as release_time,
       g.release_status,
-      g.money
+      g.money,
+      g.category_id
     </sql>
 
     <sql id="WhereClause">
