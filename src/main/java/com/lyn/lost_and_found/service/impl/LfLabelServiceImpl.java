@@ -2,7 +2,6 @@ package com.lyn.lost_and_found.service.impl;
 
 import com.jay.vito.common.util.validate.Validator;
 import com.jay.vito.storage.service.EntityCRUDServiceImpl;
-import com.lyn.lost_and_found.config.constant.ReleaseStatus;
 import com.lyn.lost_and_found.config.constant.ReleaseType;
 import com.lyn.lost_and_found.domain.LfGoods;
 import com.lyn.lost_and_found.domain.LfLabel;
@@ -13,9 +12,7 @@ import com.lyn.lost_and_found.service.LfGoodsService;
 import com.lyn.lost_and_found.service.LfLabelService;
 import com.lyn.lost_and_found.service.LfReleaseRecordService;
 import com.lyn.lost_and_found.tfidf.TFIDFCalculation;
-import com.lyn.lost_and_found.tfidf.TFIDFCosSimilarityUtil;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -40,53 +37,53 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
         return super.getRepository();
     }
 
-    @Transactional(rollbackOn = Exception.class)
-    @Override
-    public List<LfLabel> calTFIDF(LfReleaseRecord releaseRecord) {
-        //1 获取等待匹配物品的描述信息（发布类型为遗失，筛选拾遗类型的物品）
-        Long goodsId = releaseRecord.getGoodsId();
-        LfGoods goods = goodsService.get(goodsId);
-        String description = goods.getDescription();
-        //2 获取需要匹配的所有物品
-        List<LfGoods> pickUpGoods = goodsService.findGoods(ReleaseType.PICK_UP, ReleaseStatus.UNCLAIM);
-        Map<String, Double> cosSimilarityMaps = new HashMap<>();
-        for (LfGoods pickUpGood : pickUpGoods) {
-            Long pickUpGoodId = pickUpGood.getId();
-            System.out.println(pickUpGoodId);
-            String matchDescripInfo = pickUpGood.getDescription();
-            Double cosVector = TFIDFCosSimilarityUtil.calCosineSimilarity(description, matchDescripInfo);
-            if (cosVector >= 0.5 && cosVector <= 1) {
-                cosSimilarityMaps.put(String.valueOf(pickUpGoodId), cosVector);
-            }
-        }
-        //3 取余弦相似度大于0.5的物品
-        List<String> mapByValue = sortMapByValue(cosSimilarityMaps);
-        mapByValue.forEach(System.out::println);
-        int topNum = 5;
-        List<LfLabel> labelList = new ArrayList<>();
-        for (String matchGoodIds : mapByValue) {
-            if (topNum < 0) {
-                break;
-            }
-            topNum--;
-            long matchGoodId = Long.parseLong(matchGoodIds);
-            LfReleaseRecord record = releaseRecordService.getByGoodsId(matchGoodId);
-            LfLabel label = new LfLabel();
-            BeanUtils.copyProperties(record, label);
-            label.setId(null);
-            label.setPassiveGoodsId(matchGoodId);
-            label.setPassiveReleaseId(record.getId());
-            label.setLabel(goodsService.get(matchGoodId).getName());
-            super.save(label);
-            labelList.add(label);
-        }
-        Iterator<Map.Entry<String, Double>> iterator = cosSimilarityMaps.entrySet().iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
-        }
-        labelList.forEach(System.out::println);
-        return labelList;
-    }
+//    @Transactional(rollbackOn = Exception.class)
+//    @Override
+//    public List<LfLabel> calTFIDF(LfReleaseRecord releaseRecord) {
+//        //1 获取等待匹配物品的描述信息（发布类型为遗失，筛选拾遗类型的物品）
+//        Long goodsId = releaseRecord.getGoodsId();
+//        LfGoods goods = goodsService.get(goodsId);
+//        String description = goods.getDescription();
+//        //2 获取需要匹配的所有物品
+//        List<LfGoods> pickUpGoods = goodsService.findGoods(ReleaseType.PICK_UP, ReleaseStatus.UNCLAIM);
+//        Map<String, Double> cosSimilarityMaps = new HashMap<>();
+//        for (LfGoods pickUpGood : pickUpGoods) {
+//            Long pickUpGoodId = pickUpGood.getId();
+//            System.out.println(pickUpGoodId);
+//            String matchDescripInfo = pickUpGood.getDescription();
+//            Double cosVector = TFIDFCosSimilarityUtil.calCosineSimilarity(description, matchDescripInfo);
+//            if (cosVector >= 0.5 && cosVector <= 1) {
+//                cosSimilarityMaps.put(String.valueOf(pickUpGoodId), cosVector);
+//            }
+//        }
+//        //3 取余弦相似度大于0.5的物品
+//        List<String> mapByValue = sortMapByValue(cosSimilarityMaps);
+//        mapByValue.forEach(System.out::println);
+//        int topNum = 5;
+//        List<LfLabel> labelList = new ArrayList<>();
+//        for (String matchGoodIds : mapByValue) {
+//            if (topNum < 0) {
+//                break;
+//            }
+//            topNum--;
+//            long matchGoodId = Long.parseLong(matchGoodIds);
+//            LfReleaseRecord record = releaseRecordService.getByGoodsId(matchGoodId);
+//            LfLabel label = new LfLabel();
+//            BeanUtils.copyProperties(record, label);
+//            label.setId(null);
+//            label.setPassiveGoodsId(matchGoodId);
+//            label.setPassiveReleaseId(record.getId());
+//            label.setLabel(goodsService.get(matchGoodId).getName());
+//            super.save(label);
+//            labelList.add(label);
+//        }
+//        Iterator<Map.Entry<String, Double>> iterator = cosSimilarityMaps.entrySet().iterator();
+//        while (iterator.hasNext()) {
+//            System.out.println(iterator.next());
+//        }
+//        labelList.forEach(System.out::println);
+//        return labelList;
+//    }
 
     /**
      * 按map的值进行降序排序

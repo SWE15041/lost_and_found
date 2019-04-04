@@ -79,7 +79,12 @@ public class IKAnalyzerUtil {
         mydict.add("捡到者");
         mydict.add("惠兴中学");
         Dictionary.getSingleton().addWords(mydict);
-        TokenStream tokenStream = ikAnalyzer.tokenStream("", stringReader);
+        TokenStream tokenStream = null;
+        try {
+            tokenStream = ikAnalyzer.tokenStream("", stringReader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         CharTermAttribute term = tokenStream.getAttribute(CharTermAttribute.class);
         try {
             tokenStream.reset();

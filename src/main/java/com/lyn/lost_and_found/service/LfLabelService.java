@@ -15,7 +15,7 @@ public interface LfLabelService extends EntityCRUDService<LfLabel, Long> {
      * @param releaseRecord
      * @return
      */
-    List<LfLabel> calTFIDF(LfReleaseRecord releaseRecord);
+//    List<LfLabel> calTFIDF(LfReleaseRecord releaseRecord);
 
     /**
      * 获取推荐标签（计算余弦相似度）
