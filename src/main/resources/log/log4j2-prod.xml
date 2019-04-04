@@ -7,7 +7,7 @@
 <configuration status="OFF">
     <Properties>
         <!-- 配置日志文件输出目录，此配置将日志输出到logs目录下的指定文件夹 -->
-        <Property name="logdir">logs/sdk-service</Property>
+        <Property name="logdir">logs/lost-and-found</Property>
     </Properties>
     <Appenders>
         <!-- 优先级从高到低分别是 OFF、FATAL、ERROR、WARN、INFO、DEBUG、ALL -->

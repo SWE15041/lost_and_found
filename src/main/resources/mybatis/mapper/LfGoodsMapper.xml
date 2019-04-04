@@ -21,6 +21,9 @@
             <if test="releaseType != null and releaseType != ''">
                 and (rr.release_type =  #{releaseType})
             </if>
+            <if  test="categoryId != null and categoryId != ''">
+                and g.category_id = #{categoryId}
+            </if>
         </where>
     </sql>
     <sql id="OrderClause">
