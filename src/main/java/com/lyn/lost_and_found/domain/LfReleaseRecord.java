@@ -35,7 +35,7 @@ public class LfReleaseRecord extends BaseEntity<Long> {
     private ReleaseType releaseType;
 
     /**
-     * 记录状态：0-等待同意 1-同意认领 2-拒绝认领  3-未被认领
+     * 记录状态：0-未认领 1-已认领
      */
     private ReleaseStatus releaseStatus;
 

@@ -57,7 +57,7 @@ public class LfGoods extends BaseEntity<Long> {
      */
     private  String addr;
     /**
-     * 物品状态：0-未认领 1-已认领 2-认领中
+     * 物品状态：0-未认领 1-已认领
      */
     @Enumerated
     private ReleaseStatus releaseStatus = ReleaseStatus.UNCLAIM;
