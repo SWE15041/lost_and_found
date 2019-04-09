@@ -41,7 +41,7 @@ spring:
         slow-sql-millis: 2000
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
 
 mybatis:
@@ -66,3 +66,6 @@ logging:
 
 corpus:
   path: E:\lyn\毕设\语料库
+
+tfidf:
+  keywordsNum: 10

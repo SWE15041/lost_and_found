@@ -17,6 +17,7 @@ import com.lyn.lost_and_found.tfidf.TFIDFCalculation;
 import com.lyn.lost_and_found.utils.FileUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,8 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
     private LfGoodsService goodsService;
     @Autowired
     private LfLabelService labelService;
+    @Value("${tfidf.keywordsNum}")
+    private Integer keywordsNum;
 
     @Override
     protected JpaRepository<LfReleaseRecord, Long> getRepository() {
@@ -64,7 +67,7 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
             List<Map.Entry<String, Double>> entryList = tfidfsMap.entrySet().stream().
                     sorted(Comparator.comparing(Map.Entry<String, Double>::getValue).reversed()).
                     collect(Collectors.toList());
-            List<Map.Entry<String, Double>> topEntryList = entryList.subList(0, entryList.size() < 5 ? entryList.size() : 5);
+            List<Map.Entry<String, Double>> topEntryList = entryList.subList(0, entryList.size() < keywordsNum ? entryList.size() : keywordsNum);
             // 把数据以字符串的形式保存到数据库
             List<String> keys = topEntryList.stream().map(Map.Entry::getKey).collect(Collectors.toList());
             String keywords = StringUtils.join(keys, ",");

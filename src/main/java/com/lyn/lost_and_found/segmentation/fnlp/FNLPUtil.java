@@ -47,11 +47,14 @@ public class FNLPUtil {
                     String pos = tags[i + 1][j];
                     boolean isStopWord = stopWords.isStopWord(word);
                     if (!isStopWord) {
+//                        System.out.println(word+"/"+pos);
                         if (pos.equals("名词")||pos.equals("形容词")||pos.equals("地名")||pos.equals("人名")) {
                             nounWords.add(word);
                         }
+                    }else {
+//                        System.out.println("stopword:"+word+"/"+pos);
                     }
-                    System.out.println(word+":"+pos);
+                    System.out.println(word+"/"+pos);
                 }
             }
         }

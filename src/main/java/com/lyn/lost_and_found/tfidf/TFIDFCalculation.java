@@ -186,7 +186,10 @@ public class TFIDFCalculation {
         unionWords.addAll(keyWordsB);
         Map<String, Double> oppositeTFsA = calOppositeTF(wordAllA, new ArrayList<>(unionWords));
         Map<String, Double> oppositeTFsB = calOppositeTF(wordAllB, new ArrayList<>(unionWords));
-        return calCosSimilarity(oppositeTFsA, oppositeTFsB);
+        Double cosSimilarity = calCosSimilarity(oppositeTFsA, oppositeTFsB);
+        System.out.println(new ArrayList<>(unionWords)+"=>"+cosSimilarity);
+        return cosSimilarity;
+
     }
 
     public static void main(String[] args) {
