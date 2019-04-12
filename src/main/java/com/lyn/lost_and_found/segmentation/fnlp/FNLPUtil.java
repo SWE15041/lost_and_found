@@ -1,9 +1,9 @@
 package com.lyn.lost_and_found.segmentation.fnlp;
 
 import com.jay.vito.common.util.validate.Validator;
+import com.jay.vito.website.core.cache.SystemDataHolder;
 import org.fnlp.nlp.cn.CNFactory;
 import org.fnlp.nlp.corpus.StopWords;
-import org.fnlp.util.exception.LoadModelException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,14 +26,15 @@ public class FNLPUtil {
             return null;
         }
         // 创建中文处理工厂对象，并使用“models”目录下的模型文件初始化
-        CNFactory factory = null;
-        try {
-            factory = CNFactory.getInstance("models");
-        } catch (LoadModelException e) {
+        CNFactory factory = CNFactory.getInstance();
+//        CNFactory factory = null;
+//        String path = this.getClass().getClassLoader().getResource("/models").getPath();
+        if (factory == null) {
             throw new RuntimeException("分词模型载入异常");
         }
-        //加载、配置停用词词典
-        StopWords stopWords = new StopWords("./models/stopwords");
+        //加载、配置停用词词典 E:\java\project\lost_and_found\src\main\resources\models
+        String stopwordsDir = SystemDataHolder.getParam("stopwordsDir", String.class);
+        StopWords stopWords = new StopWords(stopwordsDir);
 
         // 使用分词器对中文句子进行分词，得到分词结果{{单词...}，{词性...}}
         String[][] tags = factory.tag(text);
@@ -48,13 +49,13 @@ public class FNLPUtil {
                     boolean isStopWord = stopWords.isStopWord(word);
                     if (!isStopWord) {
 //                        System.out.println(word+"/"+pos);
-                        if (pos.equals("名词")||pos.equals("形容词")||pos.equals("地名")||pos.equals("人名")) {
+                        if (pos.equals("名词") || pos.equals("形容词") || pos.equals("地名") || pos.equals("人名")) {
                             nounWords.add(word);
                         }
-                    }else {
+                    } else {
 //                        System.out.println("stopword:"+word+"/"+pos);
                     }
-                    System.out.println(word+"/"+pos);
+                    System.out.println(word + "/" + pos);
                 }
             }
         }

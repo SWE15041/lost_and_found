@@ -69,3 +69,8 @@ corpus:
 
 tfidf:
   keywordsNum: 10
+
+
+fnlp:
+  #分词模型所在目录
+  modelsDir: E:\java\project\lost_and_found\src\main\resources\models

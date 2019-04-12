@@ -37,6 +37,7 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
     @Value("${tfidf.keywordsNum}")
     private Integer keywordsNum;
 
+
     @Override
     protected JpaRepository<LfReleaseRecord, Long> getRepository() {
         return super.getRepository();
