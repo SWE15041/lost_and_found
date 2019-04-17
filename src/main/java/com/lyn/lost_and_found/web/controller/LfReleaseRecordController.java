@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api/releaseRecords")
@@ -84,6 +85,23 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
     public Boolean delete(@PathVariable("id") Long id) {
         releaseRecordService.delete(id);
         return true;
+    }
+
+    /**
+     * 用于算法测试
+     * 指定数量发布物品记录
+     *
+     * @param map
+     * @return
+     */
+    @RequestMapping(value = "/buildReleaseData", method = RequestMethod.POST)
+    public Boolean releaseGoods(@RequestBody Map<String, String> map) {
+        //需要发布的物品记录；物品类型为0；
+        Long goodsNum = Long.parseLong(map.get("goodsNum"));
+        //测试数据存放的地址
+        String corpusDir = map.get("corpusDir");
+        //读取生语料库目录
+        return releaseRecordService.buildReleaseData(goodsNum, corpusDir);
     }
 
 }

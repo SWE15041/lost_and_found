@@ -22,6 +22,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -142,6 +143,35 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
     @Override
     public List<LfReleaseRecord> findByReleaseType(ReleaseType releaseType) {
         return releaseRecordRepository.findByReleaseType(releaseType);
+    }
+
+    @Transactional(rollbackOn = Exception.class)
+    @Override
+    public Boolean buildReleaseData(Long goodsNum, String corpusDir) {
+        if (Validator.isNull(goodsNum) || Validator.isNull(corpusDir)) {
+            return false;
+        }
+        File[] files = new File(corpusDir).listFiles();
+        if (Validator.isNull(files)) {
+            throw new RuntimeException("------------------生语料库为空---------------");
+        }
+        int cnt = 0;
+        for (File file : files) {
+            if (cnt > goodsNum) {
+                break;
+            }
+            String description = FileUtil.getFileContent(file.getAbsolutePath()).toString();
+            LfGoods goods = new LfGoods();
+            goods.setDescription(description);
+            goods.setReleaseType(ReleaseType.PICK_UP);
+            goods.setName("未知");
+            goods.setCategoryId(7L);
+            goods.setLatitude(22.22);
+            goods.setLongitude(11.11);
+            goods.setReleaseTime(new Date());
+            releaseGoods(goods);
+        }
+        return true;
     }
 
     public static void main(String[] args) {

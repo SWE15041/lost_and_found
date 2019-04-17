@@ -35,8 +35,8 @@ public class CorpusTraining {
                 throw new RuntimeException("------------------生语料库为空---------------");
             }
             //创建中文处理工厂对象，并使用“models”目录下的模型文件初始化
-            CNFactory cnFactory = CNFactory.getInstance("models");
-            StopWords stopWords = new StopWords("./models/stopwords");
+            CNFactory cnFactory = CNFactory.getInstance();
+            StopWords stopWords = new StopWords("/resources/models/stopwords");
             for (File file : files) {
                 //读取文件内容
                 List<String> fileContent = FileUtil.getFileContent(file.getAbsolutePath());
@@ -50,7 +50,7 @@ public class CorpusTraining {
                     }
                 }
             }
-        } catch (LoadModelException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return corpusTF;

@@ -38,4 +38,12 @@ public interface LfReleaseRecordService extends EntityCRUDService<LfReleaseRecor
     LfReleaseRecord findByGoodsId(Long goodsId);
 
     List<LfReleaseRecord> findByReleaseType(ReleaseType releaseType);
+
+    /**
+     * 生成测试数据
+     * @param goodsNum 需要生成的物品数量
+     * @param corpusDir 数据来源的地址
+     * @return
+     */
+    Boolean buildReleaseData(Long goodsNum,String corpusDir);
 }
