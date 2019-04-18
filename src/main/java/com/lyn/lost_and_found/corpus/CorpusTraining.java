@@ -36,7 +36,7 @@ public class CorpusTraining {
             }
             //创建中文处理工厂对象，并使用“models”目录下的模型文件初始化
             CNFactory cnFactory = CNFactory.getInstance();
-            StopWords stopWords = new StopWords("/resources/models/stopwords");
+            StopWords stopWords = new StopWords("E:\\java\\project\\lost_and_found\\src\\main\\resources\\models\\stopwords");
             for (File file : files) {
                 //读取文件内容
                 List<String> fileContent = FileUtil.getFileContent(file.getAbsolutePath());

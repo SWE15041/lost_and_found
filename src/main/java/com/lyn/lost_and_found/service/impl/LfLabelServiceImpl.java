@@ -139,6 +139,27 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
             //            cosSimilarityMap.put(StringUtils.join(wordAllB, ","), cosSimilarity);
         }
         //根据余弦相似度给标签排序
+        System.out.println("------------------------------------余弦相似度----------------------------------------------------------------------------");
+//        System.out.println(labelList);
+        //余弦值大于0的标签数
+        int gt0 = 0;
+        //大于5的标签数
+        int gt5 = 0;
+        //大于8
+        int gt8 = 0;
+        for (LfLabel lfLabel : labelList) {
+            Double labelValue = lfLabel.getValue();
+            if (labelValue > 0 && labelValue < 0.5) {
+                gt0++;
+            }
+            if (labelValue >= 0.5 && labelValue < 0.8) {
+                gt5++;
+            }
+            if (labelValue >= 0.8 && labelValue <= 1) {
+                gt8++;
+            }
+        }
+        System.out.println("余弦值=[0.0,0.5)：" + gt0 + "\t余弦值=[0.5,0.8)：" + gt5 + "\t余弦值>[0.8,1]：" + gt8);
         List<LfLabel> labels = labelList.stream().sorted(Comparator.comparing(LfLabel::getValue).reversed()).collect(Collectors.toList()).subList(0, labelList.size() < 5 ? labelList.size() : 5);
         for (LfLabel label : labels) {
             super.save(label);

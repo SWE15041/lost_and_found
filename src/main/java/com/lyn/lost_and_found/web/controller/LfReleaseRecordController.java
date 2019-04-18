@@ -104,4 +104,24 @@ public class LfReleaseRecordController extends BaseLFGridController<LfReleaseRec
         return releaseRecordService.buildReleaseData(goodsNum, corpusDir);
     }
 
+    /**
+     * 用于算法测试
+     * 用于测试关键词的模糊查询匹配到的记录数
+     *
+     * @param map
+     * @return
+     */
+    @RequestMapping(value = "/cntReourdNum", method = RequestMethod.POST)
+    public Boolean findRecordNumByStr(@RequestBody Map<String, String> map) {
+        String keywords = map.get("keywords");
+        return releaseRecordService.cntRecords(keywords);
+    }
+
+    public static void main(String[] args) {
+        String keywords = "[手包,钱包,钥匙,0,9]";
+        int indexOf = keywords.indexOf("[");
+        int lastIndexOf = keywords.lastIndexOf("]");
+        String words = keywords.substring(indexOf + 1, lastIndexOf);
+        System.out.println(words);
+    }
 }

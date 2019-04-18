@@ -101,6 +101,28 @@ public class FileUtil {
     }
 
     /**
+     * 递归删除目录及目录下的文件
+     *
+     * @param file 目录文件
+     * @return
+     */
+    public static boolean deleteDir(File file) {
+//        File file = new File(dirPath);
+        if (file.isDirectory()) {
+            file.delete();
+            String[] children = file.list();
+            for (String child : children) {
+                boolean isSuccess = deleteDir(new File(file,child));
+                if (!isSuccess) {
+                    return false;
+                }
+            }
+        }
+        //目录为空，可以删除
+        return file.delete();
+    }
+
+    /**
      * 计算指定目录下文件的数量
      *
      * @param dir
@@ -156,10 +178,11 @@ public class FileUtil {
 
     /**
      * 将文本内容写入指定文件
+     *
      * @param path
      * @param content
      */
-    public static void writeFile(String path,String content){
+    public static void writeFile(String path, String content) {
         File file = new File(path);
         File parentFile = file.getParentFile();
         if (!parentFile.exists()) {
@@ -180,8 +203,11 @@ public class FileUtil {
         }
 
     }
+
     public static void main(String[] args) {
-        String pathname = "/users/lyn/picPath/5a56ff5210c140369cf607436e57955c.jpg";
-        delete(pathname);
+//        String pathname = "/users/lyn/picPath/5a56ff5210c140369cf607436e57955c.jpg";
+//        delete(pathname);
+
+        boolean b = deleteDir(new File("E:\\lyn\\毕设\\语料库\\生语料库\\150\\"));
     }
 }

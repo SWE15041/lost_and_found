@@ -58,7 +58,7 @@ public class TFIDFCalculation {
         Long wordSum = Validator.isNotNull(corpusService.getWordSum()) ? corpusService.getWordSum() : 0;
         Map<String, Double> idfs = new HashMap<>();
         for (String word : wordAll) {
-            Long wordQuantities = Validator.isNotNull(corpusService.getWordQuantities(word)) ? corpusService.getWordQuantities(word) : 0L;
+            Long wordQuantities = corpusService.getWordQuantities(word);
             Double idf = Math.log(MathUtil.divideDouble(wordSum * 1.0, (wordQuantities + 1), 6));
             idfs.put(word, idf);
         }
@@ -185,11 +185,11 @@ public class TFIDFCalculation {
         unionWords.addAll(keyWordsA);
         unionWords.addAll(keyWordsB);
         Map<String, Double> oppositeTFsA = calOppositeTF(wordAllA, new ArrayList<>(unionWords));
-        System.out.println("相对词频a："+oppositeTFsA);
+        System.out.println("相对词频a：" + oppositeTFsA);
         Map<String, Double> oppositeTFsB = calOppositeTF(wordAllB, new ArrayList<>(unionWords));
-        System.out.println("相对词频b："+oppositeTFsB);
+        System.out.println("相对词频b：" + oppositeTFsB);
         Double cosSimilarity = calCosSimilarity(oppositeTFsA, oppositeTFsB);
-        System.out.println(new ArrayList<>(unionWords)+"=>"+cosSimilarity);
+        System.out.println(new ArrayList<>(unionWords) + "=>" + cosSimilarity);
         return cosSimilarity;
 
     }

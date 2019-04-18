@@ -46,4 +46,11 @@ public interface LfReleaseRecordService extends EntityCRUDService<LfReleaseRecor
      * @return
      */
     Boolean buildReleaseData(Long goodsNum,String corpusDir);
+
+    /**
+     * 统计每个词匹配到的记录数
+     * @param keywords
+     * @return
+     */
+    Boolean cntRecords(String keywords);
 }

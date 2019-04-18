@@ -157,10 +157,11 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
         }
         int cnt = 0;
         for (File file : files) {
+            cnt++;
             if (cnt > goodsNum) {
                 break;
             }
-            String description = FileUtil.getFileContent(file.getAbsolutePath()).toString();
+            String description =String.valueOf(FileUtil.getFileContent(file.getAbsolutePath())) ;
             LfGoods goods = new LfGoods();
             goods.setDescription(description);
             goods.setReleaseType(ReleaseType.PICK_UP);
@@ -170,6 +171,24 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
             goods.setLongitude(11.11);
             goods.setReleaseTime(new Date());
             releaseGoods(goods);
+        }
+        return true;
+    }
+
+    @Override
+    public Boolean cntRecords(String keywords) {
+        if (keywords == null) {
+            return false;
+        }
+        List<String> words = Arrays.stream(keywords.split(",")).map(String::valueOf).collect(Collectors.toList());
+//        String s1 = " select  count(1) FROM lf_goods g JOIN lf_category c ON g.category_id = c.id JOIN lf_release_record rr ON g.id = rr.goods_id JOIN lf_user u ON rr.release_user_id=u.id WHERE g.release_status !=1 and (g.name LIKE";
+//        String s2 = "or g.description like";
+//        String s3 = ")";
+
+        for (String word : words) {
+//            String sql = s1 + word + s2 + word + s3;
+            Long cntRecords = releaseRecordRepository.cntRecords(word);
+            System.out.println(word+"\t:"+cntRecords);
         }
         return true;
     }
