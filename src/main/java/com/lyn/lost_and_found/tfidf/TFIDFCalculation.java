@@ -96,6 +96,7 @@ public class TFIDFCalculation {
     public static Map<String, Double> calTFIDF(List<String> wordAll) {
         if (Validator.isNull(wordAll)) {
             throw new RuntimeException("单词总数为空");
+//            return null;
         }
         Map<String, Double> tfs = calTF(wordAll);
         Map<String, Double> idfs = calIDFByDB(wordAll);

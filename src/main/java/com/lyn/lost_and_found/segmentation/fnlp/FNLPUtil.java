@@ -49,7 +49,7 @@ public class FNLPUtil {
                     boolean isStopWord = stopWords.isStopWord(word);
                     if (!isStopWord) {
 //                        System.out.println(word+"/"+pos);
-                        if (pos.equals("名词") || pos.equals("形容词") || pos.equals("地名") || pos.equals("人名")) {
+                        if (pos.equals("名词") || pos.equals("形容词") || pos.equals("地名") || pos.equals("人名")||pos.equals("机构名")) {
                             nounWords.add(word);
                         }
                     } else {

@@ -12,15 +12,15 @@ import java.util.*;
  */
 public class ReadExcel {
     /**
-     * fileNumbers={100,150,200,250,300};
+     * fileNumbers={100, 150, 200, 250, 300};
      */
-    private static Integer[] fileNumbers = {100, 150, 200, 250, 300};
+    private static Integer[] fileNumbers = {500, 1000, 2000, 5000, 10000};
     private static String corpusDirPrefix = "E:\\lyn\\毕设\\语料库\\生语料库";
     private static String corpusExcelPath = "E:\\lyn\\毕设\\语料库\\失物招领生语料库.xls";
 
     public static void main(String[] args) {
         ReadExcel obj = new ReadExcel();
-        // 此处为我创建Excel路径：E:/zhanhj/studysrc/jxl下
+        // 此处为我创建Excel路径
         File file = new File(corpusExcelPath);
         List excelList = obj.readExcel(file);
         //1生成语料库到本地
@@ -87,22 +87,26 @@ public class ReadExcel {
      * @param numbers
      */
     public void writeToFile(List excelList, int numbers) {
-        System.out.println("list中的数据打印出来");
+        System.out.println("===============================================list中的数据打印出来=========================================================");
         int cnt = 0;
         Map<String, Integer> map = new HashMap<>(numbers);
         for (int i = 0; i < excelList.size(); i++) {
             List list = (List) excelList.get(i);
+            String titleInfo = null;
             for (int j = 0; j < list.size(); j++) {
                 String cellinfo = String.valueOf(list.get(j)).trim();
-                if (i != 0 && j == 2 && list.get(j) != null && cellinfo.length() >= 30 && cellinfo.length() <= 255) {
-                    if (!map.containsKey(cellinfo)) {
+                String content = titleInfo + " " + cellinfo;
+                if (i != 0 && j == 2 && list.get(j) != null && content.length() >= 50 && content.length() <= 250) {
+                    if (!map.containsKey(content)) {
                         cnt++;
                         if (cnt > numbers) {
                             break;
                         }
-                        map.put(cellinfo, 1);
-                        System.out.println(cellinfo + "位置：(" + i + "," + j + ") 字符数：" + cellinfo.length() + " cnt: " + cnt);
+                        map.put(content, 1);
+                        System.out.println(content + "位置：(" + i + "," + j + ") 字符数：" + content.length() + " cnt: " + cnt);
                     }
+                } else if (i != 0 && j == 1 && list.get(j) != null) {
+                    titleInfo = String.valueOf(list.get(j)).trim();
                 }
             }
         }
@@ -120,18 +124,23 @@ public class ReadExcel {
 
     /**
      * 抽取excel(i,2)数据，生成语料库数据到本地
+     *
      * @param excelList
      */
     public void buildCorpus(List excelList) {
         FileUtil.deleteDir(new File(corpusDirPrefix));
         for (int i = 0; i < excelList.size(); i++) {
             List list = (List) excelList.get(i);
+            String titleInfo = null;
             for (int j = 0; j < list.size(); j++) {
                 if (i != 0 && j == 2 && list.get(j) != null) {
                     String cellinfo = String.valueOf(list.get(j)).trim();
                     String filename = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".txt";
                     String path = corpusDirPrefix + "\\" + filename;
-                    FileUtil.writeFile(path, cellinfo);
+                    FileUtil.writeFile(path, titleInfo + " " + cellinfo);
+                    System.out.println(titleInfo + "=========================================" + cellinfo);
+                } else if (i != 0 && j == 1 && list.get(j) != null) {
+                    titleInfo = String.valueOf(list.get(j)).trim();
                 }
             }
         }
