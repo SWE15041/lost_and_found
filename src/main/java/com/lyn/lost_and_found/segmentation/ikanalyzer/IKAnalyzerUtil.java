@@ -1,12 +1,12 @@
 package com.lyn.lost_and_found.segmentation.ikanalyzer;
 
+import com.sun.deploy.config.DefaultConfig;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
 import org.apache.lucene.analysis.tokenattributes.TypeAttribute;
 import org.wltea.analyzer.cfg.Configuration;
-import org.wltea.analyzer.cfg.DefaultConfig;
 import org.wltea.analyzer.core.IKSegmenter;
 import org.wltea.analyzer.core.Lexeme;
 import org.wltea.analyzer.dic.Dictionary;
@@ -68,7 +68,7 @@ public class IKAnalyzerUtil {
         //useSmart=true表示采用智能分词
         IKAnalyzer ikAnalyzer = new IKAnalyzer(true);
         //todo 可载人自定义词典
-        Configuration configuration = DefaultConfig.getInstance();
+        Configuration configuration = (Configuration) DefaultConfig.getInstance();
         Dictionary dictionary = Dictionary.initial(configuration);
         System.out.println(configuration.getExtDictionarys());
         System.out.println(configuration.getExtStopWordDictionarys());
@@ -131,7 +131,7 @@ public class IKAnalyzerUtil {
 
 //        Result result = NlpAnalysis.parse(str).recognition(StopLibrary.get());
 //        System.out.println(result);
-
+//        ikDefineAnalyzer(new StringReader(str));
 
     }
 

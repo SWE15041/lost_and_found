@@ -6,6 +6,7 @@
       g.id,
       g.name,
       u.nick_name as release_name,
+      u.mobile,
       DATE_FORMAT(g.release_time,'%y-%m-%d %h:%m:%s') as release_time,
       g.release_status,
       g.money,

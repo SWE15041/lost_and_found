@@ -41,7 +41,7 @@ spring:
         slow-sql-millis: 2000
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
 
 mybatis:
@@ -72,5 +72,7 @@ tfidf:
 
 
 fnlp:
-  #分词模型所在目录
-  modelsDir: E:\java\project\lost_and_found\src\main\resources\models
+  #分词模型所在目录:win7
+#  modelsDir: E:\java\project\lost_and_found\src\main\resources\models
+  #分词模型所在目录:mac
+  modelsDir: /Applications/Java/project/lost_and_found/src/main/resources/models
