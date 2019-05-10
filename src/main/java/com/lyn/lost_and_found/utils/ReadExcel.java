@@ -12,11 +12,13 @@ import java.util.*;
  */
 public class ReadExcel {
     /**
-     * fileNumbers={100, 150, 200, 250, 300};
+     * fileNumbers={100, 150, 200, 250, 300};{500, 1000, 2000, 5000, 10000}
      */
     private static Integer[] fileNumbers = {500, 1000, 2000, 5000, 10000};
-    private static String corpusDirPrefix = "E:\\lyn\\毕设\\语料库\\生语料库";
-    private static String corpusExcelPath = "E:\\lyn\\毕设\\语料库\\失物招领生语料库.xls";
+//    private static String corpusDirPrefix = "E:\\lyn\\毕设\\语料库\\生语料库";
+//    private static String corpusExcelPath = "E:\\lyn\\毕设\\语料库\\失物招领生语料库.xls";
+    private static String corpusDirPrefix = "/Users/colleague/毕业设计/失物招领数据/生语料库/";
+    private static String corpusExcelPath = "/Users/colleague/毕业设计/失物招领数据/失物招领生语料库.xls";
 
     public static void main(String[] args) {
         ReadExcel obj = new ReadExcel();
@@ -110,13 +112,13 @@ public class ReadExcel {
                 }
             }
         }
-        FileUtil.deleteDir(new File(corpusDirPrefix + "\\" + numbers));
+        FileUtil.deleteDir(new File(corpusDirPrefix + "/" + numbers));
         Iterator<Map.Entry<String, Integer>> iterator = map.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<String, Integer> next = iterator.next();
             String cellinfo = next.getKey();
             String filename = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".txt";
-            String path = corpusDirPrefix + "\\" + numbers + "\\" + filename;
+            String path = corpusDirPrefix + "/" + numbers + "/" + filename;
             FileUtil.writeFile(path, cellinfo);
         }
 
@@ -136,7 +138,7 @@ public class ReadExcel {
                 if (i != 0 && j == 2 && list.get(j) != null) {
                     String cellinfo = String.valueOf(list.get(j)).trim();
                     String filename = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".txt";
-                    String path = corpusDirPrefix + "\\" + filename;
+                    String path = corpusDirPrefix + "/" + filename;
                     FileUtil.writeFile(path, titleInfo + " " + cellinfo);
                     System.out.println(titleInfo + "=========================================" + cellinfo);
                 } else if (i != 0 && j == 1 && list.get(j) != null) {
