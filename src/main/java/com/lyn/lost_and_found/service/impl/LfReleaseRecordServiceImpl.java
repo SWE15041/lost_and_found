@@ -63,6 +63,7 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
 
         // 给物品描述进行 分词、计算关键词：默认取5个 (无论哪种发布类型都有进行关键词提取)
         String description = goods.getDescription();
+        System.out.println("--------------当前物品描述信息----------"+description);
             if (Validator.isNotNull(description)) {
                 List<String> wordAll = FNLPUtil.zhCNSegGetNoun(description);
                 if (wordAll != null) {
@@ -160,6 +161,7 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
         }
         int cnt = 0;
         for (File file : files) {
+            System.out.println("-------------------当前文件名称------------"+file.getAbsolutePath());
             cnt++;
             if (cnt > goodsNum) {
                 break;

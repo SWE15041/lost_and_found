@@ -73,6 +73,6 @@ tfidf:
 
 fnlp:
   #分词模型所在目录:win7
-#  modelsDir: E:\java\project\lost_and_found\src\main\resources\models
+  modelsDir: E:\java\project\lost_and_found\src\main\resources\models
   #分词模型所在目录:mac
-  modelsDir: /Applications/Java/project/lost_and_found/src/main/resources/models
+#  modelsDir: /Applications/Java/project/lost_and_found/src/main/resources/models

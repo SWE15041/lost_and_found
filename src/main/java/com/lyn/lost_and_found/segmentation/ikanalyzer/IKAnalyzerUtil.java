@@ -127,7 +127,7 @@ public class IKAnalyzerUtil {
 //        System.out.println();
 //        ikSegAnalyzer(new StringReader(str));
 //        System.out.println();
-//        ikDefineAnalyzer(new StringReader(str));
+        ikDefineAnalyzer(new StringReader(str));
 
 //        Result result = NlpAnalysis.parse(str).recognition(StopLibrary.get());
 //        System.out.println(result);

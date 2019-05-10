@@ -50,7 +50,13 @@ public class LfCorpusServiceImpl extends EntityCRUDServiceImpl<LfCorpus, Long> i
 
     @Override
     public Long getWordQuantities(String name) {
-        LfCorpus corpus = corpusRepository.findByName(name);
+        LfCorpus corpus=null;
+        try {
+             corpus = corpusRepository.findByName(name);
+        }catch (Exception e){
+            System.out.println("-------出错的词------------:"+name);
+        }
+
         if (Validator.isNull(corpus)) {
             return 0L;
         }
