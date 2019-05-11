@@ -128,14 +128,16 @@ public class LfLabelServiceImpl extends EntityCRUDServiceImpl<LfLabel, Long> imp
             List<String> wordAllB = FNLPUtil.zhCNSegGetNoun(goodsB.getDescription());
             // 计算余弦相似度
             Double cosSimilarity = TFIDFCalculation.calCosSimilarity(wordAllA, wordAllB, textAkeywords, textBkeywords);
-            LfLabel label = new LfLabel();
-            label.setLabel(StringUtils.join(textBkeywords, ","));
-            label.setValue(cosSimilarity);
-            label.setPassiveGoodsId(passiveGoodsId);
-            Long passiveReleaseRecordId = record.getId();
-            label.setPassiveReleaseId(passiveReleaseRecordId);
-            label.setActiveReleaseId(activeReleaseRecordId);
-            labelList.add(label);
+            if (cosSimilarity!=2) {
+                LfLabel label = new LfLabel();
+                label.setLabel(StringUtils.join(textBkeywords, ","));
+                label.setValue(cosSimilarity);
+                label.setPassiveGoodsId(passiveGoodsId);
+                Long passiveReleaseRecordId = record.getId();
+                label.setPassiveReleaseId(passiveReleaseRecordId);
+                label.setActiveReleaseId(activeReleaseRecordId);
+                labelList.add(label);
+            }
             //            cosSimilarityMap.put(StringUtils.join(wordAllB, ","), cosSimilarity);
         }
         //根据余弦相似度给标签排序
