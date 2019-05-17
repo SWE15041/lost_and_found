@@ -9,12 +9,13 @@ public interface LfClaimRecordService extends EntityCRUDService<LfClaimRecord, L
 
     /**
      * 通过goodsId获取对应的认领记录
+     *
      * @param goodsId
      * @return
      */
     List<LfClaimRecord> findBygoodsId(Long goodsId);
 
-    boolean  agreeClaim(LfClaimRecord claimRecord);
+    boolean agreeClaim(LfClaimRecord claimRecord);
 
     boolean refuseClaim(LfClaimRecord claimRecord);
 }

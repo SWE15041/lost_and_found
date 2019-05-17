@@ -73,6 +73,7 @@ public class LoginController extends BaseLFGridController<LfUser, Long> {
             throw new HttpBadRequestException("code无效", "VALID_CODE");
         }
     }
+
     /**
      * app用户登陆
      *
@@ -127,6 +128,7 @@ public class LoginController extends BaseLFGridController<LfUser, Long> {
 
     /**
      * 验证手机号
+     *
      * @param map
      * @return
      */

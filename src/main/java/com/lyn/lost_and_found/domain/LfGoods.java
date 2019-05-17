@@ -55,7 +55,7 @@ public class LfGoods extends BaseEntity<Long> {
     /**
      * 遗失地址
      */
-    private  String addr;
+    private String addr;
     /**
      * 物品状态：0-未认领 1-已认领
      */

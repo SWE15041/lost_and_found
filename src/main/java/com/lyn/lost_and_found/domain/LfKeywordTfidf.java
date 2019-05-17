@@ -5,7 +5,6 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.List;
 
 /**
  * 物品类别实体
@@ -18,8 +17,6 @@ public class LfKeywordTfidf extends BaseEntity<Long> {
 //   private Long passiveGoodsId;
 //
 //    private Long releaseRecordId;
-
-
 
 
 }

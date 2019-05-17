@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 @Service
@@ -51,17 +50,18 @@ public class LfCorpusServiceImpl extends EntityCRUDServiceImpl<LfCorpus, Long> i
 
     @Override
     public Long getWordQuantities(String name) {
-        Long quantities = 0L;
-        List<LfCorpus> corpuses = corpusRepository.findByName(name);
-        System.out.println("-------出错的词------------:" + name);
-        if (Validator.isNull(corpuses)) {
+        LfCorpus corpus = null;
+        try {
+            corpus = corpusRepository.findByName(name);
+        } catch (Exception e) {
+            System.out.println("-------出错的词------------:" + name);
+        }
+
+        if (Validator.isNull(corpus)) {
             return 0L;
         }
-        for (LfCorpus corpus : corpuses) {
-            quantities += Validator.isNull(corpus.getQuantities()) ? 0L : corpus.getQuantities();
-        }
 //        corpusRepository.findQuantitiesByName()
-        return quantities;
+        return corpus.getQuantities();
     }
 
     @Transactional(rollbackOn = Exception.class)

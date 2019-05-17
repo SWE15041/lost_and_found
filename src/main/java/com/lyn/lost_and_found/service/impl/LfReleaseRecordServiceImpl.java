@@ -63,25 +63,25 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
 
         // 给物品描述进行 分词、计算关键词：默认取5个 (无论哪种发布类型都有进行关键词提取)
         String description = goods.getDescription();
-        System.out.println("--------------当前物品描述信息----------"+description);
-            if (Validator.isNotNull(description)) {
-                List<String> wordAll = FNLPUtil.zhCNSegGetNoun(description);
-                if (wordAll != null) {
-                    Map<String, Double> tfidfsMap = TFIDFCalculation.calTFIDF(wordAll);
-                    List<Map.Entry<String, Double>> entryList = tfidfsMap.entrySet().stream().
-                            sorted(Comparator.comparing(Map.Entry<String, Double>::getValue).reversed()).
-                            collect(Collectors.toList());
-                    List<Map.Entry<String, Double>> topEntryList = entryList.subList(0, entryList.size() < keywordsNum ? entryList.size() : keywordsNum);
-                    // 把数据以字符串的形式保存到数据库
-                    List<String> keys = topEntryList.stream().map(Map.Entry::getKey).collect(Collectors.toList());
-                    String keywords = StringUtils.join(keys, ",");
-                    //            List<String> values=new ArrayList<>();
-                    List<Double> values = topEntryList.stream().map(Map.Entry::getValue).collect(Collectors.toList());
-                    String tfidfs = StringUtils.join(values, ",");
-                    releaseRecord.setKeywords(keywords);
-                    releaseRecord.setTfidfs(tfidfs);
-                }
+        System.out.println("--------------当前物品描述信息----------" + description);
+        if (Validator.isNotNull(description)) {
+            List<String> wordAll = FNLPUtil.zhCNSegGetNoun(description);
+            if (wordAll != null) {
+                Map<String, Double> tfidfsMap = TFIDFCalculation.calTFIDF(wordAll);
+                List<Map.Entry<String, Double>> entryList = tfidfsMap.entrySet().stream().
+                        sorted(Comparator.comparing(Map.Entry<String, Double>::getValue).reversed()).
+                        collect(Collectors.toList());
+                List<Map.Entry<String, Double>> topEntryList = entryList.subList(0, entryList.size() < keywordsNum ? entryList.size() : keywordsNum);
+                // 把数据以字符串的形式保存到数据库
+                List<String> keys = topEntryList.stream().map(Map.Entry::getKey).collect(Collectors.toList());
+                String keywords = StringUtils.join(keys, ",");
+                //            List<String> values=new ArrayList<>();
+                List<Double> values = topEntryList.stream().map(Map.Entry::getValue).collect(Collectors.toList());
+                String tfidfs = StringUtils.join(values, ",");
+                releaseRecord.setKeywords(keywords);
+                releaseRecord.setTfidfs(tfidfs);
             }
+        }
 
         super.save(releaseRecord);
 
@@ -161,12 +161,12 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
         }
         int cnt = 0;
         for (File file : files) {
-            System.out.println("-------------------当前文件名称------------"+file.getAbsolutePath());
+            System.out.println("-------------------当前文件名称------------" + file.getAbsolutePath());
             cnt++;
             if (cnt > goodsNum) {
                 break;
             }
-            String description =String.valueOf(FileUtil.getFileContent(file.getAbsolutePath())) ;
+            String description = String.valueOf(FileUtil.getFileContent(file.getAbsolutePath()));
             LfGoods goods = new LfGoods();
             goods.setDescription(description);
             goods.setReleaseType(ReleaseType.PICK_UP);
@@ -193,7 +193,7 @@ public class LfReleaseRecordServiceImpl extends EntityCRUDServiceImpl<LfReleaseR
         for (String word : words) {
 //            String sql = s1 + word + s2 + word + s3;
             Long cntRecords = releaseRecordRepository.cntRecords(word);
-            System.out.println(word+"\t:"+cntRecords);
+            System.out.println(word + "\t:" + cntRecords);
         }
         return true;
     }

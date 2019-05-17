@@ -15,7 +15,7 @@ public class ReadExcel {
      * fileNumbers={100, 150, 200, 250, 300};{500, 1000, 2000, 5000, 10000}
      */
     private static Integer[] fileNumbers = {500, 1000, 2000, 5000, 10000};
-//    private static String corpusDirPrefix = "E:\\lyn\\毕设\\语料库\\生语料库";
+    //    private static String corpusDirPrefix = "E:\\lyn\\毕设\\语料库\\生语料库";
 //    private static String corpusExcelPath = "E:\\lyn\\毕设\\语料库\\失物招领生语料库.xls";
     private static String corpusDirPrefix = "/Users/colleague/毕业设计/失物招领数据/生语料库/";
     private static String corpusExcelPath = "/Users/colleague/毕业设计/失物招领数据/失物招领生语料库.xls";

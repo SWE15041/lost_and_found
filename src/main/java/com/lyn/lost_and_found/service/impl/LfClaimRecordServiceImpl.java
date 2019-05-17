@@ -4,8 +4,8 @@ import com.jay.vito.common.util.validate.Validator;
 import com.jay.vito.storage.service.EntityCRUDServiceImpl;
 import com.jay.vito.uic.client.core.UserContextHolder;
 import com.lyn.lost_and_found.config.constant.ClaimRecordType;
-import com.lyn.lost_and_found.config.constant.ReleaseStatus;
 import com.lyn.lost_and_found.config.constant.ClaimStatus;
+import com.lyn.lost_and_found.config.constant.ReleaseStatus;
 import com.lyn.lost_and_found.domain.LfClaimRecord;
 import com.lyn.lost_and_found.domain.LfClaimRecordRepository;
 import com.lyn.lost_and_found.domain.LfGoods;
@@ -49,7 +49,7 @@ public class LfClaimRecordServiceImpl extends EntityCRUDServiceImpl<LfClaimRecor
         Long claimUserId = UserContextHolder.getCurrentUserId();
         //判断是否被重复认领
         LfClaimRecord isCliam = claimRecordRepository.findByGoodsIdAndClaimUserId(goodsId, claimUserId);
-        if(Validator.isNotNull(isCliam)){
+        if (Validator.isNotNull(isCliam)) {
             throw new RuntimeException("已经认领，不能重复认领");
         }
         claimRecord.setReleaseUserId(releaseUserId);
@@ -78,8 +78,8 @@ public class LfClaimRecordServiceImpl extends EntityCRUDServiceImpl<LfClaimRecor
         lfClaimRecord.setClaimStatus(ClaimStatus.AGREE);
         super.update(lfClaimRecord);
         //将该物品的其他认领记录置为：2-拒绝认领
-        List<LfClaimRecord> claimRecords = claimRecordRepository.findByGoodsIdAndClaimUserIdNot(goodsId,claimUserId);
-        if(Validator.isNotNull(claimRecords)){
+        List<LfClaimRecord> claimRecords = claimRecordRepository.findByGoodsIdAndClaimUserIdNot(goodsId, claimUserId);
+        if (Validator.isNotNull(claimRecords)) {
             for (LfClaimRecord record : claimRecords) {
                 record.setClaimStatus(ClaimStatus.REFUSE);
                 update(record);

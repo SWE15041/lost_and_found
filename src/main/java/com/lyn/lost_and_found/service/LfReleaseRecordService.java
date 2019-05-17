@@ -31,7 +31,8 @@ public interface LfReleaseRecordService extends EntityCRUDService<LfReleaseRecor
     LfReleaseRecord getByReleaseUserIdAndGoodsId(Long releaseUserId, Long goodsId);
 
     /**
-     *  通过物品id获取发布记录
+     * 通过物品id获取发布记录
+     *
      * @param goodsId
      * @return
      */
@@ -41,14 +42,16 @@ public interface LfReleaseRecordService extends EntityCRUDService<LfReleaseRecor
 
     /**
      * 生成测试数据
-     * @param goodsNum 需要生成的物品数量
+     *
+     * @param goodsNum  需要生成的物品数量
      * @param corpusDir 数据来源的地址
      * @return
      */
-    Boolean buildReleaseData(Long goodsNum,String corpusDir);
+    Boolean buildReleaseData(Long goodsNum, String corpusDir);
 
     /**
      * 统计每个词匹配到的记录数
+     *
      * @param keywords
      * @return
      */

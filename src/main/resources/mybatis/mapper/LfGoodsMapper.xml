@@ -18,12 +18,12 @@
             g.release_status !=1
             <if test="keyWord != null and keyWord != ''">
                 <bind name="pattern1" value="'%'+keyWord+'%'"/>
-                and (g.name LIKE  #{pattern1} or g.description like #{pattern1})
+                and (g.name LIKE #{pattern1} or g.description like #{pattern1})
             </if>
             <if test="releaseType != null and releaseType != ''">
-                and (rr.release_type =  #{releaseType})
+                and (rr.release_type = #{releaseType})
             </if>
-            <if  test="categoryId != null and categoryId != ''">
+            <if test="categoryId != null and categoryId != ''">
                 and g.category_id = #{categoryId}
             </if>
         </where>

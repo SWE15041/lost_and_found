@@ -112,7 +112,7 @@ public class FileUtil {
             file.delete();
             String[] children = file.list();
             for (String child : children) {
-                boolean isSuccess = deleteDir(new File(file,child));
+                boolean isSuccess = deleteDir(new File(file, child));
                 if (!isSuccess) {
                     return false;
                 }

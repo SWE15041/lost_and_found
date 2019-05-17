@@ -36,7 +36,7 @@
         select
         <include refid="ColumnList"/>
         from lf_release_record rr
-        join lf_goods g  on rr.goods_id=g.id
+        join lf_goods g on rr.goods_id=g.id
         join lf_user u on rr.release_user_id=u.id
         <include refid="WhereClause"/>
         <include refid="OrderClause"/>
@@ -45,7 +45,7 @@
     <select id="countList" resultType="java.lang.Long" parameterType="map">
         select count(1)
         from lf_release_record rr
-        join lf_goods g  on rr.goods_id=g.id
+        join lf_goods g on rr.goods_id=g.id
         join lf_user u on rr.release_user_id=u.id
         <include refid="WhereClause"/>
     </select>

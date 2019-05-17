@@ -4,7 +4,6 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.jay.vito.storage.domain.BaseEntity;
 import com.lyn.lost_and_found.config.constant.ClaimRecordType;
 import com.lyn.lost_and_found.config.constant.ClaimStatus;
-import com.lyn.lost_and_found.config.constant.ReleaseType;
 import com.lyn.lost_and_found.config.constant.YesNoNum;
 import lombok.Data;
 

@@ -1,11 +1,9 @@
 package com.lyn.lost_and_found.utils;
 
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.web.multipart.MultipartFile;
 import sun.misc.BASE64Decoder;
 
 import java.io.*;
-import java.util.UUID;
 
 /**
  * 参考：https://blog.csdn.net/izb2008/article/details/79623234

@@ -2,7 +2,6 @@ package com.lyn.lost_and_found.web.controller;
 
 import com.jay.vito.common.util.bean.BeanUtil;
 import com.jay.vito.common.util.validate.Validator;
-import com.jay.vito.uic.client.core.UserContextHolder;
 import com.jay.vito.uic.client.interceptor.IgnoreUserAuth;
 import com.lyn.lost_and_found.domain.LfCategory;
 import com.lyn.lost_and_found.domain.LfGoods;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -41,7 +39,7 @@ public class LfGoodsController extends BaseLFGridController<LfGoods, Long> {
     @Override
     public LfGoodsVO get(@PathVariable("id") Long id) {
         LfGoods lfGoods = super.get(id);
-        if(Validator.isNull(lfGoods)){
+        if (Validator.isNull(lfGoods)) {
             return null;
         }
         Long categoryId = lfGoods.getCategoryId();
@@ -86,7 +84,7 @@ public class LfGoodsController extends BaseLFGridController<LfGoods, Long> {
     public byte[] getPicture(@RequestBody Map<String, Object> map) {
         String picture = String.valueOf(map.get("picture"));
         byte[] data = FileUtil.get(picture);
-        return  data;
+        return data;
     }
 
     public static void main(String[] args) {

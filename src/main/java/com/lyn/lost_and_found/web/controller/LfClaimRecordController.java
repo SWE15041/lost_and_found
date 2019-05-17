@@ -47,6 +47,7 @@ public class LfClaimRecordController extends BaseLFGridController<LfClaimRecord,
     /**
      * 我的认领记录:我发出的 和 我收到的
      * 以下是我收到的
+     *
      * @return
      */
     @RequestMapping(method = RequestMethod.GET, params = "pageNo")
@@ -57,12 +58,13 @@ public class LfClaimRecordController extends BaseLFGridController<LfClaimRecord,
 
     /**
      * 物品认领者记录
+     *
      * @return
      */
-    @RequestMapping(value = "/claimers",method = RequestMethod.GET, params = "pageNo")
+    @RequestMapping(value = "/claimers", method = RequestMethod.GET, params = "pageNo")
     public LocalPage getClaimers() {
-        String countStatement="com.lyn.lost_and_found.domain.LfClaimRecordMapper.countListClaimer";
-        String qryStatement="com.lyn.lost_and_found.domain.LfClaimRecordMapper.selectListClaimer";
+        String countStatement = "com.lyn.lost_and_found.domain.LfClaimRecordMapper.countListClaimer";
+        String qryStatement = "com.lyn.lost_and_found.domain.LfClaimRecordMapper.selectListClaimer";
 
         Page page = super.pageQuery(countStatement, qryStatement);
         LocalPage localPage = new LocalPage();
@@ -71,7 +73,7 @@ public class LfClaimRecordController extends BaseLFGridController<LfClaimRecord,
         localPage.setTotal(page.getTotalCount());
         localPage.setRows(convertFieldCase(page.getItems()));
 
-        return  localPage;
+        return localPage;
     }
 
 
@@ -125,8 +127,8 @@ public class LfClaimRecordController extends BaseLFGridController<LfClaimRecord,
     public boolean refuseClaim(@RequestBody LfClaimRecord claimRecord) {
         Long claimUserId = claimRecord.getClaimUserId();
         Long goodsId = claimRecord.getGoodsId();
-        if(Validator.isNull(claimUserId)||Validator.isNull(goodsId)){
-            throw  new HttpBadRequestException("无法拒绝认领","FAIL_TO_REFUSE_CLAIM");
+        if (Validator.isNull(claimUserId) || Validator.isNull(goodsId)) {
+            throw new HttpBadRequestException("无法拒绝认领", "FAIL_TO_REFUSE_CLAIM");
         }
         boolean agreeClaim = claimRecordService.refuseClaim(claimRecord);
         return agreeClaim;

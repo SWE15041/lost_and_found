@@ -1,7 +1,6 @@
 package com.lyn.lost_and_found.service.impl;
 
 import com.jay.vito.storage.service.EntityCRUDServiceImpl;
-import com.lyn.lost_and_found.domain.LfCategory;
 import com.lyn.lost_and_found.domain.LfKeywordTfidf;
 import com.lyn.lost_and_found.domain.LfKeywordTfidfRepository;
 import com.lyn.lost_and_found.service.LfKeywordTfidfService;
